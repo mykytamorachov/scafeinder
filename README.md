@@ -5,6 +5,14 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Express and MongoDB server
+	You need to install and configure MongoDB - use this tuttorial https://youtu.be/pWbMrx5rVBE
+	Run MongoDB server
+	Create db with name 'scafeinder'
+	Run express server with 'node server.js' or 'npm run build'
+	If all is good you should see: 'API running on localhost:3000 Connection established.'
+	If not:  'API running on localhost:3000 Database is not currently available.'
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
