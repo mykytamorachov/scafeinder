@@ -11,7 +11,7 @@ module.exports = {
 
     entry: {
         server: [
-            './server.ts'
+            './server/server.ts'
         ],
     },
 
