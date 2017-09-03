@@ -10,7 +10,7 @@ You need to install and configure MongoDB - use this tuttorial https://youtu.be/
 Run MongoDB server. Create db with name 'scafeinder'. Run 'npm run build' to create application files.
 
 ## Webpack 
-Run `npm run webpack` to generate the server file. The server file will be stored in the `dist/` directory. Run `npm run webpack-w` to run webpack in watch mode.
+Run `npm run build-server` to generate the server file. The server file will be stored in the `dist/` directory. Run `npm run build-server-watch` to run webpack in watch mode.
 
 ## Code scaffolding
 
