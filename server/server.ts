@@ -4,13 +4,13 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as path from "path";
 import * as mongoose from "mongoose";
-import * as CONSTS from "./constants/consts";
+import * as DATABASE_CONFIG from "./constants/database_config";
 // Get our API routes
 import * as api from './routes/api';
 
 // Connect to MongoDB
 
-mongoose.connect(CONSTS.config.DATABASE_CLOUD || CONSTS.config.DATABASE_LOCAL, {useMongoClient: true});
+mongoose.connect(DATABASE_CONFIG.DATABASE_CLOUD || DATABASE_CONFIG.DATABASE_LOCAL, {useMongoClient: true});
 
 mongoose.connection.on("error", () => {
   console.log("MongoDB connection error. Please make sure MongoDB is running.");
@@ -39,7 +39,7 @@ app.get('*', (req, res) => {
 /**
  * Get port from environment and store in Express.
  */
-app.set("port", CONSTS.config.PORT || 3000);
+app.set("port", DATABASE_CONFIG.PORT || 3000);
 
 
 /**
