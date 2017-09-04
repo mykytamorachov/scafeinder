@@ -34,7 +34,7 @@ module.exports = {
     plugins: [
         new AotPlugin({
             mainPath: 'main.ts',
-            tsConfigPath: 'src/tsconfig.server.json',
+            tsConfigPath: 'src/tsconfig.app.json',
             skipCodeGeneration: true
         })
     ],
