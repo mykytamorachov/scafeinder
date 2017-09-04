@@ -3,15 +3,14 @@
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.3.2.
 
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run server` for a dev server. Navigate to `http://localhost:3000/`. If all is good you should see: 'API running on localhost:3000 Connection established.'
 
 ## Express and MongoDB server
-	You need to install and configure MongoDB - use this tuttorial https://youtu.be/pWbMrx5rVBE
-	Run MongoDB server
-	Create db with name 'scafeinder'
-	Run express server with 'node server.js' or 'npm run build'
-	If all is good you should see: 'API running on localhost:3000 Connection established.'
-	If not:  'API running on localhost:3000 Database is not currently available.'
+You need to install and configure MongoDB - use this tuttorial https://youtu.be/pWbMrx5rVBE .
+Run MongoDB server. Create db with name 'scafeinder'. Run 'npm run build' to create application files.
+
+## Webpack 
+Run `npm run build-server` to generate the server file. The server file will be stored in the `dist/` directory. Run `npm run build-server-watch` to run webpack in watch mode.
 
 ## Code scaffolding
 
