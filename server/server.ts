@@ -4,7 +4,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as path from "path";
 import * as mongoose from "mongoose";
-import * as DATABASE_CONFIG from "./constants/database_config";
+import DATABASE_CONFIG from "./constants/database_config";
 // Get our API routes
 import * as api from './routes/api';
 
