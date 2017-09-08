@@ -1,0 +1,27 @@
+<main>
+  <div class="container">
+    <form class="form" #searchForm="ngForm">
+      <section class="search-main">
+        <input class="form-control search-input" type="number" [(ngModel)]="userQuery.tables" name="tables">
+        <input class="form-control search-input" type="time" value="22:15:00" [(ngModel)]="userQuery.time" name="time">
+        <input class="form-control search-input" type="text" [(ngModel)]="userQuery.placeName" name="placeName">
+        <button type="button">Find a table</button>
+      </section>
+  
+      <section class="form-check search-checkboxs">
+        <label *ngFor="let place of placeTypes">
+            <input
+              class="checkbox-round"          
+              type="checkbox"
+              name="placeType"
+              value="{{place.name}}"
+              [(ngModel)]="place.checked"
+            /> {{place.name}}
+        </label>
+      </section>
+      <pre><b>User input:</b>
+        {{diagnostic}}      
+      </pre>
+    </form>    
+  </div>
+</main>
