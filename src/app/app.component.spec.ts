@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ NgbModule, FormsModule, ReactiveFormsModule ],
+      imports: [ FormsModule, NgbModule, ReactiveFormsModule ],
       declarations: [
         AppComponent,
         HeaderComponent,

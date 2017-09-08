@@ -2,18 +2,18 @@
   <div class="container">
     <form class="form" #searchForm="ngForm">
       <section class="search-main">
-        <input class="form-control search-input" type="number" [(ngModel)]="userQuery.tables" name="tables">
-        <input class="form-control search-input" type="time" value="22:15:00" [(ngModel)]="userQuery.time" name="time">
-        <input class="form-control search-input" type="text" [(ngModel)]="userQuery.placeName" name="placeName">
+        <input class="form-control search-input" min="1" name="tables" placeholder="Number of diners" type="number" [(ngModel)]="userQuery.tables">
+        <input class="form-control search-input" name="time" type="time" [(ngModel)]="userQuery.time">
+        <input class="form-control search-input" name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
         <button type="button">Find a table</button>
       </section>
   
       <section class="form-check search-checkboxs">
         <label *ngFor="let place of placeTypes">
             <input
-              class="checkbox-round"          
-              type="checkbox"
+              class="checkbox-round"
               name="placeType"
+              type="checkbox"              
               value="{{place.name}}"
               [(ngModel)]="place.checked"
             /> {{place.name}}

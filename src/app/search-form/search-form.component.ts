@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
-import { UserQuery, placeTypes } from './data-search-form';
+import { placeTypes, UserQuery } from './data-search-form';
 
 @Component({
   selector: 'app-search-form',
@@ -10,8 +10,8 @@ import { UserQuery, placeTypes } from './data-search-form';
 })
 
 export class SearchFormComponent implements OnInit {
-  searchform: FormGroup;
   placeTypes: any;
+  searchform: FormGroup;
   userQuery = new UserQuery(2, '13:00', 'Cosa Nostra');
 
   constructor(private _formBuilder: FormBuilder) {

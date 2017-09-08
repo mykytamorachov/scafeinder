@@ -4,6 +4,28 @@ form {
     }
 }
 
+.search-checkboxs {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    .checkbox-round {
+        background-color: white;
+        border: 1px solid #ddd;        
+        border-radius: 50%;
+        cursor: pointer;
+        height: 1.3em;
+        outline: none;
+        vertical-align: middle;
+        width: 1.3em;
+        -webkit-appearance: none;
+    }    
+    .checkbox-round:checked {
+        background-color: gray;
+    }    
+    label {
+        margin-left: 1%;
+    }
+}
+
 .search-main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -14,36 +36,14 @@ form {
         padding: 0 3%;
     }
     button {
-        font-size: 150%;
-        color: #fff;
         background-color: #000;
+        color: #fff; 
+        font-size: 150%;               
         &:hover {
-            color: #000;
-            background-color: #fff;          
+            background-color: #fff;
+            color: #000;            
         }
     }
-}
-
-.search-checkboxs {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    label {
-        margin-left: 1%;
-    }    
-    .checkbox-round {
-        width: 1.3em;
-        height: 1.3em;
-        background-color: white;
-        border-radius: 50%;
-        vertical-align: middle;
-        border: 1px solid #ddd;
-        -webkit-appearance: none;
-        outline: none;
-        cursor: pointer;
-    }    
-    .checkbox-round:checked {
-        background-color: gray;
-    } 
 }
 
 @media all and (max-width: 992px) {
