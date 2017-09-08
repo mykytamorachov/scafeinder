@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit {
 
   private _buildForm() {
     this.searchform = this._formBuilder.group({
-      tables: this._formBuilder,
+      persons: this._formBuilder,
       time: this._formBuilder,
       placeName: this._formBuilder,
       placeType: this._formBuilder.group({

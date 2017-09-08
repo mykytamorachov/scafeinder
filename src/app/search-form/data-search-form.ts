@@ -1,6 +1,6 @@
 export class UserQuery {
     constructor(
-      public tables?: number,
+      public persons?: number,
       public time?: string,
       public placeName?: string,
       public placeType?: string[],
