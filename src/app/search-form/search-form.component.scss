@@ -1,0 +1,59 @@
+form {
+    section {
+        margin: 10px auto;
+    }
+}
+
+.search-checkboxs {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    .checkbox-round {
+        background-color: white;
+        border: 1px solid #ddd;        
+        border-radius: 50%;
+        cursor: pointer;
+        height: 1.3em;
+        outline: none;
+        vertical-align: middle;
+        width: 1.3em;
+        -webkit-appearance: none;
+    }    
+    .checkbox-round:checked {
+        background-color: gray;
+    }    
+    label {
+        margin-left: 1%;
+    }
+}
+
+.search-main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2%;
+    .search-input {
+        border-radius: 10px;
+        font-size: 150%;
+        padding: 0 3%;
+    }
+    button {
+        background-color: #000;
+        color: #fff; 
+        font-size: 150%;               
+        &:hover {
+            background-color: #fff;
+            color: #000;            
+        }
+    }
+}
+
+@media all and (max-width: 992px) {
+    .search-checkboxs {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media all and (max-width: 500px) {
+    .search-checkboxs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
