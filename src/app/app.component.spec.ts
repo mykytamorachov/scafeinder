@@ -3,6 +3,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
-        SearchFormComponent
+        SearchFormComponent,
+        FooterComponent
       ]
     }).compileComponents();
   }));
