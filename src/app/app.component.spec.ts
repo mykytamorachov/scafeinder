@@ -4,17 +4,19 @@ import { HeaderComponent } from './header/header.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, NgbModule, ReactiveFormsModule ],
+      imports: [ FormsModule, NgbModule, ReactiveFormsModule, NgbModule.forRoot() ],
       declarations: [
         AppComponent,
         HeaderComponent,
         SearchFormComponent,
-        FooterComponent
+        FooterComponent,
+        DatepickerComponent
       ]
     }).compileComponents();
   }));
