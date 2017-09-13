@@ -10,7 +10,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ NgbModule,ReactiveFormsModule ],
+      imports: [ NgbModule, ReactiveFormsModule ],
       declarations: [ HeaderComponent,
       RegistrationFormComponent
     ]
