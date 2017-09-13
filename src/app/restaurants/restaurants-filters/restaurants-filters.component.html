@@ -1,177 +1,50 @@
 <div class="container">
   <div class="row">
     <div class="form-group">
-      <p>Category</p>
-      <div>
+      <label>Category</label>
+      <div *ngFor="let category of categories">
         <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">alcohol-free</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">barbecue</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">cafe</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">coffe house</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">fast food</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">lounge bar</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">pizza</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">pub</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">sushi</span>
+          <input type="checkbox"
+          class="custom-control-input"
+          name="categories"
+          value="{{ category }}"
+          [checked]="cuisineFilter.indexOf(category) > -1"
+          (change)="updateCategoryFilter(category, $event)">
+          <span class="custom-control-indicator"></span><span class="custom-control-description">{{ category }}</span>
         </label>
       </div>
     </div>
   </div>
   <div class="row">
   	<div class="form-group">
-      <p>Cuisine</p>
-      <div>
+      <label>Cuisine</label>
+      <div *ngFor="let cuisine of cuisines">
         <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Asian</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Chinese</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Georgian</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Italian</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Japanese</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Mediterranean</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Mexican</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Ukrainian</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Vegetarian</span>
+          <input type="checkbox"
+          class="custom-control-input"
+          name="cuisines"
+          value="{{ cuisine }}"
+          [checked]="cuisineFilter.indexOf(cuisine) > -1"
+          (change)="updateCuisineFilter(cuisine, $event)">
+          <span class="custom-control-indicator"></span><span class="custom-control-description">{{ cuisine }}</span>
         </label>
       </div>
     </div>
   </div>
   <div class="row">
-  	<div class="form-group">
-      <p>Popular</p>
-      <div>
+    <div class="form-group">
+      <label>Popular</label>
+      <div *ngFor="let feature of features">
         <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">hookah</span>
+          <input type="checkbox"
+          class="custom-control-input"
+          name="features"
+          value="{{ feature }}"
+          [checked]="cuisineFilter.indexOf(feature) > -1"
+          (change)="updateFeatureFilter(feature, $event)">
+          <span class="custom-control-indicator"></span><span class="custom-control-description">{{ feature }}</span>
         </label>
       </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">karaoke</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">live music</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">roof terrace</span>
-        </label>
-      </div>
-      <div>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Wi-Fi</span>
-        </label>
-      </div>
+    </div>
   </div>
 </div>
