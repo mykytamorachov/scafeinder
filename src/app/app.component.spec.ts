@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { AppComponent } from './app.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantsFiltersComponent } from './restaurants/restaurants-filters/restaurants-filters.component';
@@ -16,7 +17,7 @@ import { ShortcutPipe } from './shortcut.pipe';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, NgbModule, ReactiveFormsModule, RouterTestingModule ],
+      imports: [ FormsModule, NgbModule.forRoot(), ReactiveFormsModule, RouterTestingModule ],
       declarations: [
         AppComponent,
         HeaderComponent,
@@ -27,7 +28,8 @@ describe('AppComponent', () => {
         RestaurantsListComponent,
         RestaurantItemComponent,
         RestaurantProfileComponent,
-        ShortcutPipe
+        ShortcutPipe,
+        DatepickerComponent
       ]
     }).compileComponents();
   }));

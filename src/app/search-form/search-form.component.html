@@ -1,27 +1,23 @@
 <main>
   <div class="container">
-    <form class="form" #searchForm="ngForm">
-      <section class="search-main">
-        <input class="form-control search-input" min="1" name="tables" placeholder="Number of diners" type="number" [(ngModel)]="userQuery.persons">
-        <input class="form-control search-input" name="time" type="time" [(ngModel)]="userQuery.time">
-        <input class="form-control search-input" name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
-        <button type="button">Find a table</button>
+    <form class="search-form form-inline" #searchForm="ngForm">
+      <section class="form-group row">
+        <select class="form-control col-5 col-sm-5 col-lg-2" name="persons" [(ngModel)]="userQuery.persons">
+          <option class="dropdown-item" value="1">1 person</option>
+          <option class="dropdown-item" *ngFor="let person of company" value={{person}}>{{person}} people</option>
+        </select>
+        <app-datepicker (selectedDate)="checkSelectedDate($event)"></app-datepicker>
+        <select class="form-control col-5 col-sm-5 col-lg-2" name="time" [(ngModel)]="userQuery.time">
+          <option class="dropdown-item" *ngFor="let time of dayHours" value={{time.hour}}:{{time.minute}}>{{time.hour}}:{{time.minute}}</option>
+        </select>        
+        <!-- <input class="form-control col-12 col-sm-6 col-lg-2" name="time" type="time" [(ngModel)]="userQuery.time"> -->
+        <input class="form-control col-12 col-sm-6 col-lg-3" name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
+        <button class="form-control btn btn-primary col-12 col-sm-12 col-lg-2" type="button">Find a table</button>
       </section>
   
-      <section class="form-check search-checkboxs">
-        <label *ngFor="let place of placeTypes">
-            <input
-              class="checkbox-round"
-              name="placeType"
-              type="checkbox"              
-              value="{{place.name}}"
-              [(ngModel)]="place.checked"
-            /> {{place.name}}
-        </label>
-      </section>
       <pre><b>User input:</b>
-        {{diagnostic}}      
+        {{diagnostic}}
       </pre>
-    </form>    
+    </form>
   </div>
 </main>

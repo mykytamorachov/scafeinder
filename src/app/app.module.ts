@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormBuilder, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { RestaurantsListComponent } from './restaurants/restaurants-list/restaur
 import { RestaurantItemComponent } from './restaurants/restaurants-list/restaurant-item/restaurant-item.component';
 import { RestaurantProfileComponent } from './restaurants/restaurants-list/restaurant-profile/restaurant-profile.component';
 import { ShortcutPipe } from './shortcut.pipe';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ShortcutPipe } from './shortcut.pipe';
     RestaurantsListComponent,
     RestaurantItemComponent,
     RestaurantProfileComponent,
-    ShortcutPipe
+    ShortcutPipe,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
