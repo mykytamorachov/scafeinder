@@ -1,0 +1,42 @@
+<section class="registrationForm row justify-content-center">
+  <form *ngIf="!name; else registrationSuccess" [formGroup]="registrationForm" class="col-10 col-md-8 col-lg-6 col-xl-4" role="form" (ngSubmit)="addUser(registrationForm.value)">
+    <button type="button" class="close" (click)="showForm()">×</button>
+    <h2 class="">Registration Form</h2>
+      <div class="form-group">
+          <label for="firstName" class="control-label">Full Name</label>
+              <input formControlName="name" type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+              <p class="alert-box" *ngIf="!registrationForm.controls['name'].valid && registrationForm.controls['name'].touched">Last Name, First Name, eg.: Smith Harry</p>
+      </div>
+      <div class="form-group">
+          <label for="email" class="control-label">Email</label>
+              <input formControlName="email" type="email" id="email" placeholder="Email" class="form-control">
+              <p class="alert-box" *ngIf="!registrationForm.controls['email'].valid && registrationForm.controls['email'].touched">google@gmail.com</p>
+      </div>
+      <div class="form-group">
+          <label for="tel" class="control-label">Mobile</label>
+              <input formControlName="mobile" type="tel" id="tel" placeholder="Mobile" class="form-control">
+              <p class="alert-box" *ngIf="!registrationForm.controls['mobile'].valid && registrationForm.controls['mobile'].touched">10 digits</p>
+      </div>
+      <div class="form-group">
+          <label for="password" class="control-label">Password</label>
+              <input formControlName="password" type="password" id="password" placeholder="Password" class="form-control">
+              <p class="alert-box" *ngIf="!registrationForm.controls['password'].valid && registrationForm.controls['password'].touched">6 digits minimum</p>
+      </div>
+      <div class="form-group">
+          <label for="password" class="control-label">Repeat Password</label>
+              <input formControlName="passwordRepeat" type="password" id="password" placeholder="Repeat Password" class="form-control">
+              <p class="alert-box" *ngIf="!registrationForm.controls['passwordRepeat'].valid && registrationForm.controls['passwordRepeat'].touched && registrationForm.controls.passwordRepeat.errors?.mismatchedPasswords">Passwords dont match</p>
+      </div>
+      <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="!registrationForm.valid">Register</button>
+      </div>
+  </form>
+  <ng-template #registrationSuccess>
+    <div class="alert alert-success" role="alert">
+            <button type="button"  class="close" (click)="showForm()">×</button>
+        <strong>Well done!</strong> You successfully read this important alert message.
+        {{name}} {{email}} {{mobile}} {{password}}
+        
+    </div>
+  </ng-template>
+</section> 

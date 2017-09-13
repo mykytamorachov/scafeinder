@@ -15,6 +15,7 @@ import { RestaurantItemComponent } from './restaurants/restaurants-list/restaura
 import { RestaurantProfileComponent } from './restaurants/restaurants-list/restaurant-profile/restaurant-profile.component';
 import { ShortcutPipe } from './shortcut.pipe';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     RestaurantItemComponent,
     RestaurantProfileComponent,
     ShortcutPipe,
-    DatepickerComponent
+    DatepickerComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,

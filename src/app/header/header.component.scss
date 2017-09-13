@@ -1,0 +1,10 @@
+app-registration-form{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(47, 45, 45, 0.9);
+    overflow: overlay;
+    z-index: 100;
+}
