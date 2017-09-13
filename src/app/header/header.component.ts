@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed: boolean;
+  form = false;
+
+  showForm(form: boolean) {
+    if (form) {
+      this.form = false;
+    } else {
+      this.form = true;
+    }
+  }
   constructor() { }
 
   ngOnInit() {
