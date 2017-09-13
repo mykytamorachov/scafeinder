@@ -6,6 +6,8 @@ import { RestaurantsListComponent } from './restaurants-list/restaurants-list.co
 import { RestaurantItemComponent } from './restaurants-list/restaurant-item/restaurant-item.component';
 import { RestaurantProfileComponent } from './restaurants-list/restaurant-profile/restaurant-profile.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ShortcutPipe } from '../shortcut.pipe';
+
 
 describe('RestaurantsComponent', () => {
   let component: RestaurantsComponent;
@@ -19,7 +21,8 @@ describe('RestaurantsComponent', () => {
       RestaurantsFiltersComponent,
       RestaurantsListComponent,
       RestaurantItemComponent,
-      RestaurantProfileComponent
+      RestaurantProfileComponent,
+      ShortcutPipe
       ]
     })
     .compileComponents();

@@ -11,6 +11,7 @@ import { RestaurantsListComponent } from './restaurants/restaurants-list/restaur
 import { RestaurantItemComponent } from './restaurants/restaurants-list/restaurant-item/restaurant-item.component';
 import { RestaurantProfileComponent } from './restaurants/restaurants-list/restaurant-profile/restaurant-profile.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ShortcutPipe } from './shortcut.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,7 +26,8 @@ describe('AppComponent', () => {
         RestaurantsFiltersComponent,
         RestaurantsListComponent,
         RestaurantItemComponent,
-        RestaurantProfileComponent
+        RestaurantProfileComponent,
+        ShortcutPipe
       ]
     }).compileComponents();
   }));

@@ -13,7 +13,7 @@ import { RestaurantsFiltersComponent } from './restaurants/restaurants-filters/r
 import { RestaurantsListComponent } from './restaurants/restaurants-list/restaurants-list.component';
 import { RestaurantItemComponent } from './restaurants/restaurants-list/restaurant-item/restaurant-item.component';
 import { RestaurantProfileComponent } from './restaurants/restaurants-list/restaurant-profile/restaurant-profile.component';
-
+import { ShortcutPipe } from './shortcut.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { RestaurantProfileComponent } from './restaurants/restaurants-list/resta
     RestaurantsFiltersComponent,
     RestaurantsListComponent,
     RestaurantItemComponent,
-    RestaurantProfileComponent
+    RestaurantProfileComponent,
+    ShortcutPipe
   ],
   imports: [
     BrowserModule,
