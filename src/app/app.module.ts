@@ -18,6 +18,7 @@ import { RegistrationFormComponent } from './components/registration-form/regist
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 const appRoutes: Routes = [
   {
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     RegistrationFormComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,

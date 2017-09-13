@@ -9,6 +9,7 @@ import { SearchFormComponent } from '../search-form/search-form.component';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BannerComponent } from '../banner/banner.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -24,7 +25,8 @@ describe('HomeComponent', () => {
         RestaurantItemComponent,
         DatepickerComponent,
         SearchFormComponent,
-        ShortcutPipe
+        BannerComponent,
+        ShortcutPipe,
       ]
     })
     .compileComponents();
