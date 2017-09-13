@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 
 @Component({
   selector: 'app-home',

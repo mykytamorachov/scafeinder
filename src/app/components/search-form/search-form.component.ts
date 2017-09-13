@@ -68,6 +68,7 @@ export class SearchFormComponent implements OnInit {
       const now = new Date();
       this.model = date;
       if (now.getFullYear() < this.model.year || (now.getMonth() + 1) < this.model.month || now.getDate() < this.model.day) {
+        this.userQuery.date = `${this.model.year}-${this.model.month}-${this.model.day}`;
         return this.dayHours = this.showLeftHours('future');
       }
       return this.dayHours = this.showLeftHours();

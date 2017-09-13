@@ -10,7 +10,7 @@ describe('SearchFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, NgbModule, ReactiveFormsModule, NgbModule.forRoot() ],
+      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot() ],
       declarations: [ SearchFormComponent, DatepickerComponent ]
     })
     .compileComponents();
