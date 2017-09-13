@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Restaurant } from './restaurants/restaurant.model';
+import { Restaurant } from '../models/restaurant.model';
 
 @Pipe({
   name: 'shortcut'

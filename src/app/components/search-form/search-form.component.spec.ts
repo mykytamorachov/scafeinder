@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchFormComponent } from './search-form.component';
-import { DatepickerComponent } from '../components/datepicker/datepicker.component';
+import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 
 describe('SearchFormComponent', () => {
   let component: SearchFormComponent;

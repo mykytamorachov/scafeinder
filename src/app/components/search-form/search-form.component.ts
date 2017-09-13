@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import { company, dayHours, UserQuery } from './data-search-form';
-import { DatepickerComponent } from '../components/datepicker/datepicker.component';
+import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 
 @Component({
   selector: 'app-search-form',
