@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import { company, dayHours, UserQuery } from './data-search-form';
-import { DatepickerComponent } from '../components/datepicker/datepicker.component';
+import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 
 @Component({
   selector: 'app-search-form',
@@ -68,6 +68,7 @@ export class SearchFormComponent implements OnInit {
       const now = new Date();
       this.model = date;
       if (now.getFullYear() < this.model.year || (now.getMonth() + 1) < this.model.month || now.getDate() < this.model.day) {
+        this.userQuery.date = `${this.model.year}-${this.model.month}-${this.model.day}`;
         return this.dayHours = this.showLeftHours('future');
       }
       return this.dayHours = this.showLeftHours();
