@@ -15,6 +15,24 @@ import { RestaurantProfileComponent } from './components/restaurant-profile/rest
 import { ShortcutPipe } from './pipes/shortcut.pipe';
 import { DatepickerComponent } from './components/bootstrap/datepicker/datepicker.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+
+const appRoutes: Routes = [
+  {
+    path: '', component: HomeComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'register', component: RegisterComponent
+  },
+  {
+    path: '**', redirectTo: ''
+  }
+];
 
 @NgModule({
   declarations: [
@@ -28,7 +46,10 @@ import { RegistrationFormComponent } from './components/registration-form/regist
     RestaurantProfileComponent,
     ShortcutPipe,
     DatepickerComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,12 +57,7 @@ import { RegistrationFormComponent } from './components/registration-form/regist
     HttpModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    RouterModule.forRoot([
-    {
-      path: 'restaurants/:restaurant',
-      component: RestaurantProfileComponent
-    }
-    ])
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

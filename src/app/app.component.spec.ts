@@ -13,6 +13,9 @@ import { RestaurantProfileComponent } from './components/restaurant-profile/rest
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShortcutPipe } from './pipes/shortcut.pipe';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -29,7 +32,10 @@ describe('AppComponent', () => {
         RestaurantProfileComponent,
         ShortcutPipe,
         DatepickerComponent,
-        RegistrationFormComponent
+        RegistrationFormComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent
       ]
     }).compileComponents();
   }));
