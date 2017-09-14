@@ -12,7 +12,6 @@ import { RestaurantItemComponent } from './components/restaurant-item/restaurant
 import { RestaurantProfileComponent } from './components/restaurant-profile/restaurant-profile.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShortcutPipe } from './pipes/shortcut.pipe';
-import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -34,7 +33,6 @@ describe('AppComponent', () => {
         RestaurantProfileComponent,
         ShortcutPipe,
         DatepickerComponent,
-        RegistrationFormComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,

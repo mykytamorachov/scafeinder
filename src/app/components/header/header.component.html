@@ -5,11 +5,11 @@
       type="button">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <a class="navbar-brand" href="#"><img class="img-fluid rounded-circle" src="assets/img/scafeinder.jpg" alt="scafeinder icon">Scafeinder</a>
+    <a class="navbar-brand" routerLink="/"><img class="img-fluid rounded-circle" src="assets/img/scafeinder.jpg" alt="scafeinder icon">Scafeinder</a>
     <div class="navbar-collapse collapse" [ngbCollapse]="!isCollapsed" id="collapsedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" (click)="showForm()">Sign Up</a>
+          <a class="nav-link" routerLink="/register">Sign Up</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Log In</a>
@@ -18,4 +18,3 @@
     </div>
   </nav>
 </header>
-<app-registration-form *ngIf="form" (form)="showForm($event)"></app-registration-form>
