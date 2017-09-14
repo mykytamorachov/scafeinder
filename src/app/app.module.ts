@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { Page404Component } from './components/page404/page404.component';
 
 const appRoutes: Routes = [
   {
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: '**', redirectTo: ''
+    path: '**', component: Page404Component
   }
 ];
 
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    BannerComponent
+    BannerComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
