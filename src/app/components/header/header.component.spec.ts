@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header.component';
-import { RegistrationFormComponent } from '../registration-form/registration-form.component';
-import { FormBuilder, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, NgModel } from '@angular/forms';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -10,10 +9,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ NgbModule, ReactiveFormsModule ],
-      declarations: [ HeaderComponent,
-      RegistrationFormComponent
-    ]
+      imports: [ NgbModule ],
+      declarations: [ HeaderComponent ]
     })
     .compileComponents();
   }));
