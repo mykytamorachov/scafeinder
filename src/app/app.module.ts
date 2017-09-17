@@ -3,7 +3,6 @@ import { FormBuilder, FormsModule, NgModel, ReactiveFormsModule } from '@angular
 import { HttpModule } from '@angular/http';
 import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
@@ -19,21 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { Page404Component } from './components/page404/page404.component';
-
-const appRoutes: Routes = [
-  {
-    path: '', component: HomeComponent
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'register', component: RegisterComponent
-  },
-  {
-    path: '**', component: Page404Component
-  }
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -59,7 +44,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
