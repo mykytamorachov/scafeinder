@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { IUser } from '../../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +9,15 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email = '';
-  password = '';
-  user: User;
+  user: IUser;
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.user = new User();
+    this.user = {};
     this.auth.logout();
   }
 
-  onLogin(user: User) {
+  onLogin(user: IUser) {
     console.log('onLogin user is ', this.user);
     this.auth.login(this.user).subscribe(
       data => {
@@ -28,9 +27,4 @@ export class LoginComponent implements OnInit {
       () => console.log('Request Completed')
    );
   }
-}
-
-export class User {
-  email: string;
-  password: string;
 }

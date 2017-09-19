@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { IUser } from '../../models/user.model';
@@ -19,12 +20,8 @@ export class RegisterComponent implements OnInit {
   confirmPassword: any;
   registrationShow = true;
   responseStatus: Object = [];
-  @Output() form: EventEmitter<boolean> = new EventEmitter<boolean>();
-  showForm() {
-    this.form.emit(true);
-  }
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder) {
+  constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.registrationForm = formBuilder.group({
       'name': [null, Validators.required],
       'email': [null, Validators.email],
@@ -32,6 +29,12 @@ export class RegisterComponent implements OnInit {
       'password': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
       'confirmPassword': [null, Validators.required]
     }, {validator: this.matchingPasswords('password', 'confirmPassword')});
+  }
+
+  @Output() form: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  showForm() {
+    this.form.emit(true);
   }
 
   ngOnInit() {
@@ -61,6 +64,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => {
           // localStorage.setItem('token', data.json().auth_token);
+          this.router.navigate(['/login']);
           console.log('onRegister data is ', this.responseStatus = data);
         },
         err => console.log(err),
