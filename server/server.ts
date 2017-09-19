@@ -1,38 +1,90 @@
 /// <reference types="node" />
 // Get dependencies
 import * as express from 'express';
+import * as session from 'express-session';
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
+import * as passport from 'passport';
+import * as expressValidator from 'express-validator';
+import * as connectMongo from 'connect-mongo';
+import * as lusca from 'lusca';
 import * as path from 'path';
+import * as mongo from 'connect-mongo';
 import * as mongoose from 'mongoose';
+import * as errorHandler from 'errorhandler';
+(<any>mongoose).Promise = global.Promise;
+
 import DATABASE_CONFIG from './constants/database_config';
-// Get our API routes
-import * as api from './routes/api';
+import * as userController from './controllers/user';
+import * as apiController from './controllers/api';
+import * as passportConfig from './config/passport';
+
+// Create Express server
+const app = express();
+
+const MongoStore = connectMongo(session);
 
 // Connect to MongoDB
 mongoose.connect(DATABASE_CONFIG.DATABASE_CLOUD || DATABASE_CONFIG.DATABASE_LOCAL, {useMongoClient: true});
-
 mongoose.connection.on('error', () => {
   console.log('MongoDB connection error. Please make sure MongoDB is running.');
   process.exit();
 });
 
-// Create Express server
-const app = express();
+const options: cors.CorsOptions = {
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token'],
+  credentials: true,
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  origin: 'http://localhost:3000',
+  preflightContinue: false
+};
+app.use(cors(options));
 
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Point static path to dist
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(expressValidator());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'epam2017',
+  store: new MongoStore({
+    url: DATABASE_CONFIG.DATABASE_CLOUD || DATABASE_CONFIG.DATABASE_LOCAL,
+    autoReconnect: true
+  })
+}));
 
-// Set our api routes
-app.use('/api', api.getApi);
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+app.use(lusca.xframe('SAMEORIGIN'));
+app.use(lusca.xssProtection(true));
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
 });
+
+// Point static path to dist
+app.use(express.static(path.join(__dirname), { maxAge: 31557600000 }));
+
+// Primary app routes.
+// app.get('/', homeController.index);
+app.get('/login', userController.getLogin);
+app.post('/login', userController.postLogin);
+app.get('/logout', userController.logout);
+app.get('/register', userController.getSignup);
+app.post('/register', userController.postSignup);
+
+// OAuth authentication routes. (Sign in)
+app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect('/');
+});
+
+// Error Handler.
+app.use(errorHandler());
 
 // Get port from environment and store in Express.
 app.set('port', DATABASE_CONFIG.PORT || 3000);
