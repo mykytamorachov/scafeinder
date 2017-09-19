@@ -20,8 +20,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { Page404Component } from './components/page404/page404.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
-
-
+import { GetCafesService } from './services/getcafes/getcafes.service';
+//
 
 @NgModule({
   declarations: [
