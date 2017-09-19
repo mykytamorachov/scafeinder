@@ -1,6 +1,6 @@
 <div class="container">
     <section class="row justify-content-center">
-        <form *ngIf="!name; else registrationSuccess" [formGroup]="registrationForm" class="col-10 col-md-8 col-lg-6 col-xl-4" role="form" (ngSubmit)="addUser(registrationForm.value)">
+        <form *ngIf="!name; else registrationSuccess" [formGroup]="registrationForm" class="col-10 col-md-8 col-lg-6 col-xl-4" role="form" (ngSubmit)="onRegister(registrationForm.value)">
             <h2 class="text-center">Registration Form</h2>
             <div class="form-group">
                 <label for="firstName" class="control-label">Full Name</label>
@@ -24,8 +24,8 @@
             </div>
             <div class="form-group">
                 <label for="password" class="control-label">Repeat Password</label>
-                    <input formControlName="passwordRepeat" type="password" id="password" placeholder="Repeat Password" class="form-control">
-                    <p class="alert-box" *ngIf="!registrationForm.controls['passwordRepeat'].valid && registrationForm.controls['passwordRepeat'].touched && registrationForm.controls.passwordRepeat.errors?.mismatchedPasswords">Passwords dont match</p>
+                    <input formControlName="confirmPassword" type="password" id="password" placeholder="Repeat Password" class="form-control">
+                    <p class="alert-box" *ngIf="!registrationForm.controls['confirmPassword'].valid && registrationForm.controls['confirmPassword'].touched && registrationForm.controls.confirmPassword.errors?.mismatchedPasswords">Passwords dont match</p>
             </div>
             <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block" [disabled]="!registrationForm.valid">Register</button>
@@ -39,3 +39,4 @@
         </ng-template>
     </section> 
 </div>
+    

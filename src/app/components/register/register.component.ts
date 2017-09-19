@@ -1,6 +1,9 @@
 import { Component, OnInit, EventEmitter, Input, Output  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from '../../services/auth.service';
+import { IUser } from '../../models/user.model';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,21 +16,22 @@ export class RegisterComponent implements OnInit {
   email: string;
   mobile: number;
   password: any;
-  passwordRepeat: any;
+  confirmPassword: any;
   registrationShow = true;
+  responseStatus: Object = [];
   @Output() form: EventEmitter<boolean> = new EventEmitter<boolean>();
   showForm() {
     this.form.emit(true);
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private auth: AuthService, private formBuilder: FormBuilder) {
     this.registrationForm = formBuilder.group({
       'name': [null, Validators.required],
       'email': [null, Validators.email],
       'mobile': [null, Validators.compose([Validators.required, Validators.pattern('[0-9]{10}')])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
-      'passwordRepeat': [null, Validators.required]
-    }, {validator: this.matchingPasswords('password', 'passwordRepeat')});
+      'confirmPassword': [null, Validators.required]
+    }, {validator: this.matchingPasswords('password', 'confirmPassword')});
   }
 
   ngOnInit() {
@@ -47,10 +51,20 @@ export class RegisterComponent implements OnInit {
     };
   }
 
-  addUser(user) {
-    this.name = user.name;
-    this.email = user.email;
-    this.mobile = user.mobile;
-    this.password = user.password;
+  onRegister(user: IUser): void {
+    this.auth.register({
+      name: user.name,
+      email: user.email,
+      mobile: user.mobile,
+      password: user.password,
+      confirmPassword: user.confirmPassword})
+      .subscribe(
+        data => {
+          // localStorage.setItem('token', data.json().auth_token);
+          console.log('onRegister data is ', this.responseStatus = data);
+        },
+        err => console.log(err),
+        () => console.log('Request Completed')
+      );
   }
 }
