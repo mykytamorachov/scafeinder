@@ -33,8 +33,8 @@ export const postLogin = (req: Request, res: Response, next: NextFunction) => {
       console.log('errors', info);
       return res.redirect('/login');
     }
-    req.logIn(user, (err) => {
-      if (err) { return next(err); }
+    req.logIn(user, (error) => {
+      if (error) { return next(error); }
       console.log('Success! req.user is ...', req.user);
       console.log('Success! req.session is ...', req.sessionID);
       console.log('Success! You are logged in.');
@@ -87,11 +87,11 @@ export const postSignup = (req: Request, res: Response, next: NextFunction) => {
       console.log('Account with that email address already exists.');
       return res.redirect('/register');
     }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
+    user.save((error) => {
+      if (error) { return next(error); }
+      req.logIn(user, (Err) => {
+        if (Err) {
+          return next(Err);
         }
         res.redirect('/');
       });

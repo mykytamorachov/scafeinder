@@ -27,8 +27,8 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
     if (!user) {
       return done(undefined, false, { message: `Email ${email} not found.` });
     }
-    user.comparePassword(password, (err: Error, isMatch: boolean) => {
-      if (err) { return done(err); }
+    user.comparePassword(password, (error: Error, isMatch: boolean) => {
+      if (error) { return done(error); }
       if (isMatch) {
         return done(undefined, user);
       }
@@ -52,13 +52,13 @@ passport.use(new FacebookStrategy({
         console.log('There is already a Facebook account that belongs to you.');
         done(err);
       } else {
-        User.findById(req.user.id, (err, user: any) => {
-          if (err) { return done(err); }
+        User.findById(req.user.id, (error, user: any) => {
+          if (error) { return done(error); }
           user.facebook = profile.id;
           user.tokens.push({ kind: 'facebook', accessToken });
-          user.save((err: Error) => {
+          user.save((Err: Error) => {
             console.log('Facebook account has been linked.');
-            done(err, user);
+            done(Err, user);
           });
         });
       }
@@ -69,8 +69,8 @@ passport.use(new FacebookStrategy({
       if (existingUser) {
         return done(undefined, existingUser);
       }
-      User.findOne({ email: profile._json.email }, (err, existingEmailUser) => {
-        if (err) { return done(err); }
+      User.findOne({ email: profile._json.email }, (error, existingEmailUser) => {
+        if (error) { return done(error); }
         if (existingEmailUser) {
           console.log('There is already an account using this email address.');
           done(err);
@@ -79,8 +79,8 @@ passport.use(new FacebookStrategy({
           user.email = profile._json.email;
           user.facebook = profile.id;
           user.tokens.push({ kind: 'facebook', accessToken });
-          user.save((err: Error) => {
-            done(err, user);
+          user.save((Err: Error) => {
+            done(Err, user);
           });
         }
       });
