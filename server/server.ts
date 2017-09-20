@@ -18,6 +18,7 @@ import DATABASE_CONFIG from './constants/database_config';
 import * as userController from './controllers/user';
 import * as apiController from './controllers/api';
 import * as passportConfig from './config/passport';
+import * as cafeController from './controllers/cafe';
 
 // Create Express server
 const app = express();
@@ -68,6 +69,7 @@ app.use((req, res, next) => {
 // Point static path to dist
 app.use(express.static(path.join(__dirname), { maxAge: 31557600000 }));
 
+
 // Primary app routes.
 // app.get('/', homeController.index);
 app.get('/login', userController.getLogin);
@@ -75,6 +77,7 @@ app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
 app.get('/register', userController.getSignup);
 app.post('/register', userController.postSignup);
+app.get('/cafes', cafeController.getCafes);
 
 // OAuth authentication routes. (Sign in)
 app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
@@ -83,7 +86,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRe
   res.redirect('/');
 });
 
-// Error Handler.
+// Error Handler.ddd
 app.use(errorHandler());
 
 // Get port from environment and store in Express.
