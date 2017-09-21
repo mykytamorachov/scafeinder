@@ -15,10 +15,10 @@ import * as errorHandler from 'errorhandler';
 (<any>mongoose).Promise = global.Promise;
 
 import DATABASE_CONFIG from './constants/database_config';
-import * as userController from './controllers/user';
-import * as apiController from './controllers/api';
+import * as userController from './api/user';
+import * as apiController from './api/social';
 import * as passportConfig from './config/passport';
-import * as cafeController from './controllers/cafe';
+import * as cafeController from './api/cafe';
 
 // Create Express server
 const app = express();
@@ -39,6 +39,7 @@ const options: cors.CorsOptions = {
   origin: 'http://localhost:3000',
   preflightContinue: false
 };
+
 app.use(cors(options));
 
 // Parsers for POST data

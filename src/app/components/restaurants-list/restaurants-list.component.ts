@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../../models/restaurant.model';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-restaurants-list',
@@ -8,6 +9,9 @@ import { ShortcutPipe } from '../../pipes/shortcut.pipe';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
+
+  private searchService: SearchService;
+
   restaurants: Restaurant[] = [
     new Restaurant('White Lion',
     'pub',
@@ -56,6 +60,9 @@ export class RestaurantsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // TODO
+    // this.searchService.setFilter
+    // this.searchService.SearchPredicates.filters[i]
   }
 
 }

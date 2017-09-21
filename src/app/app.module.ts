@@ -21,6 +21,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
+import { PaginationComponent } from './components/bootstrap/pagination/pagination.component';
 //
 
 @NgModule({
@@ -39,7 +40,8 @@ import { GetCafesService } from './services/getcafes/getcafes.service';
     LoginComponent,
     RegisterComponent,
     BannerComponent,
-    Page404Component
+    Page404Component,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
