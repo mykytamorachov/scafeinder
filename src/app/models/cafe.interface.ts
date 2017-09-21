@@ -11,5 +11,6 @@ export interface ICafe {
   features?: String[];
   tables?: Array<{tableType: number, free: Boolean}>;
   img?: String;
+  id?: Number;
 }
 

@@ -21,7 +21,8 @@ export class GetCafesService {
     name: 'Львовский рудник кофе',
     rating: 4.7,
     address: 'площа Ринок, 10, Львів',
-    img: 'http://www.justlviv.it/theme/photos/1359029728_b8e8ad22f3b4e8ebc07765ed7f3978f69221_b.jpg'
+    img: 'http://www.justlviv.it/theme/photos/1359029728_b8e8ad22f3b4e8ebc07765ed7f3978f69221_b.jpg',
+    id: 1
   },
   {
     tables: [
@@ -36,7 +37,8 @@ export class GetCafesService {
     name: 'Возле Дианы на Рынке',
     rating: 4.2,
     address: 'площа Ринок, 1, Львів',
-    img: 'http://woman-project.com/uploads/1341867600/64eb832d5481fe.jpg'
+    img: 'http://woman-project.com/uploads/1341867600/64eb832d5481fe.jpg',
+    id: 2
   },
   {
     tables: [
@@ -51,7 +53,8 @@ export class GetCafesService {
     name: 'Рыжий Кот',
     rating: 4.1,
     address: 'Друкарська, 4 (Вірменська, 24), Львів',
-    img: 'http://v.lviv.ua/files/catalog/4444pos.jpg'
+    img: 'http://v.lviv.ua/files/catalog/4444pos.jpg',
+    id: 3
   },
   {
     tables: [
@@ -66,7 +69,8 @@ export class GetCafesService {
     name: 'Кафе «Ратуша»',
     rating: 4.8,
     address: 'Ратуша, площа Ринок, 1, Львів',
-    img: 'https://girko.net/uploadedMedia/service/lviv.cityhall.restaurant/2760/reduce_quality/Nadia_Koshel_Ratusha.JPG'
+    img: 'https://girko.net/uploadedMedia/service/lviv.cityhall.restaurant/2760/reduce_quality/Nadia_Koshel_Ratusha.JPG',
+    id: 4
   },
   {
     tables: [
@@ -81,7 +85,8 @@ export class GetCafesService {
     name: 'Гасова лямпа',
     rating: 4.6,
     address: 'вулиця Вірменська, 20, Львів',
-    img: 'http://gid.travel/sites/default/files/gallery/naw_luidgry4vdniboqzca.jpg'
+    img: 'http://gid.travel/sites/default/files/gallery/naw_luidgry4vdniboqzca.jpg',
+    id: 5
   },
   {
     tables: [
@@ -96,7 +101,8 @@ export class GetCafesService {
     name: 'Мазох-cafe',
     rating: 4.4,
     address: 'вулиця Сербська, 7, Львів',
-    img: 'http://www.fest.lviv.ua/image.php?portfolioid=7&fileno=5&maxx=900&maxy=800'
+    img: 'http://www.fest.lviv.ua/image.php?portfolioid=7&fileno=5&maxx=900&maxy=800',
+    id: 6
   },
   {
     tables: [
@@ -111,7 +117,8 @@ export class GetCafesService {
     name: 'Кентавр',
     rating: 4.3,
     address: 'Кам\'яниця Авенштоківська, площа Ринок, 34, Львів',
-    img: 'http://poglyad.com/Content/posts/146/6fd54b91492417e44dabee6a1d2ecc69.jpg'
+    img: 'http://poglyad.com/Content/posts/146/6fd54b91492417e44dabee6a1d2ecc69.jpg',
+    id: 7
   },
   {
     tables: [
@@ -126,7 +133,8 @@ export class GetCafesService {
     name: 'Сова',
     rating: 4.5,
     address: 'вулиця Староєврейська, 40, Львів',
-    img: 'http://lasoon.com.ua/photo/id_122865.png'
+    img: 'http://lasoon.com.ua/photo/id_122865.png',
+    id: 8
   },
   {
     tables: [
@@ -141,7 +149,8 @@ export class GetCafesService {
     name: 'Мир Кофе',
     rating: 4.6,
     address: 'площа Ринок, 30, Львів',
-    img: 'http://www.ukraine-is.com/wp-content/uploads/2016/08/history2.jpg'
+    img: 'http://www.ukraine-is.com/wp-content/uploads/2016/08/history2.jpg',
+    id: 9
   },
   {
     tables: [
@@ -156,7 +165,8 @@ export class GetCafesService {
     name: 'Соус',
     rating: 4.4,
     address: 'Кам\'яниця Коритовського, площа Ринок, 29, Львів',
-    img: 'http://lviv.virtual.ua/images/376005/'
+    img: 'http://lviv.virtual.ua/images/376005/',
+    id: 10
   }];
 
   constructor(private http: Http) { }
@@ -166,4 +176,5 @@ export class GetCafesService {
     // return this.http.get(url);
     return this.restaurants.slice();
   }
+
 }
