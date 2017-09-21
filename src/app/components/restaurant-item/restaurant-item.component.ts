@@ -7,7 +7,7 @@ import { Restaurant } from '../../models/restaurant.model';
   styleUrls: ['./restaurant-item.component.scss']
 })
 export class RestaurantItemComponent implements OnInit {
-  restaurant: Restaurant;
+  @Input() restaurant: Restaurant;
 
   constructor() { }
 

@@ -49,7 +49,7 @@ import { GetCafesService } from './services/getcafes/getcafes.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, GetCafesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
