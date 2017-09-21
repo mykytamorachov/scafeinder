@@ -18,13 +18,21 @@ describe('RestaurantItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RestaurantItemComponent);
     component = fixture.componentInstance;
-    component.restaurant = {name: 'White Lion',
-    type: 'pub',
-    address: '15 Lesya Ukrainka Str.',
-    phone: '(067) 675 51 23',
-    imgPath: 'http://mylviv.com/wp-content/uploads/2012/05/DSCN6650-800x600.jpg',
-    cuisine: ['Ukrainian', 'Polish'],
-    additional: ['live music', 'Wi-Fi']};
+    component.restaurant = {
+      tables: [
+        { tableType: 2, free: true },
+        { tableType: 2, free: false },
+        { tableType: 4, free: false }
+      ],
+      cuisines: ['Vegetarian', 'Ukrainian'],
+      features: ['hookah', 'karaoke', 'roof terrace', 'live music'],
+      categories: ['alcohol-free', 'barbecue', 'cafe', 'coffee house' , 'fast food' , 'lounge bar', 'pizza', 'pub', 'sushi'],
+      location: { lat: 49.84184750000001, lng: 24.0305664 },
+      name: 'Мир Кофе',
+      rating: 4.6,
+      address: 'площа Ринок, 30, Львів',
+      img: 'http://www.ukraine-is.com/wp-content/uploads/2016/08/history2.jpg'
+    };
     fixture.detectChanges();
   });
 

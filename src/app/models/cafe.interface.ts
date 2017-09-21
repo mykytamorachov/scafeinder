@@ -1,4 +1,4 @@
- export interface ICafe {
+export interface ICafe {
   location?: {
       lat: Number,
       lng: Number

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Restaurant } from '../../models/restaurant.model';
+import { ICafe } from '../../models/cafe.interface';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 
@@ -9,7 +9,7 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-  restaurants: Restaurant[];
+  restaurants: ICafe[];
 
   constructor(private getCafesService: GetCafesService) { }
 
