@@ -9,4 +9,3 @@ export const getFacebook = (req, res, next) => {
     res.json('api/facebook', { results });
   });
 };
-
