@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12" *ngIf="restaurants.length; else noResults">
-    <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut" [restaurant]="restaurantItem"></app-restaurant-item>
+    <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut: cuisineFilter | categoryShortcut: categoryFilter | featureShortcut: featureFilter" [restaurant]="restaurantItem"></app-restaurant-item>
   </div>
   <ng-template #noResults>
   	<div>Sorry, but nothing matched your search criteria.</div>

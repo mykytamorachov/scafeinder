@@ -176,7 +176,7 @@ export class GetCafesService {
     return this.restaurants.slice();
   }
 
-  getCuisines(): string[] {
+  getCuisines(): String[] {
     const cuisines = [];
     this.restaurants.forEach((restaurant) => restaurant.cuisines.
       forEach((cuisine) => {if (cuisines.indexOf(cuisine) === -1) {
@@ -185,7 +185,7 @@ export class GetCafesService {
     return cuisines;
   }
 
-  getFeatures(): string[] {
+  getFeatures(): String[] {
     const features = [];
     this.restaurants.forEach((restaurant) => restaurant.features.
       forEach((feature) => {if (features.indexOf(feature) === -1) {
@@ -194,7 +194,7 @@ export class GetCafesService {
     return features;
   }
 
-  getCategories(): string[] {
+  getCategories(): String[] {
     const categories = [];
     this.restaurants.forEach((restaurant) => restaurant.categories.
       forEach((category) => {if (categories.indexOf(category) === -1) {

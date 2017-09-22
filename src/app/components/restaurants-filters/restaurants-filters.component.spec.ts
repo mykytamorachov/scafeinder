@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { HttpModule } from '@angular/http';
+import { FilterService } from '../../services/filter.service';
 
 import { RestaurantsFiltersComponent } from './restaurants-filters.component';
 
@@ -12,7 +13,7 @@ describe('RestaurantsFiltersComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       declarations: [RestaurantsFiltersComponent],
-      providers: [GetCafesService]
+      providers: [GetCafesService, FilterService]
     })
     .compileComponents();
   }));

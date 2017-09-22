@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-restaurants-filters',
@@ -7,12 +8,14 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
   styleUrls: ['./restaurants-filters.component.scss']
 })
 export class RestaurantsFiltersComponent implements OnInit {
-  categories: string[];
-  cuisines: string[];
-  features: string[];
-  cuisineFilter: string[] = [];
+  categories: String[];
+  cuisines: String[];
+  features: String[];
+  categoryFilter: String[] = [];
+  cuisineFilter: String[] = [];
+  featureFilter: String[] = [];
 
-  constructor(private getCafesService: GetCafesService) { }
+  constructor(private getCafesService: GetCafesService, private filterService: FilterService) { }
 
   ngOnInit() {
     this.categories = this.getCafesService.getCategories();
@@ -21,13 +24,18 @@ export class RestaurantsFiltersComponent implements OnInit {
   }
 
   updateCategoryFilter(option, event) {
-    console.log('Category:' + option);
-    console.log(event.target.checked);
+    if (event.target.checked) {
+      this.categoryFilter.push(option);
+    } else {
+      const index = this.categoryFilter.indexOf(option);
+      if (index > -1) {
+        this.categoryFilter.splice(index, 1);
+      }
+    }
+    this.filterService.updatedCategoryFilter.emit(this.categoryFilter);
   }
 
   updateCuisineFilter(option, event) {
-    console.log('Cuisine:' + option);
-    console.log(event.target.checked);
     if (event.target.checked) {
       this.cuisineFilter.push(option);
     } else {
@@ -36,10 +44,18 @@ export class RestaurantsFiltersComponent implements OnInit {
         this.cuisineFilter.splice(index, 1);
       }
     }
+    this.filterService.updatedCuisineFilter.emit(this.cuisineFilter);
   }
 
   updateFeatureFilter(option, event) {
-    console.log('Feature:' + option);
-    console.log(event.target.checked);
+    if (event.target.checked) {
+      this.featureFilter.push(option);
+    } else {
+      const index = this.featureFilter.indexOf(option);
+      if (index > -1) {
+        this.featureFilter.splice(index, 1);
+      }
+    }
+    this.filterService.updatedFeatureFilter.emit(this.featureFilter);
   }
 }
