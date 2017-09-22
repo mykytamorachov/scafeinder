@@ -41,7 +41,7 @@ describe('AppComponent', () => {
         BannerComponent,
         Page404Component
       ],
-      providers:[ AuthService ]
+      providers: [ AuthService ]
     }).compileComponents();
   }));
 

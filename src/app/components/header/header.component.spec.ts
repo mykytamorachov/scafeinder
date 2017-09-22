@@ -14,7 +14,7 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       imports: [ NgbModule, HttpModule ],
       declarations: [ HeaderComponent ],
-      providers:[ AuthService ]
+      providers: [ AuthService ]
     })
     .compileComponents();
   }));
