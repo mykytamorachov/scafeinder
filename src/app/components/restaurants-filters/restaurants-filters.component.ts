@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetCafesService } from '../../services/getcafes/getcafes.service';
 
 @Component({
   selector: 'app-restaurants-filters',
@@ -6,14 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./restaurants-filters.component.scss']
 })
 export class RestaurantsFiltersComponent implements OnInit {
-  categories: string[] = ['alcohol-free', 'barbecue', 'cafe', 'coffee house', 'fast food', 'lounge bar', 'pizza', 'pub', 'sushi'];
-  cuisines: string[] = ['Asian', 'Chinese', 'Georgian',
-  'Italian', 'Japanese', 'Mediterranean', 'Mexican', 'Ukrainian', 'Vegetarian'];
-  features: string[] = ['hookah', 'karaoke', 'live music', 'roof terrace'];
+  categories: string[];
+  cuisines: string[];
+  features: string[];
   cuisineFilter: string[] = [];
-  constructor() { }
+
+  constructor(private getCafesService: GetCafesService) { }
 
   ngOnInit() {
+    this.categories = this.getCafesService.getCategories();
+    this.cuisines = this.getCafesService.getCuisines();
+    this.features = this.getCafesService.getFeatures();
   }
 
   updateCategoryFilter(option, event) {

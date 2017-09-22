@@ -21,7 +21,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
-//
+import { FilterService } from './services/filter.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { GetCafesService } from './services/getcafes/getcafes.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService, GetCafesService],
+  providers: [AuthService, GetCafesService, FilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
