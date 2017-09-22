@@ -40,7 +40,7 @@ export const postLogin = (req: Request, res: Response, next: NextFunction) => {
       console.log('Success! user is ...', user);
       console.log('Success! req.session is ...', req.sessionID);
       const token = jwt.sign({ name: user.name, email: user.email, sessionID: req.sessionID },
-        AUTH_CONFIG.jwt_secret, { expiresIn: '8h' });
+        AUTH_CONFIG.jwt_secret, { expiresIn: 1000 });
       console.log('Success! You are logged in. tocken is ', token);
       res.json({ status: 'success', token });
     });
