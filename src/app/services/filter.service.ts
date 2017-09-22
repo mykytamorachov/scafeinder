@@ -1,12 +1,13 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { GetCafesService } from './getcafes/getcafes.service';
 import { ICafe } from '../models/cafe.interface';
 
 @Injectable()
 export class FilterService {
-  updatedCategoryFilter = new EventEmitter<String[]>();
-  updatedCuisineFilter = new EventEmitter<String[]>();
-  updatedFeatureFilter = new EventEmitter<String[]>();
+  updatedCategoryFilter = new Subject<String[]>();
+  updatedCuisineFilter = new Subject<String[]>();
+  updatedFeatureFilter = new Subject<String[]>();
 
   constructor(private getCafesService: GetCafesService) { }
 

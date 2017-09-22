@@ -18,7 +18,6 @@ export class RestaurantsListComponent implements OnInit {
   featureFilter: String[] = [];
 
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) {
-    this.restaurants = this.getCafesService.getAllCafes();
 
     this.filterService.updatedCategoryFilter
       .subscribe((filter: String[]) => {
@@ -38,6 +37,7 @@ export class RestaurantsListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.restaurants = this.getCafesService.getAllCafes();
   }
 
 }

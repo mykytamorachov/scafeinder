@@ -32,7 +32,7 @@ export class RestaurantsFiltersComponent implements OnInit {
         this.categoryFilter.splice(index, 1);
       }
     }
-    this.filterService.updatedCategoryFilter.emit(this.categoryFilter);
+    this.filterService.updatedCategoryFilter.next(this.categoryFilter);
   }
 
   updateCuisineFilter(option, event) {
@@ -44,7 +44,7 @@ export class RestaurantsFiltersComponent implements OnInit {
         this.cuisineFilter.splice(index, 1);
       }
     }
-    this.filterService.updatedCuisineFilter.emit(this.cuisineFilter);
+    this.filterService.updatedCuisineFilter.next(this.cuisineFilter);
   }
 
   updateFeatureFilter(option, event) {
@@ -56,6 +56,6 @@ export class RestaurantsFiltersComponent implements OnInit {
         this.featureFilter.splice(index, 1);
       }
     }
-    this.filterService.updatedFeatureFilter.emit(this.featureFilter);
+    this.filterService.updatedFeatureFilter.next(this.featureFilter);
   }
 }
