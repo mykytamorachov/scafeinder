@@ -1,4 +1,4 @@
- export interface ICafe {
+export interface ICafe {
   location?: {
       lat: Number,
       lng: Number
@@ -11,5 +11,6 @@
   features?: String[];
   tables?: Array<{tableType: number, free: Boolean}>;
   img?: String;
+  id?: Number;
 }
 

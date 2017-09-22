@@ -4,6 +4,8 @@ import { RestaurantsListComponent } from './restaurants-list.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
+import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { HttpModule } from '@angular/http';
 
 describe('RestaurantsListComponent', () => {
   let component: RestaurantsListComponent;
@@ -11,12 +13,13 @@ describe('RestaurantsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule],
       declarations: [
       RestaurantsListComponent,
       RestaurantItemComponent,
       ShortcutPipe
-      ]
+      ],
+      providers: [GetCafesService]
     })
     .compileComponents();
   }));

@@ -10,6 +10,9 @@ import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerComponent } from '../banner/banner.component';
+import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { HttpModule } from '@angular/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,7 +20,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot() ],
+      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule ],
       declarations: [
         HomeComponent,
         RestaurantsFiltersComponent,
@@ -27,7 +30,8 @@ describe('HomeComponent', () => {
         SearchFormComponent,
         BannerComponent,
         ShortcutPipe,
-      ]
+      ],
+      providers: [GetCafesService]
     })
     .compileComponents();
   }));
