@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+// import { Router, RouterModule } from '@angular/router';
 
 import 'rxjs/add/operator/map';
 
@@ -10,7 +10,7 @@ export class AuthService {
   private BASE_URL = 'http://localhost:3000';
   public token: string;
 
-  constructor(public router: Router, private http: Http) {
+  constructor(private http: Http) {
    }
 
   login(user: any) {
@@ -35,7 +35,7 @@ export class AuthService {
     localStorage.removeItem('access_token');
     // localStorage.removeItem('currentUser');
     localStorage.removeItem('expires_at');
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
   }
 
   register(user: any) {
