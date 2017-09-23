@@ -80,13 +80,15 @@ export class SearchFormComponent implements OnInit {
   }
 
   findTables() {
-    let option =  this.userQuery;
+    const option = this.userQuery;
     this.restaurants = this.getCafesService.getAllCafes();
-    let cafes = this.restaurants.filter((cafe) => {
-      let hour = parseInt(option.time.split(':')[0]);
-      if (cafe.time[hour][0].tableType === +option.tableType && +cafe.time[hour][0].number * +cafe.time[hour][0].tableType >= option.persons) {
+    const cafes = this.restaurants.filter((cafe) => {
+      const hour = parseInt(option.time.split(':')[0], 2);
+      if (cafe.time[hour][0].tableType === +option.tableType &&
+        +cafe.time[hour][0].number * +cafe.time[hour][0].tableType >= option.persons) {
         return cafe;
-      } else if (cafe.time[hour][1].tableType === +option.tableType && +cafe.time[hour][0].number * +cafe.time[hour][1].tableType >= option.persons) {
+      } else if (cafe.time[hour][1].tableType === +option.tableType && 
+        +cafe.time[hour][0].number * +cafe.time[hour][1].tableType >= option.persons) {
         return cafe;
       }
     });

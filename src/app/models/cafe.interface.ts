@@ -10,8 +10,6 @@ export interface ICafe {
   cuisines?: String[];
   features?: String[];
   time?: {[propName: string]: Array<{tableType: Number, number: Number}>};
-  //time?: Object;
   img?: String;
   id?: Number;
 }
-
