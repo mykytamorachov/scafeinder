@@ -87,7 +87,7 @@ export class SearchFormComponent implements OnInit {
       if (cafe.time[hour][0].tableType === +option.tableType &&
         +cafe.time[hour][0].number * +cafe.time[hour][0].tableType >= option.persons) {
         return cafe;
-      } else if (cafe.time[hour][1].tableType === +option.tableType && 
+      } else if (cafe.time[hour][1].tableType === +option.tableType &&
         +cafe.time[hour][0].number * +cafe.time[hour][1].tableType >= option.persons) {
         return cafe;
       }
