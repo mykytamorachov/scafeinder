@@ -21,6 +21,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
+import { AngularOpenlayersModule } from 'ngx-openlayers';
 //
 
 @NgModule({
@@ -47,7 +48,8 @@ import { GetCafesService } from './services/getcafes/getcafes.service';
     HttpModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularOpenlayersModule
   ],
   providers: [AuthService, GetCafesService],
   bootstrap: [AppComponent]

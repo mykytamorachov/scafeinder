@@ -50,9 +50,35 @@
       </div>
       <div class="row">
           <div class="col-xs-12 col-md-12">
-              Map goes hear
-            <div id="map" class="map"></div>
-              
+              Map goes hear {{restaurant?.location.lat}} {{restaurant?.location.lng}}
+              <aol-map [width]="undefined" [height]="undefined">
+                <aol-view [zoom]="17">
+                    <aol-coordinate [x]="restaurant?.location.lng" [y]="restaurant?.location.lat" [srid]="'EPSG:4326'"></aol-coordinate>
+                  </aol-view>
+                <aol-layer-tile>
+                    <aol-source-osm></aol-source-osm>
+                </aol-layer-tile>
+                <aol-interaction-default></aol-interaction-default>
+                <aol-layer-vector>
+                  <aol-source-vector>
+                    <aol-feature>
+                      <aol-geometry-point>
+                        <aol-coordinate [x]="restaurant?.location.lng" [y]="restaurant?.location.lat" [srid]="'EPSG:4326'"></aol-coordinate>
+                      </aol-geometry-point>
+                      <aol-style>
+                        <aol-style-icon
+                          [src]="'assets/img/marker.svg'"
+                          [anchor]="[0.5, 1]"
+                          [anchorXUnits]="'fraction'" [anchorYUnits]="'fraction'"
+                          [scale]="1.7"
+                          [anchorOrigin]="'top-left'">
+                        </aol-style-icon>
+                      </aol-style>
+                    </aol-feature>
+                  </aol-source-vector>
+                </aol-layer-vector>
+            </aol-map>
+            
           </div>
       </div>
     </div>
