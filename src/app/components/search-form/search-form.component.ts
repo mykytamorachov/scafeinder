@@ -83,7 +83,7 @@ export class SearchFormComponent implements OnInit {
     const option = this.userQuery;
     this.restaurants = this.getCafesService.getAllCafes();
     const cafes = this.restaurants.filter((cafe) => {
-      const hour = parseInt(option.time.split(':')[0], 2);
+      const hour = parseInt(option.time.split(':')[0], 0);
       if (cafe.time[hour][0].tableType === +option.tableType &&
         +cafe.time[hour][0].number * +cafe.time[hour][0].tableType >= option.persons) {
         return cafe;
