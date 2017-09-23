@@ -21,7 +21,9 @@ import { Page404Component } from './components/page404/page404.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
-//
+import { FilterService } from './services/filter.service';
+import { CategoryShortcutPipe } from './pipes/category-shortcut.pipe';
+import { FeatureShortcutPipe } from './pipes/feature-shortcut.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { GetCafesService } from './services/getcafes/getcafes.service';
     LoginComponent,
     RegisterComponent,
     BannerComponent,
-    Page404Component
+    Page404Component,
+    CategoryShortcutPipe,
+    FeatureShortcutPipe
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,7 @@ import { GetCafesService } from './services/getcafes/getcafes.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService, GetCafesService],
+  providers: [AuthService, GetCafesService, FilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

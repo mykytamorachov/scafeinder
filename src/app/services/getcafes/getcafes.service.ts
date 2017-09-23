@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 // import { Observable } from 'rxjs/Observable';
 import { ICafe } from '../../models/cafe.interface';
-import { Restaurant } from '../../models/restaurant.model';
 // import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/catch';
 
@@ -175,6 +174,33 @@ export class GetCafesService {
     // const url = 'http://localhost:3000/cafes';
     // return this.http.get(url);
     return this.restaurants.slice();
+  }
+
+  getCuisines(): String[] {
+    const cuisines = [];
+    this.restaurants.forEach((restaurant) => restaurant.cuisines.
+      forEach((cuisine) => {if (cuisines.indexOf(cuisine) === -1) {
+        cuisines.push(cuisine);
+      }}));
+    return cuisines;
+  }
+
+  getFeatures(): String[] {
+    const features = [];
+    this.restaurants.forEach((restaurant) => restaurant.features.
+      forEach((feature) => {if (features.indexOf(feature) === -1) {
+        features.push(feature);
+      }}));
+    return features;
+  }
+
+  getCategories(): String[] {
+    const categories = [];
+    this.restaurants.forEach((restaurant) => restaurant.categories.
+      forEach((category) => {if (categories.indexOf(category) === -1) {
+        categories.push(category);
+      }}));
+    return categories;
   }
 
 }
