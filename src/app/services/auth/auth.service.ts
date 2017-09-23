@@ -22,10 +22,10 @@ export class AuthService {
       console.log('data in login is ', data);
       if (data.status === 'success' && data.token) {
         console.log('data.token in login is ', data.token);
-        localStorage.setItem('currentUser', data.token);
-        const expiresAt = JSON.stringify(10000 + new Date().getTime());
+        // localStorage.setItem('currentUser', data.token);
+        const expiresAt = JSON.stringify(100000 + new Date().getTime());
         localStorage.setItem('access_token', data.token);
-        // localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('id_token', data.id);
         localStorage.setItem('expires_at', expiresAt);
       }
     });
@@ -33,7 +33,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('access_token');
-    // localStorage.removeItem('currentUser');
+    localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     this.router.navigate(['/']);
   }

@@ -17,7 +17,7 @@
           </li>
         </ng-template>
         <li class="nav-item" *ngIf="auth.isAuthenticated()">
-          <a class="nav-link" routerLink="/logout">Sign Out</a>
+          <a class="nav-link" (click)="auth.logout()">Sign Out</a>
         </li>
       </ul>
     </div>
