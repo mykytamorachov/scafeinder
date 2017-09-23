@@ -9,7 +9,8 @@ export interface ICafe {
   categories?: String[];
   cuisines?: String[];
   features?: String[];
-  tables?: Array<{tableType: Number, free: Boolean}>;
+  time?: {[propName: string]: Array<{tableType: Number, number: Number}>};
+  //time?: Object;
   img?: String;
   id?: Number;
 }

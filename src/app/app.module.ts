@@ -53,7 +53,7 @@ import { FeatureShortcutPipe } from './pipes/feature-shortcut.pipe';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService, GetCafesService, FilterService],
+  providers: [AuthService, GetCafesService, FilterService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

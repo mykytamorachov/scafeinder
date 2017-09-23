@@ -1,17 +1,21 @@
 <main>
   <div class="container">
-    <form class="search-form form-inline" #searchForm="ngForm">
+    <form class="search-form form-inline" #searchForm="ngForm" (ngSubmit)="findTables()">
       <section class="form-group row">
         <select class="form-control col-5 col-sm-5 col-lg-2" name="persons" [(ngModel)]="userQuery.persons">
           <option class="dropdown-item" value="1">1 person</option>
           <option class="dropdown-item" *ngFor="let person of company" value={{person}}>{{person}} people</option>
         </select>
+        <select class="form-control col-5 col-sm-5 col-lg-2" name="tableType" [(ngModel)]="userQuery.tableType">
+          <option class="dropdown-item" value="2">2-person table</option>
+          <option class="dropdown-item" value="4">4-person table</option>
+        </select>
         <app-datepicker (selectedDate)="checkSelectedDate($event)"></app-datepicker>
-        <select class="form-control col-5 col-sm-5 col-lg-2" name="time" [(ngModel)]="userQuery.time">
+        <select class="form-control col-5 col-sm-5 col-lg-1" name="time" [(ngModel)]="userQuery.time">
           <option class="dropdown-item" *ngFor="let time of dayHours" value={{time.hour}}:{{time.minute}}>{{time.hour}}:{{time.minute}}</option>
         </select>
-        <input class="form-control col-12 col-sm-6 col-lg-3" name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
-        <button class="form-control btn btn-primary col-12 col-sm-12 col-lg-2" type="button">Find a table</button>
+        <input class="form-control col-12 col-sm-6 col-lg-2" name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
+        <button class="form-control btn btn-primary col-12 col-sm-12 col-lg-2" type="submit">Find a table</button>
       </section>
   
       <pre><b>User input:</b>
