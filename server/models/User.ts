@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   facebook: String,
   tokens: Array,
-});
+}, { versionKey: false });
 
 // Password hash middleware.
 userSchema.pre('save', function save(next) {

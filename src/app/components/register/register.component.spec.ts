@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {

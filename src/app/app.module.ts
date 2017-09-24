@@ -19,11 +19,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { Page404Component } from './components/page404/page404.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
 import { FilterService } from './services/filter.service';
 import { CategoryShortcutPipe } from './pipes/category-shortcut.pipe';
 import { FeatureShortcutPipe } from './pipes/feature-shortcut.pipe';
+import { AngularOpenlayersModule } from 'ngx-openlayers';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FeatureShortcutPipe } from './pipes/feature-shortcut.pipe';
     HttpModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularOpenlayersModule
   ],
   providers: [AuthService, GetCafesService, FilterService ],
   bootstrap: [AppComponent]

@@ -3,9 +3,9 @@ export interface ICafe {
       lat: Number,
       lng: Number
   };
-  name?: String;
+  name: String;
   rating?: Number;
-  address?: String;
+  address: String;
   categories?: String[];
   cuisines?: String[];
   features?: String[];

@@ -21,5 +21,4 @@ export class RestaurantProfileComponent implements OnInit {
         }
       );
   }
-
 }

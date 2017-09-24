@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 import { IUser } from '../../models/user.model';
 
 @Component({
@@ -10,18 +11,18 @@ import { IUser } from '../../models/user.model';
 })
 export class LoginComponent implements OnInit {
   user: IUser;
-  constructor(private auth: AuthService) { }
+  test: any;
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.user = {};
-    this.auth.logout();
+    // this.auth.logout();
   }
 
   onLogin(user: IUser) {
-    console.log('onLogin user is ', this.user);
     this.auth.login(this.user).subscribe(
       data => {
-        console.log('onLogin data is ', data);
+        this.router.navigate(['/']);   // this.router.navigate(['/profile']);
       },
       err => console.log('onLogin err is ', err),
       () => console.log('Request Completed')
