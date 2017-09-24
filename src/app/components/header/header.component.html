@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     <!-- <a class="navbar-brand" routerLink="/"><img class="img-fluid rounded-circle" src="assets/img/scafeinder.jpg" alt="scafeinder icon">Scafeinder</a> -->
-    <a class="navbar-brand" routerLink="/" href="#">
+    <a class="navbar-brand" routerLink="/">
       <img src="assets/img/scafeinder.jpg" width="55" height="55" class="d-inline-block align-top rounded-circle" alt="scafeinder icon">
     </a>
     <a href="" class="navbar-brand">
@@ -22,9 +22,14 @@
           <a class="nav-link" routerLink="/login">Log In</a>
           </li>
         </ng-template>
-        <li class="nav-item" *ngIf="auth.isAuthenticated()">
-          <a class="nav-link" (click)="auth.logout()">Sign Out</a>
-        </li>
+        <ng-template [ngIf]="auth.isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="auth.logout()">Sign Out</a>
+          </li>
+      </ng-template>
       </ul>
     </div>
   </nav>

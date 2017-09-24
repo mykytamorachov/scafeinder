@@ -31,12 +31,6 @@ export class RegisterComponent implements OnInit {
     }, {validator: this.matchingPasswords('password', 'confirmPassword')});
   }
 
-  @Output() form: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  showForm() {
-    this.form.emit(true);
-  }
-
   ngOnInit() {
   }
 

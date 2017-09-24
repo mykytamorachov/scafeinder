@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
   private BASE_URL = 'http://localhost:3000';
   public token: string;
+
 
   constructor(public router: Router, private http: Http) {
    }
