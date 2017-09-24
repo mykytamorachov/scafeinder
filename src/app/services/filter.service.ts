@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { GetCafesService } from './getcafes/getcafes.service';
 import { ICafe } from '../models/cafe.interface';
 
 
 @Injectable()
 export class FilterService {
-  private cafeSource = new BehaviorSubject(this.getCafesService.getAllCafes());
+  cafeSource = new Subject<ICafe[]>();
   currentCafes = this.cafeSource.asObservable();
 
   updatedCategoryFilter = new Subject<String[]>();

@@ -37,7 +37,7 @@ export class RestaurantsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.restaurants = this.getCafesService.getAllCafes();
+    this.restaurants = this.getCafesService.getAllCafes();
     this.filterService.currentCafes.subscribe(data => this.restaurants = data);
   }
 

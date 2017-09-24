@@ -85,10 +85,10 @@ export class SearchFormComponent implements OnInit {
     const cafes = this.restaurants.filter((cafe) => {
       const hour = parseInt(option.time.split(':')[0], 0);
       if (cafe.time[hour][0].tableType === +option.tableType &&
-        +cafe.time[hour][0].number * +cafe.time[hour][0].tableType >= option.persons) {
+        (+cafe.time[hour][0].number * +cafe.time[hour][0].tableType) >= option.persons) {
         return cafe;
       } else if (cafe.time[hour][1].tableType === +option.tableType &&
-        +cafe.time[hour][0].number * +cafe.time[hour][1].tableType >= option.persons) {
+        (+cafe.time[hour][1].number * +cafe.time[hour][1].tableType) >= option.persons) {
         return cafe;
       }
     });
