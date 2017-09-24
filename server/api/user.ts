@@ -1,7 +1,9 @@
 import * as passport from 'passport';
 import { Request, Response, NextFunction } from 'express';
 import { LocalStrategyInfo } from 'passport-local';
+import * as jwt from 'jsonwebtoken';
 import { default as User, UserModel } from '../models/User';
+import AUTH_CONFIG from '../constants/auth_config';
 
 // * GET /login  * Login page.
 export const getLogin = (req: Request, res: Response) => {
@@ -35,11 +37,12 @@ export const postLogin = (req: Request, res: Response, next: NextFunction) => {
     }
     req.logIn(user, (error) => {
       if (error) { return next(error); }
-      console.log('Success! req.user is ...', req.user);
+      console.log('Success! user is ...', user);
       console.log('Success! req.session is ...', req.sessionID);
-      console.log('Success! You are logged in.');
-      res.json({sessionID: req.sessionID});
-      // res.redirect('/login');
+      const token = jwt.sign({ name: user.name, email: user.email, sessionID: req.sessionID },
+        AUTH_CONFIG.jwt_secret, { expiresIn: 1000 });
+      console.log('Success! You are logged in. tocken is ', token);
+      res.json({ status: 'success', token, id: user._id });
     });
   })(req, res, next);
 };

@@ -19,12 +19,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { Page404Component } from './components/page404/page404.component';
+import { AuthService } from './services/auth/auth.service';
+import { HttpModule } from '@angular/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, NgbModule.forRoot(), ReactiveFormsModule, RouterTestingModule, AngularOpenlayersModule ],
+      imports: [ FormsModule, NgbModule.forRoot(), ReactiveFormsModule, RouterTestingModule, HttpModule, AngularOpenlayersModule ],
       declarations: [
         AppComponent,
         HeaderComponent,
@@ -43,7 +45,8 @@ describe('AppComponent', () => {
         RegisterComponent,
         BannerComponent,
         Page404Component
-      ]
+      ],
+      providers: [ AuthService ]
     }).compileComponents();
   }));
 
