@@ -24,6 +24,7 @@ import { GetCafesService } from './services/getcafes/getcafes.service';
 import { FilterService } from './services/filter.service';
 import { CategoryShortcutPipe } from './pipes/category-shortcut.pipe';
 import { FeatureShortcutPipe } from './pipes/feature-shortcut.pipe';
+import { AngularOpenlayersModule } from 'ngx-openlayers';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FeatureShortcutPipe } from './pipes/feature-shortcut.pipe';
     HttpModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularOpenlayersModule
   ],
   providers: [AuthService, GetCafesService, FilterService],
   bootstrap: [AppComponent]
