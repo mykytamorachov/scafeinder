@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ICafe } from '../../models/cafe.interface';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
-import 'rxjs/Rx';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-restaurant-profile',
@@ -23,5 +21,4 @@ export class RestaurantProfileComponent implements OnInit {
         }
       );
   }
-
 }
