@@ -4,6 +4,9 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import { company, dayHours, UserQuery } from './data-search-form';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
+import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { FilterService } from '../../services/filter.service';
+import { ICafe } from '../../models/cafe.interface';
 
 @Component({
   selector: 'app-search-form',
@@ -12,13 +15,14 @@ import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.componen
 })
 
 export class SearchFormComponent implements OnInit {
+  restaurants: ICafe[];
   company: Array<number>;
   dayHours: any;
   model: NgbDateStruct;
   searchform: FormGroup;
-  userQuery = new UserQuery(2, '2017-10-10', '13:00', 'Cosa Nostra');
+  userQuery = new UserQuery(2, 4, '2017-10-10', '13:00', 'Cosa Nostra');
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
     this._buildForm();
   }
 
@@ -73,5 +77,21 @@ export class SearchFormComponent implements OnInit {
       }
       return this.dayHours = this.showLeftHours();
     }
+  }
+
+  findTables() {
+    const option = this.userQuery;
+    this.restaurants = this.getCafesService.getAllCafes();
+    const cafes = this.restaurants.filter((cafe) => {
+      const hour = parseInt(option.time.split(':')[0], 0);
+      if (cafe.time[hour][0].tableType === +option.tableType &&
+        (+cafe.time[hour][0].number * +cafe.time[hour][0].tableType) >= option.persons) {
+        return cafe;
+      } else if (cafe.time[hour][1].tableType === +option.tableType &&
+        (+cafe.time[hour][1].number * +cafe.time[hour][1].tableType) >= option.persons) {
+        return cafe;
+      }
+    });
+    this.filterService.changeCafes(cafes);
   }
 }

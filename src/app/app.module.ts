@@ -55,7 +55,7 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
     AppRoutingModule,
     AngularOpenlayersModule
   ],
-  providers: [AuthService, GetCafesService, FilterService],
+  providers: [AuthService, GetCafesService, FilterService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
