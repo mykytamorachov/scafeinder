@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit {
   dayHours: any;
   model: NgbDateStruct;
   searchform: FormGroup;
-  userQuery = new UserQuery(2, 4, '2017-10-10', '13:00', 'Cosa Nostra');
+  userQuery = new UserQuery(2, 4, '2017-10-10', ((new Date().getHours() + 1) + ':30'), 'Cosa Nostra');
 
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
     this._buildForm();
@@ -82,16 +82,11 @@ export class SearchFormComponent implements OnInit {
   findTables() {
     const option = this.userQuery;
     this.restaurants = this.getCafesService.getAllCafes();
-    const cafes = this.restaurants.filter((cafe) => {
-      const hour = parseInt(option.time.split(':')[0], 0);
-      if (cafe.time[hour][0].tableType === +option.tableType &&
-        (+cafe.time[hour][0].number * +cafe.time[hour][0].tableType) >= option.persons) {
-        return cafe;
-      } else if (cafe.time[hour][1].tableType === +option.tableType &&
-        (+cafe.time[hour][1].number * +cafe.time[hour][1].tableType) >= option.persons) {
-        return cafe;
-      }
+    const result = this.restaurants.filter((restaurant) => {
+      const tables = (restaurant.time.hasOwnProperty(option.time)
+        && restaurant.time[option.time].find((table) => table.tableType === +option.tableType));
+      return tables && +tables.tableType * +tables.number >= +option.persons;
     });
-    this.filterService.changeCafes(cafes);
+    this.filterService.changeCafes(result);
   }
 }
