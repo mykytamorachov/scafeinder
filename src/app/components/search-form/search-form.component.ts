@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit {
   dayHours: any;
   model: NgbDateStruct;
   searchform: FormGroup;
-  userQuery = new UserQuery(2, 4, '2017-10-10', '13:00', 'Cosa Nostra');
+  userQuery = new UserQuery(2, 4, '2017-10-10', ((new Date().getHours() + 1) + ':30'), 'Cosa Nostra');
 
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
     this._buildForm();
@@ -82,20 +82,11 @@ export class SearchFormComponent implements OnInit {
   findTables() {
     const option = this.userQuery;
     this.restaurants = this.getCafesService.getAllCafes();
-    const result = this.restaurants.filter((restaurant) =>
-      restaurant.time.hasOwnProperty(option.time)
-      && restaurant.time[option.time].find((table) => table.tableType === +option.tableType)
-      && +restaurant.time[option.time].find((table) => table.tableType === +option.tableType).tableType *
-      +restaurant.time[option.time].find((table) => table.tableType === +option.tableType).number >= +option.persons);
-      // const cafes = this.restaurants.filter((cafe) => {
-      //   if (cafe.time[option.time][0].tableType === +option.tableType &&
-      //    (+cafe.time[option.time][0].number * +cafe.time[option.time][0].tableType) >= option.persons) {
-      //    return cafe;
-      //   } else if (cafe.time[option.time][1].tableType === +option.tableType &&
-      //    (+cafe.time[option.time][1].number * +cafe.time[option.time][1].tableType) >= option.persons) {
-      //    return cafe;
-      //   }
-      // });
+    const result = this.restaurants.filter((restaurant) => {
+      const tables = (restaurant.time.hasOwnProperty(option.time)
+        && restaurant.time[option.time].find((table) => table.tableType === +option.tableType));
+      return tables && +tables.tableType * +tables.number >= +option.persons;
+    });
     this.filterService.changeCafes(result);
   }
 }
