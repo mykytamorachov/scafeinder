@@ -82,16 +82,20 @@ export class SearchFormComponent implements OnInit {
   findTables() {
     const option = this.userQuery;
     this.restaurants = this.getCafesService.getAllCafes();
-    const cafes = this.restaurants.filter((cafe) => {
-      const hour = parseInt(option.time.split(':')[0], 0);
-      if (cafe.time[hour][0].tableType === +option.tableType &&
-        (+cafe.time[hour][0].number * +cafe.time[hour][0].tableType) >= option.persons) {
-        return cafe;
-      } else if (cafe.time[hour][1].tableType === +option.tableType &&
-        (+cafe.time[hour][1].number * +cafe.time[hour][1].tableType) >= option.persons) {
-        return cafe;
-      }
-    });
-    this.filterService.changeCafes(cafes);
+    const result = this.restaurants.filter((restaurant) =>
+      restaurant.time.hasOwnProperty(option.time)
+      && restaurant.time[option.time].find((table) => table.tableType === +option.tableType)
+      && +restaurant.time[option.time].find((table) => table.tableType === +option.tableType).tableType *
+      +restaurant.time[option.time].find((table) => table.tableType === +option.tableType).number >= +option.persons);
+      // const cafes = this.restaurants.filter((cafe) => {
+      //   if (cafe.time[option.time][0].tableType === +option.tableType &&
+      //    (+cafe.time[option.time][0].number * +cafe.time[option.time][0].tableType) >= option.persons) {
+      //    return cafe;
+      //   } else if (cafe.time[option.time][1].tableType === +option.tableType &&
+      //    (+cafe.time[option.time][1].number * +cafe.time[option.time][1].tableType) >= option.persons) {
+      //    return cafe;
+      //   }
+      // });
+    this.filterService.changeCafes(result);
   }
 }
