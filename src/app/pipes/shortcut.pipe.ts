@@ -12,7 +12,7 @@ export class ShortcutPipe implements PipeTransform {
     if (!items.length || !cuisineFilter.length) {
       return items;
     } else {
-    const result = items.filter(obj => obj.cuisines.some(key => cuisineFilter.indexOf(key) > -1));
+    const result = items.filter(obj => cuisineFilter.every(key => obj.cuisines.indexOf(key) > -1));
     return result;
     }
   }

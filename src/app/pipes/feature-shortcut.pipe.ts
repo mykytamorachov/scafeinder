@@ -12,7 +12,7 @@ export class FeatureShortcutPipe implements PipeTransform {
     if (!items.length || !featureFilter.length) {
       return items;
     } else {
-    const result = items.filter(obj => obj.features.some(key => featureFilter.indexOf(key) > -1));
+    const result = items.filter(obj => featureFilter.every(key => obj.features.indexOf(key) > -1));
     return result;
     }
   }

@@ -12,7 +12,7 @@ export class CategoryShortcutPipe implements PipeTransform {
     if (!items.length || !categoryFilter.length) {
       return items;
     } else {
-    const result = items.filter(obj => obj.categories.some(key => categoryFilter.indexOf(key) > -1));
+    const result = items.filter(obj => categoryFilter.every(key => obj.categories.indexOf(key) > -1));
     return result;
     }
   }
