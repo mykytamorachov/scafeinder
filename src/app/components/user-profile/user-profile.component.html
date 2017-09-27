@@ -6,8 +6,30 @@
       <div class="useravatar">
           <img alt="" src="../../assets/img/scafeinder.jpg">
       </div>
-      <div class="card-info"> <span class="card-title"></span>
+      <div class="card-info"> <span class="card-title">{{user?.name}}</span>
       </div>
   </div>
+  <ngb-tabset>
+    <ngb-tab title="Favorites">
+      <ng-template ngbTabContent>
+            <!-- <app-restaurants-list></app-restaurants-list> -->
+        <app-restaurant-item *ngFor="let restaurantItem of restaurants" [restaurant]="restaurantItem"></app-restaurant-item>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="History">
+      <ng-template ngbTabContent>
+        <ul>
+          <!-- <li *ngFor="let item of restaurant?.cuisines">{{item}}</li> -->
+        </ul>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Options">
+      <ng-template ngbTabContent>
+        <ul>
+          <!-- <li *ngFor="let item of restaurant?.categories">{{item}}</li> -->
+        </ul>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
 </div>       
   

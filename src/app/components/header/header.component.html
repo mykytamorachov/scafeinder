@@ -14,7 +14,7 @@
     </a>
     <div class="navbar-collapse collapse" [ngbCollapse]="!isCollapsed" id="collapsedContent">
       <ul class="navbar-nav ml-auto">
-        <ng-template [ngIf]="!auth.isAuthenticated()">
+        <ng-template [ngIf]="auth.isAuthenticated()">
           <li class="nav-item">
             <a class="nav-link" routerLink="/register">Sign Up</a>
           </li>
@@ -22,7 +22,7 @@
           <a class="nav-link" routerLink="/login">Log In</a>
           </li>
         </ng-template>
-        <ng-template [ngIf]="auth.isAuthenticated()">
+        <ng-template [ngIf]="!auth.isAuthenticated()">
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile">Profile</a>
           </li>

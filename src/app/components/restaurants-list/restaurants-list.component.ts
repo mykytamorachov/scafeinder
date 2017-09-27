@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ICafe } from '../../models/cafe.interface';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 import { CategoryShortcutPipe } from '../../pipes/category-shortcut.pipe';

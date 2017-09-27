@@ -19,7 +19,7 @@ export const getUserDataById = (req: Request, res: Response) => {
     if (err) { return err; }
     if (existingUser) {
       console.log('user found');
-      res.json({ status: 'success', user: existingUser });
+      res.json({ user: existingUser });
     }
   });
 };
