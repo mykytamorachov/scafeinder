@@ -1,10 +1,6 @@
-<form class="form-inline">
-  <div class="form-group">
-    <div class="input-group">
-      <input class="form-control" placeholder="{{valuedate | date: 'yyyy-MM-dd'}}" name="dp" [(ngModel)]="model" (ngModelChange)="onSelectDate($event)" ngbDatepicker #d="ngbDatepicker">
-      <button class="input-group-addon" (click)="d.toggle()" type="button">
-        <img src="#" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
-      </button>
-    </div>
-  </div>
-</form>
+<div class="wrapper">
+  <input class="form-control" placeholder="{{valuedate | date: 'yyyy-MM-dd'}}" name="dp" [(ngModel)]="model" (ngModelChange)="onSelectDate($event)" ngbDatepicker #d="ngbDatepicker">
+  <button class="input-group-addon" (click)="d.toggle()" type="button">
+    <img src="#" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+  </button>
+</div>

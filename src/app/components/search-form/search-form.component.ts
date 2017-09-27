@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit {
   dayHours: any;
   model: NgbDateStruct;
   searchform: FormGroup;
-  userQuery = new UserQuery(7, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 1) + ':30'), 'Cosa Nostra');
+  userQuery = new UserQuery(7, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 2) + ':00'), 'Cosa Nostra');
 
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
     this._buildForm();
@@ -93,6 +93,7 @@ export class SearchFormComponent implements OnInit {
           return restaurant;
         }
       } else if (option.date === new Date().toISOString().slice(0, 10)) {
+        console.log('today...');
         const tables = (restaurant.time.hasOwnProperty(option.time)
           && restaurant.time[option.time].find((table) => table.tableType === +option.tableType));
         return tables && +tables.tableType * +tables.number >= +option.persons;
