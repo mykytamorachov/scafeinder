@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.restaurants = this.getCafesService.getAllCafes();
+    this.restaurants = this.getCafesService.getCafesById([1, 2, 3]);
   }
 
   getUser() {
@@ -28,8 +28,7 @@ export class UserProfileComponent implements OnInit {
         console.log('this.user', this.user);
        console.log('Data in profile', response.json());
       },
-      (err) => console.log('err ', err),
-      () => console.log('Request Completed')
+      (err) => console.log('err ', err)
    );
   }
 

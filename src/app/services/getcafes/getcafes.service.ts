@@ -366,6 +366,18 @@ export class GetCafesService {
     return this.restaurants.slice();
   }
 
+  getCafesById(id): ICafe[] {
+    const restaurants = [];
+    for (let i = 0; i < this.restaurants.length; i++) {
+      for (let j = 0; j < id.length; j++) {
+        if (this.restaurants[i].id === id[j]) {
+          restaurants.push(this.restaurants[i]);
+        }
+      }
+    }
+    return restaurants;
+  }
+
   getCuisines(): String[] {
     const cuisines = [];
     this.restaurants.forEach((restaurant) => restaurant.cuisines.

@@ -14,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'restaurants/:id', component: RestaurantProfileComponent },
   { path: 'profile', component: UserProfileComponent },
+  { path: 'profile/restaurants/:id',  redirectTo: 'restaurants/:id' },
   { path: '**', component: Page404Component }
 ];
 
