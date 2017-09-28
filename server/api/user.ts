@@ -14,6 +14,16 @@ export const getLogin = (req: Request, res: Response) => {
   res.json({msg: `It's a login page`});
 };
 
+export const getUserDataById = (req: Request, res: Response) => {
+  User.findOne({ _id: req.body.id }, (err, existingUser) => {
+    if (err) { return err; }
+    if (existingUser) {
+      console.log('user found');
+      res.json({ user: existingUser });
+    }
+  });
+};
+
 // * POST /login  * Sign in using email and password.
 export const postLogin = (req: Request, res: Response, next: NextFunction) => {
   console.log('postLogin body is ', req.body);
@@ -42,7 +52,7 @@ export const postLogin = (req: Request, res: Response, next: NextFunction) => {
       const token = jwt.sign({ name: user.name, email: user.email, sessionID: req.sessionID },
         AUTH_CONFIG.jwt_secret, { expiresIn: 1000 });
       console.log('Success! You are logged in. tocken is ', token);
-      res.json({ status: 'success', token, id: user._id });
+      res.json({ status: 'success', token, id: user._id, name: user.name });
     });
   })(req, res, next);
 };

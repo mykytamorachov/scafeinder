@@ -14,6 +14,16 @@ export const getCafes = (req: Request, res: Response) => {
         });
 };
 
+export const getCafesById = (req: Request, res: Response) => {
+    Cafe.find({ _id: {$in: req.body.favorites} }, (err, cafes) => {
+      if (err) { return err; }
+      if (cafes) {
+        console.log('cafes found', cafes);
+        res.json({ cafes: cafes });
+      }
+    });
+  };
+
 // Add rests to db
 // for (const item of data) {
 //     const newCafe = new Cafe();

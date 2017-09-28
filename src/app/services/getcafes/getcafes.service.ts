@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-// import { Observable } from 'rxjs/Observable';
+import { Http, Headers, Response, Request } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import { ICafe } from '../../models/cafe.interface';
-// import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/catch';
 
 @Injectable()
@@ -564,6 +564,20 @@ export class GetCafesService {
     // const url = 'http://localhost:3000/cafes';
     // return this.http.get(url);
     return this.restaurants.slice();
+  }
+
+  getCafesById(id) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post('/cafes', {favorites: id}, { headers });
+    // const restaurants = [];
+    // for (let i = 0; i < this.restaurants.length; i++) {
+    //   for (let j = 0; j < id.length; j++) {
+    //     if (this.restaurants[i].id === id[j]) {
+    //       restaurants.push(this.restaurants[i]);
+    //     }
+    //   }
+    // }
+    // return restaurants;
   }
 
   getCuisines(): String[] {

@@ -23,6 +23,8 @@ import { AuthService } from './services/auth/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
 import { FilterService } from './services/filter.service';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
     LoginComponent,
     RegisterComponent,
     BannerComponent,
-    Page404Component
+    Page404Component,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
     AppRoutingModule,
     AngularOpenlayersModule
   ],
-  providers: [AuthService, GetCafesService, FilterService ],
+  providers: [AuthService, GetCafesService, FilterService, UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
