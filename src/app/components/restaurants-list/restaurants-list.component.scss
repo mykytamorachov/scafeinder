@@ -1,0 +1,8 @@
+.pagination /deep/{
+    margin-top: 10px; 
+    color: #0275D8;
+    .ngx-pagination .current {
+        color: #ffffff;
+        background: #0275D8;
+    }
+}
