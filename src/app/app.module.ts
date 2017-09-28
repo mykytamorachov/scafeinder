@@ -43,8 +43,6 @@ import { UserService } from './services/user/user.service';
     RegisterComponent,
     BannerComponent,
     Page404Component,
-    CategoryShortcutPipe,
-    FeatureShortcutPipe,
     UserProfileComponent
   ],
   imports: [
