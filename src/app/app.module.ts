@@ -22,8 +22,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
 import { FilterService } from './services/filter.service';
-import { CategoryShortcutPipe } from './pipes/category-shortcut.pipe';
-import { FeatureShortcutPipe } from './pipes/feature-shortcut.pipe';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 
 @NgModule({
@@ -42,9 +40,7 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
     LoginComponent,
     RegisterComponent,
     BannerComponent,
-    Page404Component,
-    CategoryShortcutPipe,
-    FeatureShortcutPipe
+    Page404Component
   ],
   imports: [
     BrowserModule,

@@ -4,8 +4,6 @@ import { RestaurantsListComponent } from './restaurants-list.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
-import { CategoryShortcutPipe } from '../../pipes/category-shortcut.pipe';
-import { FeatureShortcutPipe } from '../../pipes/feature-shortcut.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
@@ -20,9 +18,7 @@ describe('RestaurantsListComponent', () => {
       declarations: [
       RestaurantsListComponent,
       RestaurantItemComponent,
-      ShortcutPipe,
-      CategoryShortcutPipe,
-      FeatureShortcutPipe
+      ShortcutPipe
       ],
       providers: [GetCafesService, FilterService]
     })

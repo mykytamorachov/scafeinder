@@ -7,8 +7,6 @@ import { RestaurantItemComponent } from '../restaurant-item/restaurant-item.comp
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
-import { CategoryShortcutPipe } from '../../pipes/category-shortcut.pipe';
-import { FeatureShortcutPipe } from '../../pipes/feature-shortcut.pipe';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerComponent } from '../banner/banner.component';
@@ -32,9 +30,7 @@ describe('HomeComponent', () => {
         DatepickerComponent,
         SearchFormComponent,
         BannerComponent,
-        ShortcutPipe,
-        CategoryShortcutPipe,
-        FeatureShortcutPipe
+        ShortcutPipe
       ],
       providers: [GetCafesService, FilterService]
     })
