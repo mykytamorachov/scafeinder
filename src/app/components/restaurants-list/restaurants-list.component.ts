@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ICafe } from '../../models/cafe.interface';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
-import { CategoryShortcutPipe } from '../../pipes/category-shortcut.pipe';
-import { FeatureShortcutPipe } from '../../pipes/feature-shortcut.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 

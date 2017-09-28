@@ -1,15 +1,22 @@
 .search-form {
-    margin: 30px auto;
-    section {
-        width: 100%;
+  .no-gutter {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .time-size {
+    @media screen and (min-width: "992px") and (max-width: "1200px") {
+      padding-left: 6px;
+      padding-right: 6px;
     }
-    & button {
-        background-color: #000;
-        color: #fff;
-        font-weight: bolder;
-        &:hover {
-            background-color: #fff;
-            color: #000;            
-        }
-    }
+  }
+  margin: 30px auto;
+  & button {
+      background-color: #000;
+      color: #fff;
+      font-weight: bolder;
+      &:hover {
+          background-color: #fff;
+          color: #000;            
+      }
+  }
 }
