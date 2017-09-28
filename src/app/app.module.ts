@@ -44,8 +44,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     BannerComponent,
     Page404Component,
-    UserProfileComponent,
-    NgxPaginationModule
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +53,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgbModule.forRoot(),
     ReactiveFormsModule,
     AppRoutingModule,
-    AngularOpenlayersModule
+    AngularOpenlayersModule,
+    NgxPaginationModule
   ],
   providers: [AuthService, GetCafesService, FilterService, UserService],
   bootstrap: [AppComponent]
