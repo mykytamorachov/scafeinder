@@ -71,8 +71,10 @@ export class SearchFormComponent implements OnInit {
     if (date) {
       const now = new Date();
       this.model = date;
-      if (now.getFullYear() < this.model.year || (now.getMonth() + 1) < this.model.month || now.getDate() < this.model.day) {
-        this.userQuery.date = `${this.model.year}-${this.model.month}-${this.model.day}`;
+      if (now.getFullYear() < this.model.year || (now.getMonth() + 1) < this.model.month || now.getDate() <= this.model.day) {
+        this.userQuery.date = `${this.model.year}-` +
+          `${this.model.month < 10 ? ('0' + this.model.month) : this.model.month}-` +
+          `${this.model.day < 10 ? ('0' + this.model.day) : this.model.day}`;
         return this.dayHours = this.showLeftHours('future');
       }
       return this.dayHours = this.showLeftHours();
@@ -93,7 +95,6 @@ export class SearchFormComponent implements OnInit {
           return restaurant;
         }
       } else if (option.date === new Date().toISOString().slice(0, 10)) {
-        console.log('today...');
         const tables = (restaurant.time.hasOwnProperty(option.time)
           && restaurant.time[option.time].find((table) => table.tableType === +option.tableType));
         return tables && +tables.tableType * +tables.number >= +option.persons;
