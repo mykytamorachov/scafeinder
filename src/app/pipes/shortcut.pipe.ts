@@ -7,13 +7,14 @@ import { ICafe } from '../models/cafe.interface';
 })
 export class ShortcutPipe implements PipeTransform {
 
-  transform(items: ICafe[], cuisineFilter: String[] = []): ICafe[] {
-    if (!items) { return []; }
-    if (!items.length || !cuisineFilter.length) {
-      return items;
+  transform(items: ICafe[], categoryFilter: String[] = [], cuisineFilter: String[] = [], featureFilter: String[] = []): ICafe[] {
+    if (!items || !items.length) {
+      return [];
     } else {
-    const result = items.filter(obj => obj.cuisines.some(key => cuisineFilter.indexOf(key) > -1));
-    return result;
+      const result = items.filter(obj => categoryFilter.every(key => obj.categories.indexOf(key) > -1))
+      .filter(obj => cuisineFilter.every(key => obj.cuisines.indexOf(key) > -1))
+      .filter(obj => featureFilter.every(key => obj.features.indexOf(key) > -1));
+      return result;
     }
   }
 
