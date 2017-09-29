@@ -16,4 +16,5 @@ export interface ICafe {
   web?: String;
   img?: String;
   id?: Number;
+  _id?: String;
 }

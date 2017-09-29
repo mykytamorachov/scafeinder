@@ -86,28 +86,27 @@ export class SearchFormComponent implements OnInit {
     this.getCafesService.getAllCafes()
       .subscribe(
         (restaurants: ICafe[]) => {
-          this.restaurants = restaurants;
+          console.log(restaurants[0]._id);
+          const result = restaurants.filter((restaurant) => {
+            console.log(restaurant);
+            if (restaurant.bookings[option.date]) {
+              let taken = 0;
+              const freeTables = (restaurant.bookings.hasOwnProperty(option.date)
+              && restaurant.bookings[option.date].tables.map((table) => taken += +table.tableType * +table.number));
+
+              if (restaurant.bookings[option.date].capacity >= taken + option.persons) {
+                return restaurant;
+              }
+            } else if (option.date === new Date().toISOString().slice(0, 10)) {
+              const tables = (restaurant.time.hasOwnProperty(option.time)
+              && restaurant.time[option.time].find((table) => table.tableType === +option.tableType));
+              return tables && +tables.tableType * +tables.number >= +option.persons;
+            } else {
+            return restaurant;
+            }
+          });
+          this.filterService.changeCafes(result);
         }
       );
-
-    const result = this.restaurants.filter((restaurant) => {
-      if (restaurant.bookings[option.date]) {
-        let taken = 0;
-        const freeTables = (restaurant.bookings.hasOwnProperty(option.date)
-          && restaurant.bookings[option.date].tables.map((table) => taken += +table.tableType * +table.number));
-
-        if (restaurant.bookings[option.date].capacity >= taken + option.persons) {
-          return restaurant;
-        }
-      } else if (option.date === new Date().toISOString().slice(0, 10)) {
-        const tables = (restaurant.time.hasOwnProperty(option.time)
-          && restaurant.time[option.time].find((table) => table.tableType === +option.tableType));
-        return tables && +tables.tableType * +tables.number >= +option.persons;
-      } else {
-        return restaurant;
-      }
-    });
-
-    this.filterService.changeCafes(result);
   }
 }
