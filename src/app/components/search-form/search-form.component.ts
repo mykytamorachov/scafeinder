@@ -83,7 +83,12 @@ export class SearchFormComponent implements OnInit {
 
   findTables() {
     const option = this.userQuery;
-    this.restaurants = this.getCafesService.getAllCafes();
+    this.getCafesService.getAllCafes()
+      .subscribe(
+        (restaurants: ICafe[]) => {
+          this.restaurants = restaurants;
+        }
+      );
 
     const result = this.restaurants.filter((restaurant) => {
       if (restaurant.bookings[option.date]) {

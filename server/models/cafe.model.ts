@@ -28,4 +28,4 @@ export const CafeSchema: Schema = new Schema({
 }, { versionKey: false });
 
 
-export const Cafe = mongoose.model<ICafeModel>('Cafe', CafeSchema, 'Lviv');
+export const Cafe = mongoose.model<ICafeModel>('Cafe', CafeSchema, 'cafes');
