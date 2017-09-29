@@ -20,11 +20,13 @@ import { Page404Component } from './components/page404/page404.component';
 import { AuthService } from './services/auth/auth.service';
 import { HttpModule } from '@angular/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, NgbModule.forRoot(), ReactiveFormsModule, RouterTestingModule, HttpModule, AngularOpenlayersModule ],
+      imports: [ FormsModule, NgbModule.forRoot(), ReactiveFormsModule, RouterTestingModule, HttpModule, AngularOpenlayersModule,
+        NgxPaginationModule ],
       declarations: [
         AppComponent,
         HeaderComponent,

@@ -7,6 +7,7 @@ import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 describe('RestaurantsListComponent', () => {
   let component: RestaurantsListComponent;
@@ -14,7 +15,7 @@ describe('RestaurantsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpModule],
+      imports: [RouterTestingModule, HttpModule, NgxPaginationModule],
       declarations: [
       RestaurantsListComponent,
       RestaurantItemComponent,

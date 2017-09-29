@@ -25,6 +25,7 @@ import { FilterService } from './services/filter.service';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserService } from './services/user/user.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -52,9 +53,10 @@ import { UserService } from './services/user/user.service';
     NgbModule.forRoot(),
     ReactiveFormsModule,
     AppRoutingModule,
-    AngularOpenlayersModule
+    AngularOpenlayersModule,
+    NgxPaginationModule
   ],
-  providers: [AuthService, GetCafesService, FilterService, UserService ],
+  providers: [AuthService, GetCafesService, FilterService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

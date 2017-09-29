@@ -14,6 +14,7 @@ export class RestaurantsListComponent implements OnInit {
   categoryFilter: String[] = [];
   cuisineFilter: String[] = [];
   featureFilter: String[] = [];
+  p = 1;
 
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) {
 
