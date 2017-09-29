@@ -24,7 +24,7 @@ export class DatepickerComponent implements OnInit {
   }
 
   onSelectDate(date: NgbDateStruct) {
-    if (date != null) {
+    if (date !== null) {
       this.model = date;
       this.selectedDate.emit(this.model);
     }

@@ -35,18 +35,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 4 }, { tableType: 4, number: 3 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 26,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 7,
+          people: 7,
           tableType: 4,
           number: 2
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]
@@ -90,18 +90,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 4 }, { tableType: 4, number: 4 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 28,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 7,
+          people: 7,
           tableType: 4,
           number: 2
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]
@@ -145,18 +145,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 2 }, { tableType: 4, number: 2 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 22,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 7,
+          people: 7,
           tableType: 4,
           number: 2
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]
@@ -200,18 +200,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 5 }, { tableType: 4, number: 4 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 28,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 7,
+          people: 7,
           tableType: 4,
           number: 2
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]
@@ -255,18 +255,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 4 }, { tableType: 4, number: 4 }],
     },
     booked: {
-      '2017-10-4': {
+      '2017-10-04': {
         capacity: 24,
         tables: [{
           userId: 32526871,
           time: '14:00',
-          taken: 13,
+          people: 13,
           tableType: 2,
           number: 7
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 4,
           number: 2
         }]
@@ -310,18 +310,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 4 }, { tableType: 4, number: 4 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 18,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 11,
+          people: 11,
           tableType: 4,
           number: 3
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]
@@ -365,18 +365,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 4 }, { tableType: 4, number: 4 }],
     },
     booked: {
-      '2017-10-4': {
+      '2017-10-04': {
         capacity: 20,
         tables: [{
           userId: 12356878,
           time: '18:00',
-          taken: 4,
+          people: 4,
           tableType: 4,
           number: 1
         }, {
           userId: 82556178,
           time: '19:00',
-          taken: 14,
+          people: 14,
           tableType: 2,
           number: 7
         }]
@@ -420,18 +420,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 4 }, { tableType: 4, number: 4 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 28,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 7,
+          people: 7,
           tableType: 4,
           number: 2
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]
@@ -475,18 +475,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 4 }, { tableType: 4, number: 4 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 26,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 7,
+          people: 7,
           tableType: 4,
           number: 2
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]
@@ -530,18 +530,18 @@ export class GetCafesService {
       '23:00': [{ tableType: 2, number: 0 }, { tableType: 4, number: 0 }],
     },
     booked: {
-      '2017-10-2': {
+      '2017-10-02': {
         capacity: 28,
         tables: [{
           userId: 12356878,
           time: '17:00',
-          taken: 7,
+          people: 7,
           tableType: 4,
           number: 2
         }, {
           userId: 82556178,
           time: '21:00',
-          taken: 5,
+          people: 5,
           tableType: 2,
           number: 3
         }]

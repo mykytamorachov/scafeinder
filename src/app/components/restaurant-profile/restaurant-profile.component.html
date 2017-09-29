@@ -1,9 +1,11 @@
 <div class="container">
+  <hr>
   <div class="row">
     <div class="col-xs-12 col-md-12">
       <h1 class="text-center">{{ restaurant?.name }}</h1>
     </div>
   </div>
+  <hr>
   <div class="row">
     <div class="col-xs-6 col-md-6">
       <img src="{{ restaurant?.img }}" alt="restaurant photo" class="img-fluid">
@@ -48,9 +50,10 @@
           </form>
         </div>
       </div>
+      <hr>
       <div class="row">
           <div class="col-xs-12 col-md-12">
-              Map goes hear {{restaurant?.location.lat}} {{restaurant?.location.lng}}
+              <h5> Restaurant address:  {{restaurant?.address}}</h5>
               <aol-map [width]="undefined" [height]="undefined">
                 <aol-view [zoom]="17">
                     <aol-coordinate [x]="restaurant?.location.lng" [y]="restaurant?.location.lat" [srid]="'EPSG:4326'"></aol-coordinate>
