@@ -86,12 +86,12 @@ export class SearchFormComponent implements OnInit {
     this.restaurants = this.getCafesService.getAllCafes();
 
     const result = this.restaurants.filter((restaurant) => {
-      if (restaurant.booked[option.date]) {
+      if (restaurant.bookings[option.date]) {
         let taken = 0;
-        const freeTables = (restaurant.booked.hasOwnProperty(option.date)
-          && restaurant.booked[option.date].tables.map((table) => taken += +table.tableType * +table.number));
+        const freeTables = (restaurant.bookings.hasOwnProperty(option.date)
+          && restaurant.bookings[option.date].tables.map((table) => taken += +table.tableType * +table.number));
 
-        if (restaurant.booked[option.date].capacity >= taken + option.persons) {
+        if (restaurant.bookings[option.date].capacity >= taken + option.persons) {
           return restaurant;
         }
       } else if (option.date === new Date().toISOString().slice(0, 10)) {

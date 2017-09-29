@@ -19,39 +19,55 @@ describe('RestaurantItemComponent', () => {
     fixture = TestBed.createComponent(RestaurantItemComponent);
     component = fixture.componentInstance;
     component.restaurant = {
-      time: { '0': [{ tableType: 2, number: 2 }, { tableType: 4, number: 1 }],
-      '1': [{ tableType: 2, number: 2 }, { tableType: 4, number: 3 }],
-      '2': [{ tableType: 2, number: 0 }, { tableType: 4, number: 0 }],
-      '4': [{ tableType: 2, number: 0 }, { tableType: 4, number: 0 }],
-      '5': [{ tableType: 2, number: 0 }, { tableType: 4, number: 0 }],
-      '6': [{ tableType: 2, number: 0 }, { tableType: 4, number: 0 }],
-      '7': [{ tableType: 2, number: 0 }, { tableType: 4, number: 0 }],
-      '8': [{ tableType: 2, number: 0 }, { tableType: 4, number: 0 }],
-      '9': [{ tableType: 2, number: 8 }, { tableType: 4, number: 6 }],
-      '10': [{ tableType: 2, number: 8 }, { tableType: 4, number: 6 }],
-      '11': [{ tableType: 2, number: 7 }, { tableType: 4, number: 6 }],
-      '12': [{ tableType: 2, number: 7 }, { tableType: 4, number: 5 }],
-      '13': [{ tableType: 2, number: 7 }, { tableType: 4, number: 2 }],
-      '14': [{ tableType: 2, number: 5 }, { tableType: 4, number: 4 }],
-      '15': [{ tableType: 2, number: 4 }, { tableType: 4, number: 4 }],
-      '16': [{ tableType: 2, number: 5 }, { tableType: 4, number: 5 }],
-      '17': [{ tableType: 2, number: 7 }, { tableType: 4, number: 3 }],
-      '18': [{ tableType: 2, number: 5 }, { tableType: 4, number: 5 }],
-      '19': [{ tableType: 2, number: 5 }, { tableType: 4, number: 3 }],
-      '20': [{ tableType: 2, number: 3 }, { tableType: 4, number: 2 }],
-      '21': [{ tableType: 2, number: 2 }, { tableType: 4, number: 1 }],
-      '22': [{ tableType: 2, number: 1 }, { tableType: 4, number: 0 }],
-      '23': [{ tableType: 2, number: 4 }, { tableType: 4, number: 3 }],
-},
-cuisines: ['Asian', 'Chinese', 'Georgian', 'Italian', 'Japanese', 'Mediterranean', 'Mexican', 'Vegetarian', 'Ukrainian'],
-features: ['hookah', 'karaoke', 'roof terrace', 'live music'],
-categories: ['alcohol-free', 'barbecue', 'cafe', 'coffee house' , 'fast food' , 'lounge bar', 'pizza', 'pub', 'sushi'],
-location: { lat: 49.8438986, lng: 24.0302972 },
-name: 'Львовский рудник кофе',
-rating: 4.7,
-address: 'площа Ринок, 10, Львів',
-img: 'http://www.justlviv.it/theme/photos/1359029728_b8e8ad22f3b4e8ebc07765ed7f3978f69221_b.jpg',
-id: 1
+      time: {
+        '08:00': [{tableType: 2, number: 3}, {tableType: 4, number: 0}],
+        '09:00': [{tableType: 2, number: 3}, {tableType: 4, number: 0}],
+        '10:00': [{tableType: 2, number: 3}, {tableType: 4, number: 0}],
+        '11:00': [{tableType: 2, number: 4}, {tableType: 4, number: 1}],
+        '12:00': [{tableType: 2, number: 3}, {tableType: 4, number: 1}],
+        '13:00': [{tableType: 2, number: 3}, {tableType: 4, number: 1}],
+        '14:00': [{tableType: 2, number: 4}, {tableType: 4, number: 1}],
+        '15:00': [{tableType: 2, number: 3}, {tableType: 4, number: 1}],
+        '16:00': [{tableType: 2, number: 1}, {tableType: 4, number: 1}],
+        '17:00': [{tableType: 2, number: 3}, {tableType: 4, number: 2}],
+        '18:00': [{tableType: 2, number: 4}, {tableType: 4, number: 2}],
+        '19:00': [{tableType: 2, number: 3}, {tableType: 4, number: 2}],
+        '20:00': [{tableType: 2, number: 3}, {tableType: 4, number: 2}],
+        '21:00': [{tableType: 2, number: 2}, {tableType: 4, number: 3}],
+        '22:00': [{tableType: 2, number: 1}, {tableType: 4, number: 3}],
+        '23:00': [{tableType: 2, number: 3}, {tableType: 4, number: 3}],
+        '00:00': [{tableType: 2, number: 0}, {tableType: 4, number: 0}],
+        '01:00': [{tableType: 2, number: 0}, {tableType: 4, number: 0}]
+    },
+    cuisines: ['European', 'Galician', 'Jewish', 'Polish', 'Ukrainian', 'Vegetarian'],
+    features: ['live music', 'movie screenings', 'pet-friendly', 'summer terrace', 'Wi-Fi'],
+    categories: ['luxury restaurant'],
+    bookings: {
+      '2017-10-02': {
+        capacity: 26,
+        tables: [{
+          userId: 12356878,
+          time: '17:00',
+          people: 7,
+          tableType: 4,
+          number: 2
+        }, {
+          userId: 82556178,
+          time: '21:00',
+          people: 5,
+          tableType: 2,
+          number: 3
+        }]
+      }
+    },
+    location: { lat: 49.8422154, lng: 24.0299315 },
+    name: 'Baczewski Restaurant',
+    rating: 4.6,
+    address: '8 Shevska Str., Lviv, Ukraine',
+    phones: ['+38 (098) 224-44-44', '+38 (032) 235-71-81'],
+    web: 'http://kumpelgroup.com/restaurants/baczewski',
+    img: 'https://afisha.lviv.ua/sites/image.life/company624/logo-624-fileffp-name-only-original-3662-kb.jpg',
+    id: 1
     };
     fixture.detectChanges();
   });
