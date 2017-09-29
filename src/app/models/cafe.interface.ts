@@ -13,7 +13,7 @@ export interface ICafe {
     Array<{userId: Number, time: String, people: Number, tableType: Number, number: Number}>}};
   time?: {[propName: string]: Array<{tableType: Number, number: Number}>};
   phones?: String[];
-  web: String;
+  web?: String;
   img?: String;
   id?: Number;
 }
