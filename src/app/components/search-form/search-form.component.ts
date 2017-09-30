@@ -83,26 +83,31 @@ export class SearchFormComponent implements OnInit {
 
   findTables() {
     const option = this.userQuery;
-    this.restaurants = this.getCafesService.getAllCafes();
-
-    const result = this.restaurants.filter((restaurant) => {
-      if (restaurant.booked[option.date]) {
-        let taken = 0;
-        const freeTables = (restaurant.booked.hasOwnProperty(option.date)
-          && restaurant.booked[option.date].tables.map((table) => taken += +table.tableType * +table.number));
-
-        if (restaurant.booked[option.date].capacity >= taken + option.persons) {
-          return restaurant;
+    this.getCafesService.getAllCafes()
+      .subscribe(
+        (restaurants: ICafe[]) => {
+          const result: ICafe[] = [];
+          restaurants.filter((restaurant) => {
+            restaurant.bookings.map((day) => {
+              if (day.date === option.date) {
+                let taken = 0;
+                day.tables.map((table) => taken += +table.tableType * +table.tableAmount);
+                if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +taken + +option.persons) {
+                  result.push(restaurant);
+                } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= taken + option.persons) {
+                  result.push(restaurant);
+                }
+              } else {
+                if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +option.persons) {
+                  result.push(restaurant);
+                } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= +option.persons) {
+                  result.push(restaurant);
+                }
+              }
+            });
+        });
+        this.filterService.changeCafes(result);
         }
-      } else if (option.date === new Date().toISOString().slice(0, 10)) {
-        const tables = (restaurant.time.hasOwnProperty(option.time)
-          && restaurant.time[option.time].find((table) => table.tableType === +option.tableType));
-        return tables && +tables.tableType * +tables.number >= +option.persons;
-      } else {
-        return restaurant;
-      }
-    });
-
-    this.filterService.changeCafes(result);
+      );
   }
 }
