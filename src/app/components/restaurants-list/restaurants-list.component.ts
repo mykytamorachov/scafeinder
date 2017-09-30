@@ -10,7 +10,7 @@ import { FilterService } from '../../services/filter.service';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-  restaurants: ICafe[] = [];
+  restaurants: ICafe[];
   categoryFilter: String[] = [];
   cuisineFilter: String[] = [];
   featureFilter: String[] = [];
@@ -36,13 +36,7 @@ export class RestaurantsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCafesService.getAllCafes()
-      .subscribe(
-        (restaurants: ICafe[]) => {
-          this.restaurants = restaurants;
-        },
-        (error) => console.log(error)
-      );
+    this.restaurants = this.getCafesService.getAllCafes();
     this.filterService.currentCafes.subscribe(data => this.restaurants = data);
   }
 
