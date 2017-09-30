@@ -23,9 +23,12 @@ export const CafeSchema: Schema = new Schema({
   categories: [String],
   cuisines: [String],
   features: [String],
-  tables: [{ tableType: Number, free: Boolean }],
+  bookings: Array,
+  tables: {
+    tableType2: Number,
+    tableType4: Number
+  },
   img: String
 }, { versionKey: false });
 
-
-export const Cafe = mongoose.model<ICafeModel>('Cafe', CafeSchema, 'Lviv');
+export const Cafe = mongoose.model<ICafeModel>('Cafe', CafeSchema, 'cafes');
