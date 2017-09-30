@@ -10,8 +10,7 @@ export class GetCafesService {
   constructor(private http: Http) { }
 
   getAllCafes(): Observable<ICafe[]> {
-    const url = 'http://localhost:3000/cafes';
-    return this.http.get(url)
+    return this.http.get('http://localhost:3000/cafes')
       .map(
         (response: Response) => {
           return response.json();
@@ -20,7 +19,7 @@ export class GetCafesService {
 
   getCafesById(id) {
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('/cafes', {favorites: id}, { headers });
+    return this.http.post('http://localhost:3000/cafes', {favorites: id}, { headers });
     // const restaurants = [];
     // for (let i = 0; i < this.restaurants.length; i++) {
     //   for (let j = 0; j < id.length; j++) {

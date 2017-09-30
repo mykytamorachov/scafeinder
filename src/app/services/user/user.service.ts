@@ -11,7 +11,7 @@ export class UserService {
   getUserData() {
     const userID = {id: localStorage.getItem('id_token')};
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('/profile', userID, { headers });
+    return this.http.post('http://localhost:3000/profile', userID, { headers });
     // .map((response: Response) => {
     //   const data = response.json();
     //   console.log('data  is ', data);

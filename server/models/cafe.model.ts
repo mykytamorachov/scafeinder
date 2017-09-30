@@ -23,6 +23,11 @@ export const CafeSchema: Schema = new Schema({
   categories: [String],
   cuisines: [String],
   features: [String],
+  bookings: Array,
+  tables: {
+    tableType2: Number,
+    tableType4: Number
+  },
   img: String
 }, { versionKey: false });
 
