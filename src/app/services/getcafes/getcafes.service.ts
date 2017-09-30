@@ -566,6 +566,14 @@ export class GetCafesService {
     return this.restaurants.slice();
   }
 
+  getCafeById(id): Observable<ICafe> {
+    return this.http.get('http://localhost:3000/cafes/' + id)
+      .map(
+        (response: Response) => {
+          return response.json();
+      });
+  }
+
   getCafesById(id) {
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post('/cafes', {favorites: id}, { headers });

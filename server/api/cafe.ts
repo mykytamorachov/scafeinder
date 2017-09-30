@@ -14,6 +14,18 @@ export const getCafes = (req: Request, res: Response) => {
         });
 };
 
+export const getCafeById = (req: Request, res: Response) => {
+  Cafe.findById(req.params.cafeId)
+    .then((data) => {
+      if (data) {
+        res.status(200).send(data);
+      } else {
+        res.status(404).send('Not Found!');
+      }
+    })
+    .catch((error) => console.log(error));
+};
+
 export const getCafesById = (req: Request, res: Response) => {
     Cafe.find({ _id: {$in: req.body.favorites} }, (err, cafes) => {
       if (err) { return err; }
