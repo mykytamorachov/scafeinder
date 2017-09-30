@@ -17,7 +17,12 @@ export class RestaurantProfileComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.restaurant = this.getCafesService.getAllCafes().find((obj) => obj.id === +params['id']);
+          this.getCafesService.getAllCafes()
+            .subscribe(
+              (restaurants: ICafe[]) => {
+                this.restaurant = restaurants.find((obj) => obj._id === params['id']);
+              }
+            );
         }
       );
   }
