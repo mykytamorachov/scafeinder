@@ -9,7 +9,6 @@ export class AuthService {
   private BASE_URL = 'http://localhost:3000';
   public token: string;
 
-
   constructor(public router: Router, private http: Http) {
    }
 
