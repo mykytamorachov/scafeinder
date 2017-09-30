@@ -17,6 +17,14 @@ export class GetCafesService {
       });
   }
 
+  getCafeById(id): Observable<ICafe> {
+    return this.http.get('http://localhost:3000/cafes/' + id)
+      .map(
+        (response: Response) => {
+          return response.json();
+      });
+  }
+
   getCafesById(id) {
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post('http://localhost:3000/cafes', {favorites: id}, { headers });

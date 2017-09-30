@@ -21,16 +21,15 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
       this.id = params['id'];
     });
 
-    this.getCafesService.getCafesById([this.id])
+    this.getCafesService.getCafeById(this.id)
       .subscribe(
-        (response: Response) => {
-          const data = response.json();
-          this.restaurant = data.cafes[0];
-          console.log('this.cafes', this.restaurant);
-          console.log('Data in', response.json());
+        (restaurant: ICafe) => {
+          this.restaurant = restaurant;
         },
+        (error) => console.log(error)
       );
   }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
