@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ICafe } from '../../models/cafe.interface';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-restaurant-profile',
@@ -10,20 +11,27 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
 })
 export class RestaurantProfileComponent implements OnInit {
   restaurant: ICafe;
+  id: String;
+  private sub: any;
 
   constructor(private getCafesService: GetCafesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+    this.getCafesService.getCafesById([this.id])
       .subscribe(
-        (params: Params) => {
-          this.getCafesService.getAllCafes()
-            .subscribe(
-              (restaurants: ICafe[]) => {
-                this.restaurant = restaurants.find((obj) => obj._id === params['id']);
-              }
-            );
-        }
+        (response: Response) => {
+          const data = response.json();
+          this.restaurant = data.cafes[0];
+          console.log('this.cafes', this.restaurant);
+          console.log('Data in', response.json());
+        },
       );
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
