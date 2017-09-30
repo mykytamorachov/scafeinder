@@ -77,7 +77,7 @@ app.post('/login', userController.postLogin);
 app.get('/logout', verifyToken, userController.logout);
 app.get('/register', verifyToken, userController.getSignup);
 app.post('/register', userController.postSignup);
-app.get('/cafes', cafeController.getCafes);
+app.get('/cafes', verifyToken, cafeController.getCafes);
 app.post('/profile',  userController.getUserDataById);
 app.post('/cafes',  cafeController.getCafesById);
 app.get('/cafes/:cafeId', cafeController.getCafeById);

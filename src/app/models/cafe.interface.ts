@@ -9,10 +9,9 @@ export interface ICafe {
   categories?: String[];
   cuisines?: String[];
   features?: String[];
-  bookings?: [{date: String, tables: Array<{userId: String, time: String, people: Number, tableType: Number, tableAmount: Number}>}];
-  tables?: {tableType2: Number, tableType4: Number};
-  phones?: String[];
-  web?: String;
+  booked?: {[propName: string]: {capacity: Number, tables:
+    Array<{userId: Number, time: String, people: Number, tableType: Number, number: Number}>}};
+  time?: {[propName: string]: Array<{tableType: Number, number: Number}>};
   img?: String;
-  _id?: String;
+  id?: Number;
 }

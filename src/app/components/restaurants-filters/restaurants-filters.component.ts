@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
-import { ICafe } from '../../models/cafe.interface';
 
 @Component({
   selector: 'app-restaurants-filters',
@@ -9,9 +8,9 @@ import { ICafe } from '../../models/cafe.interface';
   styleUrls: ['./restaurants-filters.component.scss']
 })
 export class RestaurantsFiltersComponent implements OnInit {
-  categories: String[] = [];
-  cuisines: String[] = [];
-  features: String[] = [];
+  categories: String[];
+  cuisines: String[];
+  features: String[];
   categoryFilter: String[] = [];
   cuisineFilter: String[] = [];
   featureFilter: String[] = [];
@@ -19,16 +18,9 @@ export class RestaurantsFiltersComponent implements OnInit {
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) { }
 
   ngOnInit() {
-    this.getCafesService.getAllCafes()
-      .subscribe(
-        (restaurants: ICafe[]) => {
-          const data = restaurants;
-          this.categories = this.getCategories(data);
-          this.cuisines = this.getCuisines(data);
-          this.features = this.getFeatures(data);
-        },
-        (error) => console.log(error)
-      );
+    this.categories = this.getCafesService.getCategories();
+    this.cuisines = this.getCafesService.getCuisines();
+    this.features = this.getCafesService.getFeatures();
   }
 
   updateCategoryFilter(option, event) {
@@ -66,32 +58,4 @@ export class RestaurantsFiltersComponent implements OnInit {
     }
     this.filterService.updatedFeatureFilter.next(this.featureFilter);
   }
-
-  getCuisines(restaurants): String[] {
-    const cuisines = [];
-    restaurants.forEach((restaurant) => restaurant.cuisines.
-      forEach((cuisine) => {if (cuisines.indexOf(cuisine) === -1) {
-        cuisines.push(cuisine);
-      }}));
-    return cuisines.sort();
-  }
-
-  getFeatures(restaurants): String[] {
-    const features = [];
-    restaurants.forEach((restaurant) => restaurant.features.
-      forEach((feature) => {if (features.indexOf(feature) === -1) {
-        features.push(feature);
-      }}));
-    return features.sort();
-  }
-
-  getCategories(restaurants): String[] {
-    const categories = [];
-    restaurants.forEach((restaurant) => restaurant.categories.
-      forEach((category) => {if (categories.indexOf(category) === -1) {
-        categories.push(category);
-      }}));
-    return categories.sort();
-  }
-
 }
