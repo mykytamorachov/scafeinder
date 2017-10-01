@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RestaurantItemComponent } from './restaurant-item.component';
+import { RatingComponent } from '../rating/rating.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RestaurantItemComponent', () => {
@@ -10,7 +11,10 @@ describe('RestaurantItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ RestaurantItemComponent ]
+      declarations: [
+        RestaurantItemComponent,
+        RatingComponent
+      ]
     })
     .compileComponents();
   }));

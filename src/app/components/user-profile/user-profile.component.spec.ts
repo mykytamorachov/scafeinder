@@ -4,6 +4,8 @@ import { UserProfileComponent } from './user-profile.component';
 import { HttpModule } from '@angular/http';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { RestaurantItemComponent } from '../restaurant-item/restaurant-item.component';
+import { RatingComponent } from '../rating/rating.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -15,7 +17,11 @@ describe('UserProfileComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule, NgbModule, RouterTestingModule],
-      declarations: [ UserProfileComponent, RestaurantItemComponent ],
+      declarations: [
+        UserProfileComponent,
+        RestaurantItemComponent,
+        RatingComponent
+      ],
       providers: [ UserService, GetCafesService, NgbTabsetConfig ]
     })
     .compileComponents();

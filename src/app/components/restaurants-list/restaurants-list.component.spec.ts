@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RestaurantItemComponent } from '../restaurant-item/restaurant-item.component';
 import { RestaurantsListComponent } from './restaurants-list.component';
+import { RatingComponent } from '../rating/rating.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
@@ -19,7 +20,8 @@ describe('RestaurantsListComponent', () => {
       declarations: [
       RestaurantsListComponent,
       RestaurantItemComponent,
-      ShortcutPipe
+      ShortcutPipe,
+      RatingComponent
       ],
       providers: [GetCafesService, FilterService]
     })

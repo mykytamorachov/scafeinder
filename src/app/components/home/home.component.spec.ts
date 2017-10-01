@@ -15,6 +15,7 @@ import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RatingComponent } from '../rating/rating.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -31,7 +32,8 @@ describe('HomeComponent', () => {
         DatepickerComponent,
         SearchFormComponent,
         BannerComponent,
-        ShortcutPipe
+        ShortcutPipe,
+        RatingComponent
       ],
       providers: [GetCafesService, FilterService]
     })
