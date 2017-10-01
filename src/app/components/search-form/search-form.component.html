@@ -15,7 +15,10 @@
             <select class="form-control col-12 col-sm-6 col-md-6 col-lg-1 time-size" name="time" [(ngModel)]="userQuery.time">
               <option class="dropdown-item" *ngFor="let time of dayHours" value={{time.hour}}:{{time.minute}}>{{time.hour}}:{{time.minute}}</option>
             </select>
-            <input class="form-control col-12 col-sm-6 col-md-6 col-lg-3" name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
+            <input class="form-control col-12 col-sm-6 col-md-6 col-lg-3" name="placeName" list="restaurantList" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
+            <datalist id="restaurantList">
+              <option *ngFor="let restaurant of restaurants">{{ restaurant.name }}</option>
+            </datalist>
             <button class="form-control btn btn-primary col-12 col-sm-6 col-md-6 col-lg-2" type="submit">Find a table</button>
           </form>
         </div>

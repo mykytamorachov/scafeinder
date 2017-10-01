@@ -20,3 +20,11 @@
       }
   }
 }
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+#restaurantList {
+  font-size: 14px;
+}

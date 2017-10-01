@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12" *ngIf="restaurants.length; else noResults">
-    <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter | paginate: { itemsPerPage: 7, currentPage: p }" [restaurant]="restaurantItem"></app-restaurant-item>
+    <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter | paginate: { itemsPerPage: 10, currentPage: p }" [restaurant]="restaurantItem"></app-restaurant-item>
   </div>
   <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
   <ng-template #noResults>

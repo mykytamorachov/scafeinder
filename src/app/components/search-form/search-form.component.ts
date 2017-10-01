@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit {
   dayHours: any;
   model: NgbDateStruct;
   searchform: FormGroup;
-  userQuery = new UserQuery(7, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 2) + ':00'), 'Cosa Nostra');
+  userQuery = new UserQuery(2, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 2) + ':00'), '');
 
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
     this._buildForm();
@@ -39,6 +39,13 @@ export class SearchFormComponent implements OnInit {
     this.company = company;
     this.dayHours = dayHours;
     this.dayHours = this.showLeftHours();
+    this.getCafesService.getAllCafes()
+      .subscribe(
+        (restaurants: ICafe[]) => {
+          this.restaurants = restaurants;
+        },
+        (error) => console.log(error)
+      );
   }
 
   get diagnostic() {
