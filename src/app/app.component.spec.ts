@@ -21,6 +21,7 @@ import { AuthService } from './services/auth/auth.service';
 import { HttpModule } from '@angular/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RatingComponent } from './components/rating/rating.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -42,7 +43,8 @@ describe('AppComponent', () => {
         LoginComponent,
         RegisterComponent,
         BannerComponent,
-        Page404Component
+        Page404Component,
+        RatingComponent
       ],
       providers: [ AuthService ]
     }).compileComponents();

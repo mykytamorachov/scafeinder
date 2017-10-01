@@ -26,6 +26,7 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserService } from './services/user/user.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     BannerComponent,
     Page404Component,
-    UserProfileComponent
+    UserProfileComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
