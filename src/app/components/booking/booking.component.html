@@ -1,0 +1,17 @@
+<form class="form" #searchForm="ngForm" (ngSubmit)="bookTables()">
+  <select class="form-control col-12 col-sm-12 col-md-12 col-lg-12" name="persons" [(ngModel)]="userQuery.persons">
+    <option class="dropdown-item" value="1">1 person</option>
+    <option class="dropdown-item" *ngFor="let person of company" value={{person}}>{{person}} people</option>
+  </select>
+  <select class="form-control col-12 col-sm-12 col-md-12 col-lg-12" name="tableType" [(ngModel)]="userQuery.tableType">
+    <option class="dropdown-item" value="2">2-person table</option>
+    <option class="dropdown-item" value="4">4-person table</option>
+  </select>
+  <app-datepicker class="col-12 col-sm-12 col-md-12 col-lg-12 no-gutter" (selectedDate)="checkSelectedDate($event)"></app-datepicker>
+  <select class="form-control col-12 col-sm-12 col-md-12 col-lg-12 time-size" name="time" [(ngModel)]="userQuery.time">
+    <option class="dropdown-item" *ngFor="let time of dayHours" value={{time.hour}}:{{time.minute}}>{{time.hour}}:{{time.minute}}</option>
+  </select>
+  <input class="form-control col-12 col-sm-12 col-md-12 col-lg-12" disabled name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
+  <button class="form-control btn btn-primary col-12 col-sm-12 col-md-12 col-lg-12" type="submit">Book</button>
+</form>
+<pre><b>User input:</b>{{diagnostic}}</pre>
