@@ -27,8 +27,12 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserService } from './services/user/user.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
+<<<<<<< HEAD
 import { BookingComponent } from './components/booking/booking.component';
 import { BookingService } from './services/booking/booking.service';
+=======
+import { UniquePipe } from './pipes/unique.pipe';
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { BookingService } from './services/booking/booking.service';
     Page404Component,
     UserProfileComponent,
     RatingComponent,
+<<<<<<< HEAD
     BookingComponent
+=======
+    UniquePipe
+>>>>>>> master
   ],
   imports: [
     BrowserModule,

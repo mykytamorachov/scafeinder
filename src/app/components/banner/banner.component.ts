@@ -10,7 +10,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 export class BannerComponent implements OnInit {
 
   constructor(config: NgbCarouselConfig) {
-    config.interval = 4000;
+    config.interval = 7000;
   }
 
   ngOnInit() {
