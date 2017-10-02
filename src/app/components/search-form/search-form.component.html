@@ -1,28 +1,21 @@
-<main>
-  <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-md-12">
-          <form class="form-inline justify-content-center search-form" #searchForm="ngForm" (ngSubmit)="findTables()">
-            <select class="form-control col-12 col-sm-6 col-md-6 col-lg-2" name="persons" [(ngModel)]="userQuery.persons">
-              <option class="dropdown-item" value="1">1 person</option>
-              <option class="dropdown-item" *ngFor="let person of company" value={{person}}>{{person}} people</option>
-            </select>
-            <select class="form-control col-12 col-sm-6 col-md-6 col-lg-2" name="tableType" [(ngModel)]="userQuery.tableType">
-              <option class="dropdown-item" value="2">2-person table</option>
-              <option class="dropdown-item" value="4">4-person table</option>
-            </select>
-            <app-datepicker class="col-12 col-sm-6 col-md-6 col-lg-2 no-gutter" (selectedDate)="checkSelectedDate($event)"></app-datepicker>
-            <select class="form-control col-12 col-sm-6 col-md-6 col-lg-1 time-size" name="time" [(ngModel)]="userQuery.time">
-              <option class="dropdown-item" *ngFor="let time of dayHours" value={{time.hour}}:{{time.minute}}>{{time.hour}}:{{time.minute}}</option>
-            </select>
-            <input class="form-control col-12 col-sm-6 col-md-6 col-lg-3" name="placeName" list="restaurantList" placeholder="Restaurant" type="text" [(ngModel)]="userQuery.placeName">
-            <datalist id="restaurantList">
-              <option *ngFor="let restaurant of restaurants | unique">{{ restaurant }}</option>
-            </datalist>
-            <button class="form-control btn btn-primary col-12 col-sm-6 col-md-6 col-lg-2" type="submit">Find a table</button>
-          </form>
-        </div>
-        <pre><b>User input:</b>{{diagnostic}}</pre>
-      </div>
-  </div>
+<main>  
+  <form class="form-inline justify-content-center search-form" #searchForm="ngForm" (ngSubmit)="findTables()">
+    <select class="form-control col-12 col-sm-6 col-md-6 col-lg-2" name="persons" [(ngModel)]="userQuery.persons">
+      <option class="dropdown-item" value="1">1 person</option>
+      <option class="dropdown-item" *ngFor="let person of company" value={{person}}>{{person}} people</option>
+    </select>
+    <select class="form-control col-12 col-sm-6 col-md-6 col-lg-2" name="tableType" [(ngModel)]="userQuery.tableType">
+      <option class="dropdown-item" value="2">2-person table</option>
+      <option class="dropdown-item" value="4">4-person table</option>
+    </select>
+    <app-datepicker class="col-12 col-sm-6 col-md-6 col-lg-2 no-gutter" (selectedDate)="checkSelectedDate($event)"></app-datepicker>
+    <select class="form-control col-12 col-sm-6 col-md-6 col-lg-1 time-size" name="time" [(ngModel)]="userQuery.time">
+      <option class="dropdown-item" *ngFor="let time of dayHours" value={{time.hour}}:{{time.minute}}>{{time.hour}}:{{time.minute}}</option>
+    </select>
+    <input class="form-control col-12 col-sm-6 col-md-6 col-lg-3" name="placeName" placeholder="Location" type="text" [(ngModel)]="userQuery.placeName">
+    <datalist id="restaurantList">
+      <option *ngFor="let restaurant of restaurants | unique">{{ restaurant }}</option>
+    </datalist>
+    <button class="form-control btn btn-primary col-12 col-sm-6 col-md-6 col-lg-2" type="submit">Find a table</button>
+  </form>
 </main>
