@@ -48,10 +48,6 @@ export class SearchFormComponent implements OnInit {
       );
   }
 
-  get diagnostic() {
-    return JSON.stringify(this.userQuery);
-  }
-
   showLeftHours(day = 'today') {
     let hoursStr;
     const currentDate = new Date();
