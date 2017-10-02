@@ -22,6 +22,7 @@ import { HttpModule } from '@angular/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
+import { BookingComponent } from './components/booking/booking.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -44,7 +45,8 @@ describe('AppComponent', () => {
         RegisterComponent,
         BannerComponent,
         Page404Component,
-        RatingComponent
+        RatingComponent,
+        BookingComponent
       ],
       providers: [ AuthService ]
     }).compileComponents();

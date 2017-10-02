@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-
+import { Router } from '@angular/router';
 import { company, dayHours, UserQuery } from '../../components/search-form/data-search-form';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
-import { FilterService } from '../../services/filter.service';
 import { ICafe } from '../../models/cafe.interface';
 import { ActivatedRoute, Params } from '@angular/router';
+import { BookingService } from '../../services/booking/booking.service';
 
 @Component({
   selector: 'app-booking',
@@ -25,8 +25,8 @@ export class BookingComponent implements OnInit {
   restaurant: ICafe;
   id: String;
   private sub: any;
-  constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService,
-    private route: ActivatedRoute) {
+  constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService,
+    private route: ActivatedRoute, private book: BookingService) {
     this._buildForm();
   }
 
@@ -49,13 +49,14 @@ export class BookingComponent implements OnInit {
 
     this.getCafesService.getCafeById(this.id)
       .subscribe(
-        (restaurant: ICafe) => {
-          this.restaurant = restaurant;
-          this.userQuery.placeName = String(restaurant.name);
-        },
-        (error) => console.log(error)
+      (restaurant: ICafe) => {
+        this.restaurant = restaurant;
+        console.log(JSON.stringify(restaurant, null, 2));
+        this.userQuery.placeName = String(restaurant.name);
+      },
+      (error) => console.log(error)
       );
-    }
+  }
 
   get diagnostic() {
     return JSON.stringify(this.userQuery);
@@ -78,7 +79,7 @@ export class BookingComponent implements OnInit {
 
     return (this.dayHours.map((item) => {
       if (item.hour > hoursStr) {
-        return {hour: item.hour, minute: item.minute};
+        return { hour: item.hour, minute: item.minute };
       }
     })).slice((currentHours + 1) * 2);
   }
@@ -97,38 +98,76 @@ export class BookingComponent implements OnInit {
     }
   }
 
-  findTables() {
-    const option = this.userQuery;
-    this.getCafesService.getAllCafes()
-      .subscribe(
-        (restaurants: ICafe[]) => {
-          const result: ICafe[] = [];
-          restaurants.filter((restaurant) => {
-            restaurant.bookings.map((day) => {
-              if (day.date === option.date) {
-                let taken = 0;
-                day.tables.map((table) => taken += +table.tableType * +table.tableAmount);
-                if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +taken + +option.persons) {
-                  result.push(restaurant);
-                } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= taken + option.persons) {
-                  result.push(restaurant);
-                }
-              } else {
-                if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +option.persons) {
-                  result.push(restaurant);
-                } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= +option.persons) {
-                  result.push(restaurant);
-                }
-              }
-            });
-        });
-        this.filterService.changeCafes(result);
+  getBookedTables(restaurant: ICafe, date: String) {
+    let bookedTablesType2 = 0;
+    let bookedTablesType4 = 0;
+    let isBookedOnThisDay = false;
+    // check is someone book on this date
+    for (let i = 0; i < restaurant.bookings.length; i++) {
+      if (restaurant.bookings[i].date === date) {
+        isBookedOnThisDay = true;
+      }
+    }
+    // return amount of free tables
+    if (!isBookedOnThisDay) {
+      return {
+        bookedTablesType2: 0,
+        bookedTablesType4: 0
+      };
+    } else {
+      console.log('Someone booked');
+      restaurant.bookings.find((item) => item.date === date)
+        .tables.forEach((value) => {
+          if (value.tableType === 2) {
+            bookedTablesType2 += (+value.tableAmount);
+          } else {
+            bookedTablesType4 += (+value.tableAmount);
+          }
         }
-      );
+        );
+        console.log(`booked ${bookedTablesType2} ${bookedTablesType4}`);
+      return {
+        bookedTablesType2: bookedTablesType2,
+        bookedTablesType4: bookedTablesType4
+      };
+    }
   }
 
-  bookTables() {
-    const bookTables = Math.round(this.userQuery.persons / this.userQuery.tableType);
-    console.log(`I have book ${bookTables} in ${this.restaurant.name}`);
+  bookTables(): void {
+    const bookedTables = this.getBookedTables(this.restaurant, this.userQuery.date);
+    const allTablesType2: number = +this.restaurant.tables.tableType2;
+    const allTablesType4: number = +this.restaurant.tables.tableType4;
+    const freeTablesType2 = allTablesType2 - bookedTables.bookedTablesType2;
+    const freeTablesType4 = allTablesType4 - bookedTables.bookedTablesType4;
+    const bookingData = {
+      resId: '',
+      userId: '',
+      date: '',
+      time: '',
+      people: 0,
+      tableType: 0,
+      tableAmount: 0
+    };
+    bookingData.resId = String(this.restaurant._id);
+    bookingData.date = this.userQuery.date;
+    bookingData.time = this.userQuery.time;
+    bookingData.people = this.userQuery.persons;
+    bookingData.tableType = this.userQuery.tableType;
+    bookingData.tableAmount = (Math.round(this.userQuery.persons / this.userQuery.tableType) === 0) ? 1 :
+    Math.round(this.userQuery.persons / this.userQuery.tableType);
+    console.log(`free tables 4: ${freeTablesType4} 2 : ${freeTablesType2}`);
+    console.log(this.restaurant.bookings);
+    if (bookingData.tableAmount > freeTablesType4) {
+      console.log(`Can't book, Left TYPE4-${freeTablesType4}, and you want ${bookingData.tableAmount}`);
+    } else {
+      console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
+      this.book.booking(bookingData);
+    }
+    if (bookingData.tableAmount > freeTablesType2) {
+      console.log(`Can't book, Left TYPE2-${freeTablesType2}, and you want ${bookingData.tableAmount}`);
+    } else {
+      console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
+      this.book.booking(bookingData);
+    }
   }
 }

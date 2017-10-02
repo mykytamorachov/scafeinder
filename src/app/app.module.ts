@@ -28,6 +28,7 @@ import { UserService } from './services/user/user.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { BookingService } from './services/booking/booking.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { BookingComponent } from './components/booking/booking.component';
     AngularOpenlayersModule,
     NgxPaginationModule
   ],
-  providers: [AuthService, GetCafesService, FilterService, UserService],
+  providers: [AuthService, GetCafesService, FilterService, UserService, BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,11 @@ import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
+import { BookingComponent } from '../../components//booking/booking.component';
+import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
+import { BookingService } from '../../services/booking/booking.service';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+
 
 describe('RestaurantProfileComponent', () => {
   let component: RestaurantProfileComponent;
@@ -13,9 +18,9 @@ describe('RestaurantProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RestaurantProfileComponent ],
-      imports: [ HttpModule, RouterTestingModule, NgbModule, AngularOpenlayersModule ],
-      providers: [ GetCafesService, NgbTabsetConfig ]
+      declarations: [ RestaurantProfileComponent, BookingComponent, DatepickerComponent ],
+      imports: [FormsModule, ReactiveFormsModule, HttpModule, RouterTestingModule, NgbModule.forRoot(), AngularOpenlayersModule ],
+      providers: [ GetCafesService, NgbTabsetConfig, BookingService]
     })
     .compileComponents();
   }));

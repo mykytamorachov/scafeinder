@@ -4,6 +4,7 @@ import { ICafe } from '../../models/cafe.interface';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { Response } from '@angular/http';
 
+
 @Component({
   selector: 'app-restaurant-profile',
   templateUrl: './restaurant-profile.component.html',
