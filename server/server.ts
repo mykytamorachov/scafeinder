@@ -78,8 +78,8 @@ app.get('/logout', verifyToken, userController.logout);
 app.get('/register', verifyToken, userController.getSignup);
 app.post('/register', userController.postSignup);
 app.get('/cafes', cafeController.getCafes);
-app.post('/profile', userController.getUserDataById);
-app.post('/cafes', cafeController.getCafesById);
+app.get('/profile/:id', userController.getUserDataById);
+app.put('/profile/:id', userController.updateUserData);
 app.get('/cafes/:cafeId', cafeController.getCafeById);
 
 // OAuth authentication routes. (Sign in)

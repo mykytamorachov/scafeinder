@@ -17,8 +17,6 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.getFavoritesCafes(['59cce01feb076382288c488a', '59cce05aeb076382288c488d']);
-    // this.restaurants = this.getCafesService.getCafesById(["59cce01feb076382288c488a", "59cce05aeb076382288c488d"]);
   }
 
   getUser() {
@@ -28,17 +26,18 @@ export class UserProfileComponent implements OnInit {
         this.user = data.user;
         console.log('this.user', this.user);
        console.log('Data in profile', response.json());
+       this.getFavoritesCafes(this.user.favorites);
       },
       (err) => console.log('err ', err)
    );
   }
+
   getFavoritesCafes(id) {
-    this.getCafesService.getCafesById(id).subscribe(
-      (response: Response) => {
-        const data = response.json();
-        this.restaurants = data.cafes;
+    this.getCafesService.getCafeById(id).subscribe(
+      (restaurant: ICafe[]) => {
+        console.log(restaurant);
+        this.restaurants = restaurant;
         console.log('this.cafes', this.restaurants);
-       console.log('Data in', response.json());
       },
       (err) => console.log('err ', err)
    );

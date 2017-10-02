@@ -22,7 +22,7 @@ export class AuthService {
       if (data.status === 'success' && data.token) {
         console.log('data.token in login is ', data.token);
         // localStorage.setItem('currentUser', data.token);
-        const expiresAt = JSON.stringify(100000 + new Date().getTime());
+        const expiresAt = JSON.stringify(600000 + new Date().getTime());
         localStorage.setItem('access_token', data.token);
         localStorage.setItem('id_token', data.id);
         localStorage.setItem('expires_at', expiresAt);
