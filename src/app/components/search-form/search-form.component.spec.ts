@@ -50,9 +50,11 @@ describe('SearchFormComponent', () => {
   it('checkSelectedDate method should be checked with the current date', async() => {
     const now = {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()};
     component.checkSelectedDate(now);
+    const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 10);
     fixture.detectChanges();
 
-    expect(component.userQuery.date).toEqual(new Date().toISOString().slice(0, 10));
+    expect(component.userQuery.date).toEqual(localISOTime);
   });
 
 });
