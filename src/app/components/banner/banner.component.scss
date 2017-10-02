@@ -1,0 +1,18 @@
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  min-height: 50%;
+}
+
+.carousel-caption p {
+  font-size: 1.2em;
+}
+
+.carousel-inner, .carousel-inner > .carousel-item {
+  max-width: 100% !important;
+  height: auto;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  height: auto !important;
+}
