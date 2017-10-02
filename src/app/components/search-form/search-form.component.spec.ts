@@ -38,16 +38,6 @@ describe('SearchFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show restraunts', async() => {
-    spyOn(getCafesService, 'getAllCafes')
-      .and.callThrough();
-
-    component.findTables();
-    fixture.detectChanges();
-
-    expect(getCafesService.getAllCafes).toHaveBeenCalled();
-  });
-
   it('checkSelectedDate method should be checked with the future date', async() => {
     component.checkSelectedDate({year: 2037, month: 11, day: 14});
     fixture.detectChanges();
