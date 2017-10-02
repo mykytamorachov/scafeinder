@@ -27,6 +27,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserService } from './services/user/user.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
+import { UniquePipe } from './pipes/unique.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { RatingComponent } from './components/rating/rating.component';
     BannerComponent,
     Page404Component,
     UserProfileComponent,
-    RatingComponent
+    RatingComponent,
+    UniquePipe
   ],
   imports: [
     BrowserModule,
