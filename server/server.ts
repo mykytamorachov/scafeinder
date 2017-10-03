@@ -2,6 +2,7 @@
 // Get dependencies
 import * as express from 'express';
 import * as session from 'express-session';
+import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as passport from 'passport';
@@ -71,12 +72,11 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname), { maxAge: 31557600000 }));
 
 // Primary app routes.
-// app.get('/', homeController.index);
-app.get('/login', verifyToken, userController.getLogin);
-app.post('/login', userController.postLogin);
+app.get('/login', userController.getLogin);
+app.post('/login', verifyToken, userController.postLogin);
 app.get('/logout', verifyToken, userController.logout);
-app.get('/register', verifyToken, userController.getSignup);
-app.post('/register', userController.postSignup);
+app.get('/register', userController.getSignup);
+app.post('/register', verifyToken, userController.postSignup);
 app.get('/cafes', cafeController.getCafes);
 app.get('/profile/:id', userController.getUserDataById);
 app.put('/profile/:id', userController.updateUserData);
@@ -87,6 +87,10 @@ app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthor
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
   res.redirect('/');
+});
+
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname) + '/index.html');
 });
 
 // Error Handler.

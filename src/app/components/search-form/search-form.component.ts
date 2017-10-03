@@ -63,11 +63,11 @@ export class SearchFormComponent implements OnInit {
       return dayHours;
     }
 
-    return (this.dayHours.map((item) => {
+    return (this.dayHours.filter((item) => {
       if (item > hoursStr) {
         return item;
       }
-    })).slice((currentHours + 2));
+    }));
   }
 
   public checkSelectedDate(date: NgbDateStruct) {
