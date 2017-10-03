@@ -23,11 +23,8 @@ import { HttpModule } from '@angular/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
-<<<<<<< HEAD
 import { BookingComponent } from './components/booking/booking.component';
-=======
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
->>>>>>> master
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

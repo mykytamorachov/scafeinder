@@ -7,6 +7,7 @@ import { BookingService } from '../../services/booking/booking.service';
 import { BookingComponent } from './booking.component';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 describe('BookingComponent', () => {
   let component: BookingComponent;
@@ -14,7 +15,7 @@ describe('BookingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule ],
+      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, AngularFontAwesomeModule ],
       providers: [BookingService, GetCafesService],
       declarations: [ BookingComponent, DatepickerComponent ]
     })
