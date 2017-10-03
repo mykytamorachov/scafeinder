@@ -80,7 +80,7 @@ app.post('/register', userController.postSignup);
 app.get('/cafes', cafeController.getCafes);
 app.get('/profile/:id', userController.getUserDataById);
 app.put('/profile/:id', userController.updateUserData);
-app.get('/cafes/:cafeId', cafeController.getCafeById);
+app.get('/cafe/:cafeId', cafeController.getCafeById);
 
 // OAuth authentication routes. (Sign in)
 app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);

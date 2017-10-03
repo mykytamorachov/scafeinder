@@ -18,7 +18,7 @@ export class GetCafesService {
   }
 
   getCafeById(id): Observable<ICafe[]> {
-    return this.http.get('http://localhost:3000/cafes/' + id)
+    return this.http.get('http://localhost:3000/cafe/' + id)
       .map(
         (response: Response) => {
           return response.json();

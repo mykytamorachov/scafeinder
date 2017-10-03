@@ -7,6 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { UserService } from '../../services/user/user.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 describe('RestaurantProfileComponent', () => {
   let component: RestaurantProfileComponent;
@@ -16,7 +17,7 @@ describe('RestaurantProfileComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ RestaurantProfileComponent ],
       imports: [ HttpModule, RouterTestingModule, NgbModule, AngularOpenlayersModule ],
-      providers: [ GetCafesService, NgbTabsetConfig, UserService ]
+      providers: [ GetCafesService, NgbTabsetConfig, UserService, AuthService ]
     })
     .compileComponents();
   }));

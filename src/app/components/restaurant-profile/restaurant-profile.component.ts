@@ -5,6 +5,7 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { Response } from '@angular/http';
 import { UserService } from '../../services/user/user.service';
 import { IUser } from '../../models/user.model';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-restaurant-profile',
@@ -17,8 +18,10 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
   private sub: any;
   user: IUser;
   showAddToFavorites: boolean;
+  indexOfFavorite: number;
 
-  constructor(private userService: UserService, private getCafesService: GetCafesService, private route: ActivatedRoute) { }
+  constructor(public auth: AuthService, private userService: UserService,
+    private getCafesService: GetCafesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -52,8 +55,9 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
 
   isRestaurantInFavorites(): boolean {
     let found = false;
-    this.user.favorites.forEach(element => {
+    this.user.favorites.forEach((element, index) => {
       if (element === this.id) {
+        this.indexOfFavorite = index;
         found = true;
       }
     });
@@ -61,10 +65,21 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
   }
 
   addToFavorites() {
+    this.showAddToFavorites = true;
     this.user.favorites.push(this.id);
     this.userService.updateUserData({favorites: this.user.favorites}).subscribe(
       (response: Response) => {
-        this.showAddToFavorites = false;
+       console.log('response', response.json());
+      },
+      (err) => console.log('err ', err)
+   );
+  }
+
+  removeFromFavorites() {
+    this.showAddToFavorites = false;
+    this.user.favorites.splice(this.indexOfFavorite, 1);
+    this.userService.updateUserData({favorites: this.user.favorites}).subscribe(
+      (response: Response) => {
        console.log('response', response.json());
       },
       (err) => console.log('err ', err)
