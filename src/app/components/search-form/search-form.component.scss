@@ -1,19 +1,28 @@
+.addons {
+  background-color: #292b2c;
+  border-radius: initial;
+  color: #fff;
+  width: 40px;
+}
+
 .search-form {
   .no-gutter {
     padding-left: 0;
     padding-right: 0;
   }
-  .time-size {
+  .table-size {
     @media screen and (min-width: "992px") and (max-width: "1200px") {
-      padding-left: 6px;
-      padding-right: 6px;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
   margin: 30px auto;
   & button {
-      background-color: #000;
+      background-color: #292b2c;
+      border-radius: 0;
       color: #fff;
-      font-weight: bolder;
+      font-weight: 900;
+      letter-spacing: 5px;
       &:hover {
           background-color: #fff;
           color: #000;            

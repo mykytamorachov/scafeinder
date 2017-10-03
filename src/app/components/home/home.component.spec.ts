@@ -17,6 +17,7 @@ import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from '../rating/rating.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -24,7 +25,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, NgxPaginationModule ],
+      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, NgxPaginationModule,
+        AngularFontAwesomeModule ],
       declarations: [
         HomeComponent,
         RestaurantsFiltersComponent,
