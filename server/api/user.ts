@@ -14,12 +14,26 @@ export const getLogin = (req: Request, res: Response) => {
   res.json({msg: `It's a login page`});
 };
 
+// * GET User byId.
 export const getUserDataById = (req: Request, res: Response) => {
-  User.findOne({ _id: req.body.id }, (err, existingUser) => {
+  User.findById(req.params.id, (err, existingUser) => {
     if (err) { return err; }
     if (existingUser) {
       console.log('user found');
       res.json({ user: existingUser });
+    }
+  });
+};
+
+// *Update  User.
+export const updateUserData = (req: Request, res: Response) => {
+  console.log('request body', req.body);
+  console.log('request params', req.params.id);
+  User.update({_id: req.params.id}, req.body, (err, existingUser) => {
+    if (err) { return err; }
+    if (existingUser) {
+      console.log('user found', existingUser);
+      res.json(existingUser);
     }
   });
 };
