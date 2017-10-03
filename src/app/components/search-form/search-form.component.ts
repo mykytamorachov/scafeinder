@@ -64,10 +64,10 @@ export class SearchFormComponent implements OnInit {
     }
 
     return (this.dayHours.map((item) => {
-      if (item.hour > hoursStr) {
-        return {hour: item.hour, minute: item.minute};
+      if (item > hoursStr) {
+        return item;
       }
-    })).slice((currentHours + 1) * 2);
+    })).slice((currentHours + 2));
   }
 
   public checkSelectedDate(date: NgbDateStruct) {
