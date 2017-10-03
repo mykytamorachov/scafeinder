@@ -26,6 +26,9 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserService } from './services/user/user.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RatingComponent } from './components/rating/rating.component';
+import { UniquePipe } from './pipes/unique.pipe';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     BannerComponent,
     Page404Component,
-    UserProfileComponent
+    UserProfileComponent,
+    RatingComponent,
+    UniquePipe
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     AppRoutingModule,
     AngularOpenlayersModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AngularFontAwesomeModule
   ],
   providers: [AuthService, GetCafesService, FilterService, UserService],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { RestaurantItemComponent } from '../restaurant-item/restaurant-item.comp
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
+import { UniquePipe } from '../../pipes/unique.pipe';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerComponent } from '../banner/banner.component';
@@ -15,6 +16,8 @@ import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RatingComponent } from '../rating/rating.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -22,7 +25,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, NgxPaginationModule ],
+      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, NgxPaginationModule,
+        AngularFontAwesomeModule ],
       declarations: [
         HomeComponent,
         RestaurantsFiltersComponent,
@@ -31,7 +35,9 @@ describe('HomeComponent', () => {
         DatepickerComponent,
         SearchFormComponent,
         BannerComponent,
-        ShortcutPipe
+        ShortcutPipe,
+        UniquePipe,
+        RatingComponent
       ],
       providers: [GetCafesService, FilterService]
     })

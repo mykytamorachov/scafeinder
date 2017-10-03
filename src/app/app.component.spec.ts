@@ -12,6 +12,7 @@ import { RestaurantItemComponent } from './components/restaurant-item/restaurant
 import { RestaurantProfileComponent } from './components/restaurant-profile/restaurant-profile.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShortcutPipe } from './pipes/shortcut.pipe';
+import { UniquePipe } from './pipes/unique.pipe';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -21,12 +22,14 @@ import { AuthService } from './services/auth/auth.service';
 import { HttpModule } from '@angular/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RatingComponent } from './components/rating/rating.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, NgbModule.forRoot(), ReactiveFormsModule, RouterTestingModule, HttpModule, AngularOpenlayersModule,
-        NgxPaginationModule ],
+        NgxPaginationModule, AngularFontAwesomeModule ],
       declarations: [
         AppComponent,
         HeaderComponent,
@@ -37,12 +40,14 @@ describe('AppComponent', () => {
         RestaurantItemComponent,
         RestaurantProfileComponent,
         ShortcutPipe,
+        UniquePipe,
         DatepickerComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
         BannerComponent,
-        Page404Component
+        Page404Component,
+        RatingComponent
       ],
       providers: [ AuthService ]
     }).compileComponents();
