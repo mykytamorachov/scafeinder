@@ -8,55 +8,12 @@ export class UserQuery {
     ) {  }
 }
 
-export const dayHours = [
-  {hour: '00', minute: '00'},
-  {hour: '00', minute: '30'},
-  {hour: '01', minute: '00'},
-  {hour: '01', minute: '30'},
-  {hour: '02', minute: '00'},
-  {hour: '02', minute: '30'},
-  {hour: '03', minute: '00'},
-  {hour: '03', minute: '30'},
-  {hour: '04', minute: '00'},
-  {hour: '04', minute: '30'},
-  {hour: '05', minute: '00'},
-  {hour: '05', minute: '30'},
-  {hour: '06', minute: '00'},
-  {hour: '06', minute: '30'},
-  {hour: '07', minute: '00'},
-  {hour: '07', minute: '30'},
-  {hour: '08', minute: '00'},
-  {hour: '08', minute: '30'},
-  {hour: '09', minute: '00'},
-  {hour: '09', minute: '30'},
-  {hour: '10', minute: '00'},
-  {hour: '10', minute: '30'},
-  {hour: '11', minute: '00'},
-  {hour: '11', minute: '30'},
-  {hour: '12', minute: '00'},
-  {hour: '12', minute: '30'},
-  {hour: '13', minute: '00'},
-  {hour: '13', minute: '30'},
-  {hour: '14', minute: '00'},
-  {hour: '14', minute: '30'},
-  {hour: '15', minute: '00'},
-  {hour: '15', minute: '30'},
-  {hour: '16', minute: '00'},
-  {hour: '16', minute: '30'},
-  {hour: '17', minute: '00'},
-  {hour: '17', minute: '30'},
-  {hour: '18', minute: '00'},
-  {hour: '18', minute: '30'},
-  {hour: '19', minute: '00'},
-  {hour: '19', minute: '30'},
-  {hour: '20', minute: '00'},
-  {hour: '20', minute: '30'},
-  {hour: '21', minute: '00'},
-  {hour: '21', minute: '30'},
-  {hour: '22', minute: '00'},
-  {hour: '22', minute: '30'},
-  {hour: '23', minute: '00'},
-  {hour: '23', minute: '30'}
-];
+const range = (start, end) => Array.from(Array(1 + end - start).keys()).map((i) => i + start);
+
+const getHours = (start, end) => {
+  return range(start, end).reduce((prev, curr, index, array) => prev.concat([0, 0].fill(curr)), []);
+};
+
+export const dayHours = getHours(10, 23);
 
 export const company = Array.from(Array(15).keys()).slice(2);

@@ -18,7 +18,7 @@
     <div class="input-group col-12 col-sm-6 col-md-6 col-lg-2 no-gutter">
       <ng2-fa class="input-group-addon addons" name="clock-o"></ng2-fa>
       <select class="form-control" name="time" [(ngModel)]="userQuery.time">
-        <option class="dropdown-item" *ngFor="let time of dayHours" value={{time.hour}}:{{time.minute}}>{{time.hour}}:{{time.minute}}</option>
+        <option class="dropdown-item" *ngFor="let time of dayHours; let i = index" [value]="i % 2 === 0 ? time+':00' : time+':30'">{{i % 2 === 0 ? time+':00' : time+':30'}}</option>
       </select>
     </div>
     <div class="input-group col-12 col-sm-12 col-md-12 col-lg-3 no-gutter">
@@ -28,6 +28,6 @@
         <option *ngFor="let restaurant of restaurants | unique">{{ restaurant }}</option>
       </datalist>      
     </div>
-    <button class="form-control btn btn-primary col-12 col-sm-12 col-md-12 col-lg-1" type="submit">Find</button>
+    <button class="form-control col-12 col-sm-12 col-md-12 col-lg-1" type="submit">Find</button>
   </form>
 </main>
