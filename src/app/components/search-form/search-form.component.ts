@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit {
   dayHours: any;
   model: NgbDateStruct;
   searchform: FormGroup;
-  userQuery = new UserQuery(2, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 2) + ':00'), '');
+  userQuery = new UserQuery(2, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 1) + ':00'), '');
 
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
     this._buildForm();
