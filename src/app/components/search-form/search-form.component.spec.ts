@@ -7,6 +7,7 @@ import { UniquePipe } from '../../pipes/unique.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 describe('SearchFormComponent', () => {
   let component: SearchFormComponent;
@@ -15,7 +16,7 @@ describe('SearchFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule ],
+      imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, AngularFontAwesomeModule ],
       providers: [ GetCafesService, FilterService ],
       declarations: [
         SearchFormComponent,

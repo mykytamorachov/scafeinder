@@ -28,6 +28,7 @@ import { UserService } from './services/user/user.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
 import { UniquePipe } from './pipes/unique.pipe';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { UniquePipe } from './pipes/unique.pipe';
     ReactiveFormsModule,
     AppRoutingModule,
     AngularOpenlayersModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AngularFontAwesomeModule
   ],
   providers: [AuthService, GetCafesService, FilterService, UserService],
   bootstrap: [AppComponent]

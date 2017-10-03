@@ -1,6 +1,6 @@
 <div class="wrapper">
   <input class="form-control" placeholder="{{valuedate | date: 'yyyy-MM-dd'}}" name="dp" [(ngModel)]="model" (ngModelChange)="onSelectDate($event)" ngbDatepicker #d="ngbDatepicker">
-  <button class="input-group-addon" (click)="d.toggle()" type="button">
-    <img src="#" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+  <button class="input-group-addon justify-content-center" (click)="d.toggle()" type="button">
+    <ng2-fa name="calendar" size="lg"></ng2-fa>
   </button>
 </div>

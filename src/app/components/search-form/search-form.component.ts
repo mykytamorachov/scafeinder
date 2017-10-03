@@ -91,23 +91,38 @@ export class SearchFormComponent implements OnInit {
         (restaurants: ICafe[]) => {
           const result: ICafe[] = [];
           restaurants.filter((restaurant) => {
-            restaurant.bookings.map((day) => {
-              if (day.date === option.date) {
-                let taken = 0;
-                day.tables.map((table) => taken += +table.tableType * +table.tableAmount);
-                if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +taken + +option.persons) {
-                  result.push(restaurant);
-                } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= taken + option.persons) {
-                  result.push(restaurant);
-                }
-              } else {
+            const search = () => {
+              if (restaurant.bookings.length === 0) {
                 if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +option.persons) {
                   result.push(restaurant);
                 } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= +option.persons) {
                   result.push(restaurant);
                 }
+              } else {
+                restaurant.bookings.map((day) => {
+                  if (day.date === option.date) {
+                    let taken = 0;
+                    day.tables.map((table) => taken += +table.tableType * +table.tableAmount);
+                    if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +taken + +option.persons) {
+                      result.push(restaurant);
+                    } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= taken + option.persons) {
+                      result.push(restaurant);
+                    }
+                  } else {
+                    if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +option.persons) {
+                      result.push(restaurant);
+                    } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= +option.persons) {
+                      result.push(restaurant);
+                    }
+                  }
+                });
               }
-            });
+            };
+            if (!this.userQuery.placeName) {
+              search();
+            } else if (this.userQuery.placeName === restaurant.name) {
+              search();
+            }
         });
         this.filterService.changeCafes(result);
         }
