@@ -1,9 +1,11 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: 75% 25%;
-  max-width: 400px;
-  width: 100%;
-  @media screen and (max-width: "768px") {
-    max-width: 100%;
-  }
+.addons {
+  background-color: #292b2c;
+  border-radius: initial;
+  color: #fff;
+  cursor: pointer;
+  width: 40px;
+}
+
+ng2-fa:hover {
+  color: #808080;
 }
