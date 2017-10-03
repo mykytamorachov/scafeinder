@@ -30,6 +30,7 @@ import { RatingComponent } from './components/rating/rating.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { BookingService } from './services/booking/booking.service';
 import { UniquePipe } from './pipes/unique.pipe';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { UniquePipe } from './pipes/unique.pipe';
     ReactiveFormsModule,
     AppRoutingModule,
     AngularOpenlayersModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AngularFontAwesomeModule
   ],
   providers: [AuthService, GetCafesService, FilterService, UserService, BookingService],
   bootstrap: [AppComponent]
