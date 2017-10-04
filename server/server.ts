@@ -78,12 +78,12 @@ app.get('/logout', verifyToken, userController.logout);
 app.get('/register', userController.getSignup);
 app.post('/register', verifyToken, userController.postSignup);
 app.get('/cafes', cafeController.getCafes);
-app.post('/profile', userController.getUserDataById);
-app.post('/cafes', cafeController.getCafesById);
+
 app.put('/cafes/:cafeId', cafeController.bookInCafe);
 app.get('/profile/:id', userController.getUserDataById);
 app.put('/profile/:id', userController.updateUserData);
 app.get('/cafe/:cafeId', cafeController.getCafeById);
+
 
 // OAuth authentication routes. (Sign in)
 app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
