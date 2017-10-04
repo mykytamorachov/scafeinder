@@ -5,6 +5,10 @@
   width: 40px;
 }
 
+.form-control {
+  border-radius: initial;
+}
+
 .search-form {
   .no-gutter {
     padding-left: 0;
@@ -16,11 +20,12 @@
       padding-right: 0;
     }
   }
-  margin: 30px auto;
+  margin: 0 auto 30px;
   & button {
       background-color: #292b2c;
       border-radius: 0;
       color: #fff;
+      cursor: pointer;
       font-weight: 900;
       letter-spacing: 5px;
       &:hover {

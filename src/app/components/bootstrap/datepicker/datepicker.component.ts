@@ -16,7 +16,9 @@ export class DatepickerComponent implements OnInit {
 
   constructor(config: NgbDatepickerConfig) {
     const now = new Date();
-    config.minDate = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+    const plusHalfYear = (new Date(+now + 15768000000)).toISOString().slice(0, 10);
+    config.minDate = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
+    config.maxDate = { year: +plusHalfYear.slice(0, 4), month: +plusHalfYear.slice(5, 7), day: +plusHalfYear.slice(8, 10) };
    }
 
   ngOnInit() {

@@ -15,7 +15,7 @@ export const getCafes = (req: Request, res: Response) => {
 };
 
 export const getCafeById = (req: Request, res: Response) => {
-  Cafe.findById(req.params.cafeId)
+  Cafe.find({ _id: {$in: req.params.cafeId.split(',')} })
     .then((data) => {
       if (data) {
         res.status(200).send(data);
@@ -26,15 +26,15 @@ export const getCafeById = (req: Request, res: Response) => {
     .catch((error) => console.log(error));
 };
 
-export const getCafesById = (req: Request, res: Response) => {
-    Cafe.find({ _id: {$in: req.body.favorites} }, (err, cafes) => {
-      if (err) { return err; }
-      if (cafes) {
-        console.log('cafes found', cafes);
-        res.json({ cafes: cafes });
-      }
-    });
-  };
+// export const getCafesById = (req: Request, res: Response) => {
+//     Cafe.find({ _id: {$in: req.body.favorites} }, (err, cafes) => {
+//       if (err) { return err; }
+//       if (cafes) {
+//         console.log('cafes found', cafes);
+//         res.json({ cafes: cafes });
+//       }
+//     });
+//   };
 
 // Add rests to db
 // for (const item of data) {
