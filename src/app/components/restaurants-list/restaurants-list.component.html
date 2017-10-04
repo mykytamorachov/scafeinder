@@ -1,7 +1,7 @@
 <div class="row bg-inverse text-white heading">
-  <div class="col-8">50 Available Restaurants</div>
-  <div class="col-2 text-right"><ng4-fa name="sort-amount-desc"></ng4-fa>Sort</div>
-  <div class="col-2 text-right"><ng4-fa name="map-marker"></ng4-fa>Map</div>
+  <div class="col-6 col-sm-8">50 <span class="hidden-xs-down">Available Restaurants</span><span class="hidden-sm-up">Results</span></div>
+  <div class="col-3 col-sm-2 text-right"><ng4-fa name="sort-amount-desc"></ng4-fa>Sort</div>
+  <div class="col-3 col-sm-2 text-right"><ng4-fa name="map-marker"></ng4-fa>Map</div>
 </div>
 <div class="row">
   <div class="col-sm-12" *ngIf="restaurants.length; else noResults">
@@ -9,6 +9,10 @@
   </div>
   <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
   <ng-template #noResults>
-  	<div>Sorry, but nothing matched your search criteria.</div>
+  	<div class="col-12 text-center">
+  	<p class="noresults">Sorry, but nothing matched your search criteria.</p>
+  	<p>Please, try selecting different date, time or location.</p>
+  	</div>
+  	<div class="col-12 text-center"><img src="assets/img/no_results.png" class="img-fluid" alt="No Results"></div>
   </ng-template>
 </div>
