@@ -13,9 +13,11 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
 export class UserProfileComponent implements OnInit {
   user: IUser;
   restaurants: ICafe[];
+  image = '../../assets/img/scafeinder.jpg';
   constructor(private userService: UserService, private getCafesService: GetCafesService) {}
 
   ngOnInit() {
+    // this.user.image = '../../assets/img/scafeinder.jpg';
     this.getUser();
   }
 

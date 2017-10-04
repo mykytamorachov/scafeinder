@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth/auth.service';
 import { GetCafesService } from './services/getcafes/getcafes.service';
 import { FilterService } from './services/filter.service';
+import { FormDataService } from './services/form-data/form-data.service';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserService } from './services/user/user.service';
@@ -31,6 +32,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { BookingService } from './services/booking/booking.service';
 import { UniquePipe } from './pipes/unique.pipe';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { UserOptionsComponent } from './components/user-options/user-options.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     UserProfileComponent,
     RatingComponent,
     BookingComponent,
-    UniquePipe
+    UniquePipe,
+    UserOptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     NgxPaginationModule,
     AngularFontAwesomeModule
   ],
-  providers: [AuthService, GetCafesService, FilterService, UserService, BookingService],
+  providers: [AuthService, GetCafesService, FilterService, UserService, BookingService, FormDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
