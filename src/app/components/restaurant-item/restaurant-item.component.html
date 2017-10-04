@@ -5,5 +5,5 @@
     <p class="list-group-item-text">{{ restaurant.address }}</p>
     <span class="badge badge-pill badge-info" *ngFor="let category of restaurant.categories">{{ category }}</span><span class="badge badge-pill badge-info" *ngFor="let cuisine of restaurant.cuisines">{{ cuisine }}</span><span class="badge badge-pill badge-info" *ngFor="let feature of restaurant.features">{{ feature }}</span>
   </div>
-  <span class="col-sm-2"><img src="{{ restaurant.img }}" alt="{{ restaurant.name }}" class="img-responsive"></span>
+  <span class="col-sm-2"><img src="{{ restaurant.logoImg }}" alt="{{ restaurant.name }}" class="img-fluid img-thumbnail"></span>
 </a>

@@ -9,9 +9,18 @@ export class UserService {
   constructor(private http: Http) { }
 
   getUserData() {
-    const userID = {id: localStorage.getItem('id_token')};
+    const userID = localStorage.getItem('id_token');
+    return this.http.get('/profile/' + userID);
+    // .map((response: Response) => {
+    //   const data = response.json();
+    //   console.log('data  is ', data);
+    // });
+  }
+
+  updateUserData(user) {
+    const userID = localStorage.getItem('id_token');
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('/profile', userID, { headers });
+    return this.http.put('/profile/' + userID, user, {headers});
     // .map((response: Response) => {
     //   const data = response.json();
     //   console.log('data  is ', data);

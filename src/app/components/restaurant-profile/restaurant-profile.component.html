@@ -1,14 +1,18 @@
 <div class="container">
   <hr>
   <div class="row">
-    <div class="col-xs-12 col-md-12">
+    <div [ngClass]="(auth.isAuthenticated())?'col-xs-12 col-md-11':'col-xs-12 col-md-12'">
       <h1 class="text-center">{{ restaurant?.name }}</h1>
+    </div>
+      <div class="col-xs-12 col-md-1 text-center">
+      <img class="img-fluid" src="../../../assets/img/star-favorite-black.svg" *ngIf="auth.isAuthenticated() && !showAddToFavorites" (click)="addToFavorites()">
+      <img class="img-fluid" src="../../../assets/img/star-favorite-yellow.svg" *ngIf="auth.isAuthenticated() && showAddToFavorites" (click)="removeFromFavorites()">
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col-xs-6 col-md-6">
-      <img src="{{ restaurant?.img }}" alt="restaurant photo" class="img-fluid">
+      <img src="{{ restaurant?.profileImg }}" alt="restaurant photo" class="img-fluid">
       <ngb-tabset>
         <ngb-tab title="Features">
           <ng-template ngbTabContent>

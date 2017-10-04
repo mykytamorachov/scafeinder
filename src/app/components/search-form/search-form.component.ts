@@ -20,7 +20,7 @@ export class SearchFormComponent implements OnInit {
   dayHours: any;
   model: NgbDateStruct;
   searchform: FormGroup;
-  userQuery = new UserQuery(2, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 2) + ':00'), '');
+  userQuery = new UserQuery(2, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 1) + ':00'), '');
 
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
     this._buildForm();
@@ -63,11 +63,11 @@ export class SearchFormComponent implements OnInit {
       return dayHours;
     }
 
-    return (this.dayHours.map((item) => {
-      if (item.hour > hoursStr) {
-        return {hour: item.hour, minute: item.minute};
+    return (this.dayHours.filter((item) => {
+      if (item > hoursStr) {
+        return item;
       }
-    })).slice((currentHours + 1) * 2);
+    }));
   }
 
   public checkSelectedDate(date: NgbDateStruct) {

@@ -12,6 +12,8 @@ import { BookingService } from '../../services/booking/booking.service';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
+import { UserService } from '../../services/user/user.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 describe('RestaurantProfileComponent', () => {
   let component: RestaurantProfileComponent;
@@ -22,7 +24,7 @@ describe('RestaurantProfileComponent', () => {
       declarations: [ RestaurantProfileComponent, BookingComponent, DatepickerComponent ],
       imports: [FormsModule, ReactiveFormsModule, HttpModule, RouterTestingModule, NgbModule.forRoot(), AngularOpenlayersModule,
          AngularFontAwesomeModule ],
-      providers: [ GetCafesService, NgbTabsetConfig, BookingService]
+      providers: [ GetCafesService, NgbTabsetConfig, BookingService,  UserService, AuthService]
     })
     .compileComponents();
   }));

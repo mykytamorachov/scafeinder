@@ -1,3 +1,8 @@
+<div class="row bg-inverse text-white heading">
+  <div class="col-8">50 Available Restaurants</div>
+  <div class="col-2 text-right"><ng4-fa name="sort-amount-desc"></ng4-fa>Sort</div>
+  <div class="col-2 text-right"><ng4-fa name="map-marker"></ng4-fa>Map</div>
+</div>
 <div class="row">
   <div class="col-sm-12" *ngIf="restaurants.length; else noResults">
     <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter | paginate: { itemsPerPage: 10, currentPage: p }" [restaurant]="restaurantItem"></app-restaurant-item>
