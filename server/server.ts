@@ -38,7 +38,7 @@ const options: cors.CorsOptions = {
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token'],
   credentials: true,
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-  origin: '*',
+  origin: 'http://localhost:3000',
   preflightContinue: false
 };
 app.use(cors(options));
@@ -76,7 +76,7 @@ app.get('/login', userController.getLogin);
 app.post('/login', verifyToken, userController.postLogin);
 app.get('/logout', verifyToken, userController.logout);
 app.get('/register', userController.getSignup);
-app.post('/register', verifyToken, userController.postSignup);
+// app.post('/register', verifyToken, userController.postSignup);
 app.get('/cafes', cafeController.getCafes);
 
 app.put('/cafes/:cafeId', cafeController.bookInCafe);
