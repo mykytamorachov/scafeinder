@@ -9,4 +9,5 @@ export interface IUser {
     registrationDate?: string;
     password?: string;
     confirmPassword?: string;
+    image?: string;
 }

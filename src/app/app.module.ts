@@ -29,6 +29,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
 import { UniquePipe } from './pipes/unique.pipe';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { UserOptionsComponent } from './components/user-options/user-options.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     Page404Component,
     UserProfileComponent,
     RatingComponent,
-    UniquePipe
+    UniquePipe,
+    UserOptionsComponent
   ],
   imports: [
     BrowserModule,

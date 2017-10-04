@@ -1,10 +1,10 @@
 <div class="container">
   <div class="card hovercard">
       <div class="card-background">
-          <img class="card-bkimg" alt="" src="../../assets/img/scafeinder.jpg">
+          <img class="card-bkimg" alt="" src="{{user?.image}} || {{image}}">
       </div>
       <div class="useravatar">
-          <img alt="" src="../../assets/img/scafeinder.jpg">
+          <img alt="" src="{{user?.image}} || {{image}}">
       </div>
       <div class="card-info"> <span class="card-title">{{user?.name}}</span>
       </div>
@@ -12,22 +12,16 @@
   <ngb-tabset justify="justified">
     <ngb-tab title="Favorites">
       <ng-template ngbTabContent>
-            <!-- <app-restaurants-list></app-restaurants-list> -->
         <app-restaurant-item *ngFor="let restaurantItem of restaurants" [restaurant]="restaurantItem"></app-restaurant-item>
       </ng-template>
     </ngb-tab>
     <ngb-tab title="History">
       <ng-template ngbTabContent>
-        <ul>
-          <!-- <li *ngFor="let item of restaurant?.cuisines">{{item}}</li> -->
-        </ul>
       </ng-template>
     </ngb-tab>
     <ngb-tab title="Options">
       <ng-template ngbTabContent>
-        <ul>
-          <!-- <li *ngFor="let item of restaurant?.categories">{{item}}</li> -->
-        </ul>
+        <app-user-options [user]="user"></app-user-options>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>
