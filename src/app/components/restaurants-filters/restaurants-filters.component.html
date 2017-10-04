@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="form-group">
       <label>Category</label>
@@ -34,6 +34,61 @@
   <div class="row">
     <div class="form-group">
       <label>Popular</label>
+      <div *ngFor="let feature of features">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox"
+          class="custom-control-input"
+          name="features"
+          value="{{ feature }}"
+          [checked]="cuisineFilter.indexOf(feature) > -1"
+          (change)="updateFeatureFilter(feature, $event)">
+          <span class="custom-control-indicator"></span><span class="custom-control-description">{{ feature }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+ <div class="row" (window:resize)="onResize($event)">
+  <div class="col-sm-4 col-md-12 first">
+    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCategoryCollapsed = !isCategoryCollapsed" [attr.aria-expanded]="!isCategoryCollapsed" aria-controls="collapseExample1">Category</button>
+    <div class="form-group" id="collapseExample1" [ngbCollapse]="isCategoryCollapsed">
+      <label class="hidden-sm-down">Category</label>
+      <div *ngFor="let category of categories">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox"
+          class="custom-control-input"
+          name="categories"
+          value="{{ category }}"
+          [checked]="cuisineFilter.indexOf(category) > -1"
+          (change)="updateCategoryFilter(category, $event)">
+          <span class="custom-control-indicator"></span><span class="custom-control-description">{{ category }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 col-md-12">
+    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCuisineCollapsed = !isCuisineCollapsed" [attr.aria-expanded]="!isCuisineCollapsed" aria-controls="collapseExample2">Cuisine</button>
+    <div class="form-group" id="collapseExample2" [ngbCollapse]="isCuisineCollapsed">
+      <label class="hidden-sm-down">Cuisine</label>
+      <div *ngFor="let cuisine of cuisines">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox"
+          class="custom-control-input"
+          name="cuisines"
+          value="{{ cuisine }}"
+          [checked]="cuisineFilter.indexOf(cuisine) > -1"
+          (change)="updateCuisineFilter(cuisine, $event)">
+          <span class="custom-control-indicator"></span><span class="custom-control-description">{{ cuisine }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 col-md-12">
+    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isFeatureCollapsed = !isFeatureCollapsed" [attr.aria-expanded]="!isFeatureCollapsed" aria-controls="collapseExample3">Popular</button>
+    <div class="form-group" id="collapseExample3" [ngbCollapse]="isFeatureCollapsed">
+      <label class="hidden-sm-down">Popular</label>
       <div *ngFor="let feature of features">
         <label class="custom-control custom-checkbox">
           <input type="checkbox"

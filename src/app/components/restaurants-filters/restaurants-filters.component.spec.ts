@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
 import { FilterService } from '../../services/filter.service';
 
@@ -11,7 +12,7 @@ describe('RestaurantsFiltersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
+      imports: [HttpModule, NgbModule],
       declarations: [RestaurantsFiltersComponent],
       providers: [GetCafesService, FilterService]
     })
