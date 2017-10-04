@@ -1,0 +1,17 @@
+.row {
+  margin: 0;
+}
+
+.row div {
+  padding: 0;
+}
+
+button {
+  margin: 0.1em 0;
+}
+
+@media screen and (min-width: 576px) {
+  .row div:not(.first) {
+    padding-left: 0.1em;
+  }
+}
