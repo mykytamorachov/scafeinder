@@ -11,29 +11,29 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-xs-4 col-md-4">
+    <div class="col-xs-12 col-md-6">
       <img src="{{ restaurant?.profileImg }}" alt="restaurant photo" class="img-fluid">
       <ngb-tabset>
         <ngb-tab title="Features">
           <ng-template ngbTabContent>
-            <span class="badge badge-pill badge-info" *ngFor="let item of restaurant?.features">{{ item }}</span>
+            <span class="badge badge-pill badge-primary" *ngFor="let item of restaurant?.features">{{ item }}</span>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Cuisines">
           <ng-template ngbTabContent>
-            <span class="badge badge-pill badge-info" *ngFor="let item of restaurant?.cuisines">{{ item }}</span>
+            <span class="badge badge-pill badge-primary" *ngFor="let item of restaurant?.cuisines">{{ item }}</span>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Categories">
           <ng-template ngbTabContent>
-            <span class="badge badge-pill badge-info" *ngFor="let item of restaurant?.categories">{{ item }}</span>            
+            <span class="badge badge-pill badge-primary" *ngFor="let item of restaurant?.categories">{{ item }}</span>            
           </ng-template>
         </ngb-tab>
       </ngb-tabset>
     </div>
-    <div class="col-xs-8 col-md-8">
+    <div class="col-6 col-sm-12 col-md-6 col-lg-6">
       <div class="row">
-        <div class="col-xs-12 col-md-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <h5>Booking form</h5>
           <app-booking></app-booking>
         </div>
