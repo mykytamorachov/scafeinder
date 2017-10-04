@@ -9,28 +9,30 @@ import { cafesJson } from '../../services/getcafes/cafe.data';
 
 import { RestaurantsFiltersComponent } from './restaurants-filters.component';
 
-const getCafesServiceStub = {
-  getAllCafes() {
-    return cafesJson;
-  },
-  getCafeById(id) {
-    return cafesJson.filter(cafe => cafe._id === id);
-  }
-};
+// const getCafesServiceStub = {
+//   getAllCafes() {
+//     return cafesJson;
+//   },
+//   getCafeById(id) {
+//     return cafesJson.filter(cafe => cafe._id === id);
+//   }
+// };
 
 describe('RestaurantsFiltersComponent', () => {
   let component: RestaurantsFiltersComponent,
       fixture: ComponentFixture<RestaurantsFiltersComponent>,
-      de: DebugElement,
-      el: HTMLElement,
+      // de: DebugElement,
+      // el: HTMLInputElement,
 
-      getCafesService: GetCafesService;
+      getCafesService: GetCafesService,
+      filterService: FilterService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       declarations: [RestaurantsFiltersComponent],
-      providers: [{ provide: GetCafesService, useValue: getCafesServiceStub }, FilterService]
+      providers: [ GetCafesService, FilterService ],
+      // providers: [{ provide: GetCafesService, useValue: getCafesServiceStub }, FilterService]
     })
     .compileComponents();
   }));
@@ -39,13 +41,14 @@ describe('RestaurantsFiltersComponent', () => {
     fixture = TestBed.createComponent(RestaurantsFiltersComponent);
     component = fixture.componentInstance;
 
-    // Получаем реальный сервис из инжектора компонента
     getCafesService = fixture.debugElement.injector.get(GetCafesService);
-    // Получаем input-ы c name="categories" по css селектору
-    // de = fixture.debugElement.query(By.css('input[name="categories"]'));
-    de = fixture.debugElement.query(By.css('.custom-control-description')[0]);
+    filterService = fixture.debugElement.injector.get(FilterService);
 
-    el = de.nativeElement;
+    // de = fixture.debugElement.query(By.css('.custom-control-description'));
+    // de = fixture.debugElement.query(By.css('input[value="alcohol-free"]'));
+    // de = fixture.debugElement;
+    // el = fixture.nativeElement.querySelector('input[value="alcohol-free"]');
+
     fixture.detectChanges();
   });
 
@@ -53,9 +56,48 @@ describe('RestaurantsFiltersComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should return first category = alcohol-free', () => {
-  //   // fixture.detectChanges();
-  //   expect(el.textContent).toContain('alcohol-free');
+  it('updateCategoryFilter method should be updated with new Category', async() => {
+    component.updateCategoryFilter('alcohol-free', {event: {target: {checked: true}}});
+    fixture.detectChanges();
+    expect(component.categoryFilter.sort()[0]).toEqual('alcohol-free');
+  });
+
+  it('updateCuisineFilter method should be updated with new Cuisine', async() => {
+    component.updateCuisineFilter('American', {event: {target: {checked: true}}});
+    fixture.detectChanges();
+    expect(component.cuisineFilter.sort()[0]).toEqual('American');
+  });
+
+  it('updateFeatureFilter method should be updated with new Feature', async() => {
+    component.updateFeatureFilter('24h', {event: {target: {checked: true}}});
+    fixture.detectChanges();
+    expect(component.featureFilter.sort()[0]).toEqual('24h');
+  });
+
+  it('getCuisines method should get all Cuisines', async() => {
+    const cuisines = component.getCuisines(cafesJson);
+    fixture.detectChanges();
+    expect(cuisines.length).toEqual(23);
+  });
+
+  it('getFeatures method should get all Features', async() => {
+    const features = component.getFeatures(cafesJson);
+    fixture.detectChanges();
+    expect(features.length).toEqual(24);
+  });
+
+  it('getCategories method should get all Categories', async() => {
+    const categories = component.getCategories(cafesJson);
+    fixture.detectChanges();
+    expect(categories.length).toEqual(16);
+  });
+
+  // it('should add first category = alcohol-free, then checked', () => {
+  //   const el = fixture.debugElement.nativeElement;
+  //   const inpt = el.querySelector('input[value="alcohol-free"]');
+  //   inpt.checked = true;
+  //   fixture.detectChanges();
+  //   expect(component.categoryFilter.sort()[0]).toEqual('alcohol-free');
   // });
 
 });
