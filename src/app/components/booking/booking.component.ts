@@ -51,7 +51,7 @@ export class BookingComponent implements OnInit {
       .subscribe(
       (restaurant: ICafe[]) => {
         this.restaurant = restaurant[0];
-        console.log(JSON.stringify(restaurant, null, 2));
+        // console.log(JSON.stringify(restaurant, null, 2));
         this.userQuery.placeName = String(restaurant[0].name);
       },
       (error) => console.log(error)
@@ -111,7 +111,7 @@ export class BookingComponent implements OnInit {
         bookedTablesType4: 0
       };
     } else {
-      console.log('Someone booked');
+      // console.log('Someone booked');
       restaurant.bookings.find((item) => item.date === date)
         .tables.forEach((value) => {
           if (value.tableType === 2) {
@@ -121,7 +121,7 @@ export class BookingComponent implements OnInit {
           }
         }
         );
-        console.log(`booked ${bookedTablesType2} ${bookedTablesType4}`);
+      console.log(`booked ${bookedTablesType2} ${bookedTablesType4}`);
       return {
         bookedTablesType2: bookedTablesType2,
         bookedTablesType4: bookedTablesType4
@@ -150,20 +150,29 @@ export class BookingComponent implements OnInit {
     bookingData.people = this.userQuery.persons;
     bookingData.tableType = this.userQuery.tableType;
     bookingData.tableAmount = (Math.round(this.userQuery.persons / this.userQuery.tableType) === 0) ? 1 :
-    Math.round(this.userQuery.persons / this.userQuery.tableType);
+      Math.round(this.userQuery.persons / this.userQuery.tableType);
     console.log(`free tables 4: ${freeTablesType4} 2 : ${freeTablesType2}`);
-    console.log(this.restaurant.bookings);
-    if (bookingData.tableAmount > freeTablesType4) {
-      console.log(`Can't book, Left TYPE4-${freeTablesType4}, and you want ${bookingData.tableAmount}`);
-    } else {
-      console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
-      this.book.booking(bookingData);
-    }
-    if (bookingData.tableAmount > freeTablesType2) {
-      console.log(`Can't book, Left TYPE2-${freeTablesType2}, and you want ${bookingData.tableAmount}`);
-    } else {
-      console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
-      this.book.booking(bookingData);
+    // console.log(this.restaurant.bookings);
+    switch (+this.userQuery.tableType) {
+      case 2:
+        console.log('2');
+        if (bookingData.tableAmount > freeTablesType2) {
+          alert(`Can't book, Left only ${freeTablesType2} TYPE2-tables, and you want ${bookingData.tableAmount}`);
+        } else {
+          console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
+          this.book.booking(bookingData);
+        }
+        break;
+      case 4:
+        if (bookingData.tableAmount > freeTablesType4) {
+          alert(`Can't book, Left only ${freeTablesType4} TYPE4-tables, and you want ${bookingData.tableAmount}`);
+        } else {
+          console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
+          this.book.booking(bookingData);
+        }
+        break;
+      default:
+        console.log('Wtf?');
     }
   }
 }

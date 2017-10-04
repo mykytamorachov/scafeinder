@@ -9,7 +9,6 @@ export class BookingService {
   constructor(private http: Http) {
   }
   booking(data: any) {
-    console.log('boom');
     const url = `${this.BASE_URL}/cafes/${data.resId}`;
     const headers = new Headers({'Content-Type': 'application/json'});
     console.log(url);
