@@ -9,6 +9,10 @@
   </div>
   <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
   <ng-template #noResults>
-  	<div>Sorry, but nothing matched your search criteria.</div>
+  	<div class="col-12 text-center">
+  	<p class="noresults">Sorry, but nothing matched your search criteria.</p>
+  	<p>Please, try selecting different date, time or location.</p>
+  	</div>
+  	<div class="col-12 text-center"><img src="assets/img/no_results.png" class="img-fluid" alt="No Results"></div>
   </ng-template>
 </div>
