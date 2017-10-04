@@ -27,6 +27,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserService } from './services/user/user.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
+import { BookingComponent } from './components/booking/booking.component';
+import { BookingService } from './services/booking/booking.service';
 import { UniquePipe } from './pipes/unique.pipe';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
@@ -49,6 +51,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     Page404Component,
     UserProfileComponent,
     RatingComponent,
+    BookingComponent,
     UniquePipe
   ],
   imports: [
@@ -62,7 +65,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     NgxPaginationModule,
     AngularFontAwesomeModule
   ],
-  providers: [AuthService, GetCafesService, FilterService, UserService],
+  providers: [AuthService, GetCafesService, FilterService, UserService, BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

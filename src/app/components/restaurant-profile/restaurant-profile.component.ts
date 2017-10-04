@@ -7,6 +7,7 @@ import { UserService } from '../../services/user/user.service';
 import { IUser } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
 
+
 @Component({
   selector: 'app-restaurant-profile',
   templateUrl: './restaurant-profile.component.html',
