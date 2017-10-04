@@ -23,7 +23,9 @@ import { HttpModule } from '@angular/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
+import { BookingComponent } from './components/booking/booking.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { FormDataService } from './services/form-data/form-data.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -47,9 +49,10 @@ describe('AppComponent', () => {
         RegisterComponent,
         BannerComponent,
         Page404Component,
-        RatingComponent
+        RatingComponent,
+        BookingComponent
       ],
-      providers: [ AuthService ]
+      providers: [ AuthService, FormDataService ]
     }).compileComponents();
   }));
 

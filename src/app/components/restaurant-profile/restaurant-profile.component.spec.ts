@@ -6,6 +6,14 @@ import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
+import { BookingComponent } from '../../components//booking/booking.component';
+import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
+import { BookingService } from '../../services/booking/booking.service';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { UniquePipe } from '../../pipes/unique.pipe';
+import { FormDataService } from '../../services/form-data/form-data.service';
+
 import { UserService } from '../../services/user/user.service';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -15,9 +23,10 @@ describe('RestaurantProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RestaurantProfileComponent ],
-      imports: [ HttpModule, RouterTestingModule, NgbModule, AngularOpenlayersModule ],
-      providers: [ GetCafesService, NgbTabsetConfig, UserService, AuthService ]
+      declarations: [ RestaurantProfileComponent, BookingComponent, DatepickerComponent,  UniquePipe ],
+      imports: [FormsModule, ReactiveFormsModule, HttpModule, RouterTestingModule, NgbModule.forRoot(), AngularOpenlayersModule,
+         AngularFontAwesomeModule ],
+      providers: [ GetCafesService, NgbTabsetConfig, BookingService,  UserService, AuthService, FormDataService]
     })
     .compileComponents();
   }));

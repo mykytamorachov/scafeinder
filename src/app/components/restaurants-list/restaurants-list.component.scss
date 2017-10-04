@@ -1,7 +1,6 @@
 .pagination /deep/{
     margin-top: 10px; 
     color: #0275D8;
-    position: absolute;
     bottom: 10px;
     .ngx-pagination .current {
         color: #ffffff;
@@ -13,6 +12,14 @@
   margin: 0;
 }
 
+.row div {
+  padding: 0;
+}
+
 .heading {
-  padding: 0.5em 0;
+  padding: 0.5em 35px;
+}
+
+.noresults {
+  font-size: 1.5em;
 }

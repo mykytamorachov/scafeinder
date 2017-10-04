@@ -38,7 +38,7 @@ const options: cors.CorsOptions = {
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token'],
   credentials: true,
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-  origin: 'http://localhost:3000',
+  origin: '*',
   preflightContinue: false
 };
 app.use(cors(options));
@@ -81,6 +81,12 @@ app.get('/cafes', cafeController.getCafes);
 app.get('/profile/:id', userController.getUserDataById);
 app.put('/profile/:id', userController.updateUserData);
 app.get('/cafe/:cafeId', cafeController.getCafeById);
+
+app.put('/cafes/:cafeId', cafeController.bookInCafe);
+app.get('/profile/:id', userController.getUserDataById);
+app.put('/profile/:id', userController.updateUserData);
+app.get('/cafe/:cafeId', cafeController.getCafeById);
+
 
 // OAuth authentication routes. (Sign in)
 app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
