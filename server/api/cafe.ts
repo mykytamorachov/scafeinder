@@ -31,9 +31,9 @@ export const bookInCafe = (req: Request, res: Response) => {
   const newTables = {
     userId: req.body.userId,
     time: req.body.time,
-    people: req.body.people,
-    tableType: req.body.tableType,
-    tableAmount: req.body.tableAmount
+    people: +req.body.people,
+    tableType: +req.body.tableType,
+    tableAmount: +req.body.tableAmount
   };
   let isBookedOnThisDay = false;
   const newBooking = [{
@@ -41,9 +41,9 @@ export const bookInCafe = (req: Request, res: Response) => {
     tables: [{
       userId: req.body.userId,
       time: req.body.time,
-      people: req.body.people,
-      tableType: req.body.tableType,
-      tableAmount: req.body.tableAmount
+      people: +req.body.people,
+      tableType: +req.body.tableType,
+      tableAmount: +req.body.tableAmount
     }]
   }];
   // console.log(JSON.stringify(req.body, null, 2));

@@ -23,11 +23,11 @@
     </div>
     <div class="input-group col-12 col-sm-12 col-md-12 col-lg-12 no-gutter">
       <ng2-fa class="input-group-addon addons" name="search"></ng2-fa>
-      <input class="form-control" name="placeName" placeholder="Restaurant" list="restaurantList" type="text" [(ngModel)]="userQuery.placeName">
+      <input class="form-control" name="placeName" placeholder="Restaurant" list="restaurantList" type="text" disabled [(ngModel)]="userQuery.placeName">
       <datalist id="restaurantList">
         <option *ngFor="let restaurant of restaurants | unique">{{ restaurant }}</option>
       </datalist>      
     </div>
-    <button class="form-control col-12 col-sm-12 col-md-12 col-lg-12" type="submit">Find</button>
+    <button class="form-control col-12 col-sm-12 col-md-12 col-lg-12" type="submit">Book</button>
   </form>
 </main>
