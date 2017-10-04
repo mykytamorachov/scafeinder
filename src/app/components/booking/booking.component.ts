@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { company, dayHours, UserQuery } from '../../components/search-form/data-search-form';
+import { UserQuery } from '../../models/query.model';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { FormDataService } from '../../services/form-data/form-data.service';
 import { ICafe } from '../../models/cafe.interface';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BookingService } from '../../services/booking/booking.service';
@@ -26,7 +27,7 @@ export class BookingComponent implements OnInit {
   id: String;
   private sub: any;
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService,
-    private route: ActivatedRoute, private book: BookingService) {
+    private route: ActivatedRoute, private book: BookingService, private formDataService: FormDataService) {
     this._buildForm();
   }
 
@@ -40,8 +41,8 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.company = company;
-    this.dayHours = dayHours;
+    this.company = this.formDataService.company(15);
+    this.dayHours = this.formDataService.getHours(10, 23);
     this.dayHours = this.showLeftHours();
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -70,7 +71,7 @@ export class BookingComponent implements OnInit {
     }
 
     if (day === 'future') {
-      return dayHours;
+      return this.formDataService.getHours(10, 23);
     }
 
     return (this.dayHours.filter((item) => {

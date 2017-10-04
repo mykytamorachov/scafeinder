@@ -7,6 +7,7 @@ import { BookingService } from '../../services/booking/booking.service';
 import { BookingComponent } from './booking.component';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { FormDataService } from '../../services/form-data/form-data.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { UniquePipe } from '../../pipes/unique.pipe';
 
@@ -17,7 +18,7 @@ describe('BookingComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, AngularFontAwesomeModule ],
-      providers: [BookingService, GetCafesService],
+      providers: [BookingService, GetCafesService, FormDataService],
       declarations: [ BookingComponent, DatepickerComponent,  UniquePipe ]
     })
     .compileComponents();

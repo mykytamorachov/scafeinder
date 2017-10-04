@@ -41,9 +41,9 @@ export const bookInCafe = (req: Request, res: Response) => {
     tables: [{
       userId: req.body.userId,
       time: req.body.time,
-      people: req.body.people,
-      tableType: req.body.tableType,
-      tableAmount: req.body.tableAmount
+      people: +req.body.people,
+      tableType: +req.body.tableType,
+      tableAmount: +req.body.tableAmount
     }]
   }];
   // console.log(JSON.stringify(req.body, null, 2));

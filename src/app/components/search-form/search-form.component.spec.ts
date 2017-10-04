@@ -6,6 +6,7 @@ import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.componen
 import { UniquePipe } from '../../pipes/unique.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
+import { FormDataService } from '../../services/form-data/form-data.service';
 import { HttpModule } from '@angular/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
@@ -17,7 +18,7 @@ describe('SearchFormComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, AngularFontAwesomeModule ],
-      providers: [ GetCafesService, FilterService ],
+      providers: [ GetCafesService, FilterService, FormDataService ],
       declarations: [
         SearchFormComponent,
         DatepickerComponent,
