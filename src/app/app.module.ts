@@ -32,6 +32,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { BookingService } from './services/booking/booking.service';
 import { UniquePipe } from './pipes/unique.pipe';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { UserOptionsComponent } from './components/user-options/user-options.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     UserProfileComponent,
     RatingComponent,
     BookingComponent,
-    UniquePipe
+    UniquePipe,
+    UserOptionsComponent
   ],
   imports: [
     BrowserModule,

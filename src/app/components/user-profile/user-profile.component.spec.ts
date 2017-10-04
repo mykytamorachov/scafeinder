@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { RestaurantItemComponent } from '../restaurant-item/restaurant-item.component';
 import { RatingComponent } from '../rating/rating.component';
+import { UserOptionsComponent } from '../user-options/user-options.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
@@ -16,11 +18,12 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, NgbModule, RouterTestingModule],
+      imports: [HttpModule, NgbModule, RouterTestingModule, FormsModule],
       declarations: [
         UserProfileComponent,
         RestaurantItemComponent,
-        RatingComponent
+        RatingComponent,
+        UserOptionsComponent
       ],
       providers: [ UserService, GetCafesService, NgbTabsetConfig ]
     })

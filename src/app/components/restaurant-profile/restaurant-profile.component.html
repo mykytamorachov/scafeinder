@@ -5,8 +5,8 @@
       <h1 class="text-center">{{ restaurant?.name }}</h1>
     </div>
       <div class="col-xs-12 col-md-1 text-center">
-      <img class="img-fluid" src="../../../assets/img/star-favorite-black.svg" *ngIf="auth.isAuthenticated() && !showAddToFavorites" (click)="addToFavorites()">
-      <img class="img-fluid" src="../../../assets/img/star-favorite-yellow.svg" *ngIf="auth.isAuthenticated() && showAddToFavorites" (click)="removeFromFavorites()">
+      <img class="img-fluid" src="../../../assets/img/star-favorite-yellow.svg" *ngIf="auth.isAuthenticated() && !showAddToFavorites" (click)="addToFavorites()">
+      <img class="img-fluid" src="../../../assets/img/star-favorite-black.svg" *ngIf="auth.isAuthenticated() && showAddToFavorites" (click)="removeFromFavorites()">
     </div>
   </div>
   <hr>

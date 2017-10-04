@@ -1,0 +1,40 @@
+<div class="container">
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-12">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Full Name" [disabled]="!fullName ? true : null" #name>
+        <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" *ngIf="!fullName" (click)="fullName=true">Edit</button>
+        <button class="btn btn-secondary" type="button" *ngIf="fullName" (click)="updateName(name.value)">Save</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-12">
+        <div class="input-group">
+          <input type="url" class="form-control" placeholder="Image URL" [disabled]="!profileImage ? true : null" #image>
+          <span class="input-group-btn">
+          <button class="btn btn-secondary" type="button" *ngIf="!profileImage" (click)="profileImage=true">Edit</button>
+          <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="updateImage(image.value)">Save</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-12">
+          <div class="input-group">
+            <input [(ngModel)]="password" type="password" class="form-control" placeholder="Password" [disabled]="!userPassword ? true : null">
+            <input [(ngModel)]="repeatPassword" type="password" class="form-control" placeholder="Repeat Password" [attr.disabled]="!userPassword ? true : null">
+            <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" *ngIf="!userPassword" (click)="userPassword=true">Edit</button>
+            <button class="btn btn-secondary" type="button" *ngIf="userPassword" (click)="updatePassword(password)" [disabled]="!isPasswordEqual()">Save</button>
+            </span>
+          </div>
+          <p class="alert-box" *ngIf="!isPasswordEqual()">Passwords dont match</p>
+        </div>
+      </div>
+</div>
