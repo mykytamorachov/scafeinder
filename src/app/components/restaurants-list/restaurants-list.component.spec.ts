@@ -9,6 +9,7 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 describe('RestaurantsListComponent', () => {
   let component: RestaurantsListComponent;
@@ -16,7 +17,12 @@ describe('RestaurantsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpModule, NgxPaginationModule],
+      imports: [
+        RouterTestingModule,
+        HttpModule,
+        NgxPaginationModule,
+        AngularFontAwesomeModule
+      ],
       declarations: [
       RestaurantsListComponent,
       RestaurantItemComponent,
