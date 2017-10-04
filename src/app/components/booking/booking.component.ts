@@ -49,17 +49,13 @@ export class BookingComponent implements OnInit {
 
     this.getCafesService.getCafeById(this.id)
       .subscribe(
-      (restaurant: ICafe) => {
-        this.restaurant = restaurant;
+      (restaurant: ICafe[]) => {
+        this.restaurant = restaurant[0];
         console.log(JSON.stringify(restaurant, null, 2));
-        this.userQuery.placeName = String(restaurant.name);
+        this.userQuery.placeName = String(restaurant[0].name);
       },
       (error) => console.log(error)
       );
-  }
-
-  get diagnostic() {
-    return JSON.stringify(this.userQuery);
   }
 
   showLeftHours(day = 'today') {
@@ -77,11 +73,11 @@ export class BookingComponent implements OnInit {
       return dayHours;
     }
 
-    return (this.dayHours.map((item) => {
-      if (item.hour > hoursStr) {
-        return { hour: item.hour, minute: item.minute };
+    return (this.dayHours.filter((item) => {
+      if (item > hoursStr) {
+        return item;
       }
-    })).slice((currentHours + 1) * 2);
+    }));
   }
 
   public checkSelectedDate(date: NgbDateStruct) {
