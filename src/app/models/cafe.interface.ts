@@ -13,6 +13,7 @@ export interface ICafe {
   tables?: {tableType2: Number, tableType4: Number};
   phones?: String[];
   web?: String;
-  img?: String;
+  logoImg?: String;
+  profileImg?: String;
   _id?: String;
 }

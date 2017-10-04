@@ -12,6 +12,7 @@ import { BookingService } from '../../services/booking/booking.service';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { UniquePipe } from '../../pipes/unique.pipe';
+import { FormDataService } from '../../services/form-data/form-data.service';
 
 import { UserService } from '../../services/user/user.service';
 import { AuthService } from '../../services/auth/auth.service';
@@ -25,7 +26,7 @@ describe('RestaurantProfileComponent', () => {
       declarations: [ RestaurantProfileComponent, BookingComponent, DatepickerComponent,  UniquePipe ],
       imports: [FormsModule, ReactiveFormsModule, HttpModule, RouterTestingModule, NgbModule.forRoot(), AngularOpenlayersModule,
          AngularFontAwesomeModule ],
-      providers: [ GetCafesService, NgbTabsetConfig, BookingService,  UserService, AuthService]
+      providers: [ GetCafesService, NgbTabsetConfig, BookingService,  UserService, AuthService, FormDataService]
     })
     .compileComponents();
   }));

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-
-import { company, dayHours, UserQuery } from './data-search-form';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
+import { FormDataService } from '../../services/form-data/form-data.service';
 import { ICafe } from '../../models/cafe.interface';
+import { UserQuery } from '../../models/query.model';
 
 @Component({
   selector: 'app-search-form',
@@ -22,7 +22,10 @@ export class SearchFormComponent implements OnInit {
   searchform: FormGroup;
   userQuery = new UserQuery(2, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 1) + ':00'), '');
 
-  constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService, private filterService: FilterService) {
+  constructor(private _formBuilder: FormBuilder,
+    private getCafesService: GetCafesService,
+    private filterService: FilterService,
+    private formDataService: FormDataService) {
     this._buildForm();
   }
 
@@ -36,8 +39,8 @@ export class SearchFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.company = company;
-    this.dayHours = dayHours;
+    this.company = this.formDataService.company(15);
+    this.dayHours = this.formDataService.getHours(10, 23);
     this.dayHours = this.showLeftHours();
     this.getCafesService.getAllCafes()
       .subscribe(
@@ -60,7 +63,7 @@ export class SearchFormComponent implements OnInit {
     }
 
     if (day === 'future') {
-      return dayHours;
+      return this.formDataService.getHours(10, 23);
     }
 
     return (this.dayHours.filter((item) => {
@@ -98,20 +101,24 @@ export class SearchFormComponent implements OnInit {
                 } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= +option.persons) {
                   result.push(restaurant);
                 }
+              } else if (restaurant.bookings.every((day) => day.date !== option.date)) {
+                if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +option.persons) {
+                  result.push(restaurant);
+                } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= +option.persons) {
+                  result.push(restaurant);
+                }
               } else {
                 restaurant.bookings.map((day) => {
                   if (day.date === option.date) {
-                    let taken = 0;
-                    day.tables.map((table) => taken += +table.tableType * +table.tableAmount);
-                    if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +taken + +option.persons) {
+                    let takenType2, takenType4: number;
+                    [takenType2, takenType4] = [0, 0];
+                    day.tables.map((table) => {
+                      +table.tableType === 2 ? (takenType2 += +table.tableType * +table.tableAmount) :
+                        (takenType4 += +table.tableType * +table.tableAmount);
+                    });
+                    if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +takenType2 + +option.persons) {
                       result.push(restaurant);
-                    } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= taken + option.persons) {
-                      result.push(restaurant);
-                    }
-                  } else {
-                    if (+option.tableType === 2 && +restaurant.tables.tableType2 * 2 >= +option.persons) {
-                      result.push(restaurant);
-                    } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= +option.persons) {
+                    } else if (+option.tableType === 4 && +restaurant.tables.tableType4 * 4 >= takenType4 + +option.persons) {
                       result.push(restaurant);
                     }
                   }

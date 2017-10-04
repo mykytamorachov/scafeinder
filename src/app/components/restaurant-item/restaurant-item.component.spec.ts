@@ -49,7 +49,7 @@ describe('RestaurantItemComponent', () => {
     address: '8 Shevska Str., Lviv, Ukraine',
     phones: ['+38 (098) 224-44-44', '+38 (032) 235-71-81'],
     web: 'http://kumpelgroup.com/restaurants/baczewski',
-    img: 'https://afisha.lviv.ua/sites/image.life/company624/logo-624-fileffp-name-only-original-3662-kb.jpg',
+    logoImg: 'https://afisha.lviv.ua/sites/image.life/company624/logo-624-fileffp-name-only-original-3662-kb.jpg',
     };
     fixture.detectChanges();
   });
