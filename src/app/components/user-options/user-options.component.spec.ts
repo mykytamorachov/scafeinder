@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserService } from '../../services/user/user.service';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AuthService } from '../../services/auth/auth.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { UserOptionsComponent } from './user-options.component';
 
@@ -11,9 +13,9 @@ describe('UserOptionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, HttpModule ],
+      imports: [ FormsModule, HttpModule, RouterTestingModule ],
       declarations: [ UserOptionsComponent ],
-      providers: [ UserService ]
+      providers: [ UserService, AuthService ]
     })
     .compileComponents();
   }));

@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   onLogin(user: IUser) {
     this.auth.login(this.user).subscribe(
       data => {
-        this.router.navigate(['/profile']);
       },
       err => console.log('onLogin err is ', err),
       () => console.log('Request Completed')
