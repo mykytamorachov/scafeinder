@@ -8,6 +8,16 @@
     }
 }
 
+#dropdownButton {
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #636c72;
+  color: #fff;
+}
+
 .row {
   margin: 0;
 }

@@ -15,7 +15,7 @@ export class RestaurantsListComponent implements OnInit {
   featureFilter: String[] = [];
   p = 1;
   geolocationTurned: boolean;
-  key = 'ratingAsc';
+  key: string;
 
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) {
 
@@ -67,6 +67,10 @@ export class RestaurantsListComponent implements OnInit {
           console.log('An unknown error occurred.');
           break;
     }
+  }
+
+  setSortingKey(key) {
+    this.key = key;
   }
 
   ngOnInit() {
