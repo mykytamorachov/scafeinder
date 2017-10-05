@@ -15,6 +15,15 @@ export const getLogin = (req: Request, res: Response) => {
   res.json({msg: `It's a login page`});
 };
 
+// * GET /profile  * Signup page.
+export const getProfile = (req: Request, res: Response) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  console.log('getProfile...');
+  res.json({msg: `It's a profile page`});
+};
+
 // * GET User byId.
 export const getUserDataById = (req: Request, res: Response) => {
   User.findById(req.params.id, (err, existingUser) => {
@@ -22,6 +31,17 @@ export const getUserDataById = (req: Request, res: Response) => {
     if (existingUser) {
       console.log('user found');
       res.json({ user: existingUser });
+    }
+  });
+};
+
+// * DELETE User byId.
+export const deleteUserById = (req: Request, res: Response) => {
+  User.findById(req.params.id, (err, existingUser) => {
+    if (err) { return err; }
+    if (existingUser) {
+      existingUser.remove();
+      res.json({ msg: 'removed' });
     }
   });
 };

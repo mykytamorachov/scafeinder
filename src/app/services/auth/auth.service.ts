@@ -22,10 +22,11 @@ export class AuthService {
       if (data.status === 'success' && data.token) {
         console.log('data.token in login is ', data.token);
         // localStorage.setItem('currentUser', data.token);
-        const expiresAt = JSON.stringify(600000 + new Date().getTime());
+        const expiresAt = JSON.stringify((2.88e+7) + new Date().getTime());
         localStorage.setItem('access_token', data.token);
         localStorage.setItem('id_token', data.id);
         localStorage.setItem('expires_at', expiresAt);
+        this.router.navigate(['/profile']);
       }
     });
   }
@@ -44,8 +45,6 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
