@@ -21,8 +21,8 @@ import { RestaurantsFiltersComponent } from './restaurants-filters.component';
 describe('RestaurantsFiltersComponent', () => {
   let component: RestaurantsFiltersComponent,
       fixture: ComponentFixture<RestaurantsFiltersComponent>,
-      // de: DebugElement,
-      // el: HTMLInputElement,
+      de: DebugElement,
+      el: HTMLInputElement,
 
       getCafesService: GetCafesService,
       filterService: FilterService;
@@ -43,11 +43,6 @@ describe('RestaurantsFiltersComponent', () => {
 
     getCafesService = fixture.debugElement.injector.get(GetCafesService);
     filterService = fixture.debugElement.injector.get(FilterService);
-
-    // de = fixture.debugElement.query(By.css('.custom-control-description'));
-    // de = fixture.debugElement.query(By.css('input[value="alcohol-free"]'));
-    // de = fixture.debugElement;
-    // el = fixture.nativeElement.querySelector('input[value="alcohol-free"]');
 
     fixture.detectChanges();
   });
@@ -92,12 +87,20 @@ describe('RestaurantsFiltersComponent', () => {
     expect(categories.length).toEqual(16);
   });
 
-  // it('should add first category = alcohol-free, then checked', () => {
-  //   const el = fixture.debugElement.nativeElement;
-  //   const inpt = el.querySelector('input[value="alcohol-free"]');
-  //   inpt.checked = true;
-  //   fixture.detectChanges();
-  //   expect(component.categoryFilter.sort()[0]).toEqual('alcohol-free');
+  // describe('when checked filters on template', () => {
+  //   beforeEach(() => {
+  //     fixture = TestBed.createComponent(RestaurantsFiltersComponent);
+  //     component = fixture.componentInstance;
+  //     de = fixture.debugElement.queryAll(By.css('.custom-control-input'))[0];
+  //     el = de.nativeElement;
+  //     // el = fixture.debugElement.queryAll(By.css('.custom-control-input'))[0].nativeElement;
+  //   });
+
+  //   it('should add first category = alcohol-free', () => {
+  //     el.checked = true;
+  //     fixture.detectChanges();
+  //     expect(component.categoryFilter.sort()[0]).toEqual('alcohol-free');
+  //   });
   // });
 
 });
