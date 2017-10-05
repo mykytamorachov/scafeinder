@@ -15,7 +15,7 @@ export class RestaurantsListComponent implements OnInit {
   cuisineFilter: String[] = [];
   featureFilter: String[] = [];
   p = 1;
-  geolocationTurned = false;
+  geolocationTurned: boolean;
 
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) {
 
