@@ -35,7 +35,9 @@
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <h5>Booking form</h5>
-          <app-booking></app-booking>
+          <app-booking
+            [isAuth]="auth.isAuthenticated()"
+          ></app-booking>
         </div>
       </div>
       <hr>
