@@ -21,8 +21,8 @@ import { RestaurantsFiltersComponent } from './restaurants-filters.component';
 describe('RestaurantsFiltersComponent', () => {
   let component: RestaurantsFiltersComponent,
       fixture: ComponentFixture<RestaurantsFiltersComponent>,
-      de: DebugElement,
-      el: HTMLInputElement,
+      // de: DebugElement,
+      // el: HTMLInputElement,
 
       getCafesService: GetCafesService,
       filterService: FilterService;
