@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { IUser } from '../../models/user.model';
 import { Response } from '@angular/http';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-user-options',
@@ -13,9 +14,13 @@ export class UserOptionsComponent implements OnInit {
   fullName: boolean;
   profileImage: boolean;
   userPassword: boolean;
-  password: any;
-  repeatPassword: any;
-  constructor(private userService: UserService) { }
+  password: string;
+  repeatPassword: string;
+  deleteAccount: boolean;
+  constructor(private userService: UserService, private auth: AuthService) {
+    this.password = '';
+    this.repeatPassword = '';
+  }
 
   ngOnInit() {
   }
@@ -50,7 +55,24 @@ export class UserOptionsComponent implements OnInit {
    );
   }
 
+  deleteUser() {
+    this.userService.deleteUserData().subscribe(
+      (response: Response) => {
+       console.log('response', response.json());
+       this.auth.logout();
+      },
+      (err) => console.log('err ', err)
+   );
+  }
+
   isPasswordEqual(): boolean {
     return this.password === this.repeatPassword;
+  }
+
+  isPasswordShort(): boolean {
+    if (this.password === '') {
+      return false;
+    }
+    return this.password.length < 6;
   }
 }

@@ -11,19 +11,17 @@ export class UserService {
   getUserData() {
     const userID = localStorage.getItem('id_token');
     return this.http.get('/profile/' + userID);
-    // .map((response: Response) => {
-    //   const data = response.json();
-    //   console.log('data  is ', data);
-    // });
   }
 
   updateUserData(user) {
     const userID = localStorage.getItem('id_token');
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.put('/profile/' + userID, user, {headers});
-    // .map((response: Response) => {
-    //   const data = response.json();
-    //   console.log('data  is ', data);
-    // });
+  }
+
+  deleteUserData() {
+    const userID = localStorage.getItem('id_token');
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.delete('/profile/' + userID, {headers});
   }
 }

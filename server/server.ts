@@ -83,8 +83,10 @@ app.put('/profile/:id', userController.updateUserData);
 app.get('/cafe/:cafeId', cafeController.getCafeById);
 
 app.put('/cafes/:cafeId', cafeController.bookInCafe);
+app.get('/profile', userController.getProfile);
 app.get('/profile/:id', userController.getUserDataById);
 app.put('/profile/:id', userController.updateUserData);
+app.delete('/profile/:id', userController.deleteUserById);
 app.get('/cafe/:cafeId', cafeController.getCafeById);
 
 
