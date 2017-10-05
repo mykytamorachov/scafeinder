@@ -6,6 +6,7 @@ import { Response } from '@angular/http';
 import { UserService } from '../../services/user/user.service';
 import { IUser } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
+import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -21,7 +22,10 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
   showAddToFavorites: boolean;
   indexOfFavorite: number;
   constructor(public auth: AuthService, private userService: UserService,
-    private getCafesService: GetCafesService, private route: ActivatedRoute) { }
+    private getCafesService: GetCafesService, private route: ActivatedRoute,
+    config: NgbTabsetConfig) {
+      config.justify = 'justified';
+    }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
