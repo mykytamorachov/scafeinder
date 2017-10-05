@@ -10,18 +10,18 @@ export class UserService {
 
   getUserData() {
     const userID = localStorage.getItem('id_token');
-    return this.http.get('/profile/' + userID);
+    return this.http.get('http://localhost:3000/profile/' + userID);
   }
 
   updateUserData(user) {
     const userID = localStorage.getItem('id_token');
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.put('/profile/' + userID, user, {headers});
+    return this.http.put('http://localhost:3000/profile/' + userID, user, {headers});
   }
 
   deleteUserData() {
     const userID = localStorage.getItem('id_token');
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.delete('/profile/' + userID, {headers});
+    return this.http.delete('http://localhost:3000/profile/' + userID, {headers});
   }
 }
