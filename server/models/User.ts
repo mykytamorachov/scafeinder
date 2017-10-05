@@ -10,6 +10,7 @@ export type UserModel = mongoose.Document & {
   password: string,
   facebook: string,
   favorites: [String],
+  image: string;
   comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void,
 };
 
@@ -33,6 +34,7 @@ const userSchema = new mongoose.Schema({
   facebook: String,
   tokens: Array,
   favorites: [String],
+  image: String,
 }, { versionKey: false });
 
 // Password hash middleware.

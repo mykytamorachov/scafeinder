@@ -20,7 +20,6 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
   user: IUser;
   showAddToFavorites: boolean;
   indexOfFavorite: number;
-
   constructor(public auth: AuthService, private userService: UserService,
     private getCafesService: GetCafesService, private route: ActivatedRoute) { }
 

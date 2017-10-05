@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { company, dayHours, UserQuery } from '../../components/search-form/data-search-form';
+import { UserQuery } from '../../models/query.model';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { FormDataService } from '../../services/form-data/form-data.service';
 import { ICafe } from '../../models/cafe.interface';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BookingService } from '../../services/booking/booking.service';
+
 
 @Component({
   selector: 'app-booking',
@@ -25,8 +27,9 @@ export class BookingComponent implements OnInit {
   restaurant: ICafe;
   id: String;
   private sub: any;
+  @Input() isAuth;
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService,
-    private route: ActivatedRoute, private book: BookingService) {
+    private route: ActivatedRoute, private book: BookingService, private formDataService: FormDataService, public router: Router) {
     this._buildForm();
   }
 
@@ -40,8 +43,8 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.company = company;
-    this.dayHours = dayHours;
+    this.company = this.formDataService.company(15);
+    this.dayHours = this.formDataService.getHours(10, 23);
     this.dayHours = this.showLeftHours();
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -70,7 +73,7 @@ export class BookingComponent implements OnInit {
     }
 
     if (day === 'future') {
-      return dayHours;
+      return this.formDataService.getHours(10, 23);
     }
 
     return (this.dayHours.filter((item) => {
@@ -153,26 +156,35 @@ export class BookingComponent implements OnInit {
       Math.round(this.userQuery.persons / this.userQuery.tableType);
     console.log(`free tables 4: ${freeTablesType4} 2 : ${freeTablesType2}`);
     // console.log(this.restaurant.bookings);
-    switch (+this.userQuery.tableType) {
-      case 2:
-        console.log('2');
-        if (bookingData.tableAmount > freeTablesType2) {
-          alert(`Can't book, Left only ${freeTablesType2} TYPE2-tables, and you want ${bookingData.tableAmount}`);
-        } else {
-          console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
-          this.book.booking(bookingData);
-        }
-        break;
-      case 4:
-        if (bookingData.tableAmount > freeTablesType4) {
-          alert(`Can't book, Left only ${freeTablesType4} TYPE4-tables, and you want ${bookingData.tableAmount}`);
-        } else {
-          console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
-          this.book.booking(bookingData);
-        }
-        break;
-      default:
-        console.log('Wtf?');
+    if (this.isAuth) {
+      switch (+this.userQuery.tableType) {
+        case 2:
+          console.log('2');
+          if (bookingData.tableAmount > freeTablesType2) {
+            alert(`Can't book, Left only ${freeTablesType2} TYPE2-tables, and you want ${bookingData.tableAmount}`);
+          } else {
+            console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
+            this.book.booking(bookingData);
+            alert('Booked! Have a nice day.');
+            this.router.navigate(['/profile']);
+          }
+          break;
+        case 4:
+          if (bookingData.tableAmount > freeTablesType4) {
+            alert(`Can't book, Left only ${freeTablesType4} TYPE4-tables, and you want ${bookingData.tableAmount}`);
+          } else {
+            console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
+            this.book.booking(bookingData);
+            alert('Booked! Have a nice day.');
+            this.router.navigate(['/profile']);
+          }
+          break;
+        default:
+          console.log('Wtf?');
+      }
+    } else {
+      alert('Please. Login for booking');
     }
   }
 }
+

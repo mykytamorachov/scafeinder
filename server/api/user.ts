@@ -4,6 +4,7 @@ import { LocalStrategyInfo } from 'passport-local';
 import * as jwt from 'jsonwebtoken';
 import { default as User, UserModel } from '../models/User';
 import AUTH_CONFIG from '../constants/auth_config';
+import * as bcrypt from 'bcrypt-nodejs';
 
 // * GET /login  * Login page.
 export const getLogin = (req: Request, res: Response) => {
@@ -12,6 +13,15 @@ export const getLogin = (req: Request, res: Response) => {
   }
   console.log('getLogin...');
   res.json({msg: `It's a login page`});
+};
+
+// * GET /profile  * Signup page.
+export const getProfile = (req: Request, res: Response) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  console.log('getProfile...');
+  res.json({msg: `It's a profile page`});
 };
 
 // * GET User byId.
@@ -25,17 +35,46 @@ export const getUserDataById = (req: Request, res: Response) => {
   });
 };
 
+// * DELETE User byId.
+export const deleteUserById = (req: Request, res: Response) => {
+  User.findById(req.params.id, (err, existingUser) => {
+    if (err) { return err; }
+    if (existingUser) {
+      existingUser.remove();
+      res.json({ msg: 'removed' });
+    }
+  });
+};
+
 // *Update  User.
 export const updateUserData = (req: Request, res: Response) => {
   console.log('request body', req.body);
   console.log('request params', req.params.id);
-  User.update({_id: req.params.id}, req.body, (err, existingUser) => {
-    if (err) { return err; }
-    if (existingUser) {
-      console.log('user found', existingUser);
-      res.json(existingUser);
-    }
-  });
+
+  if (req.body.hasOwnProperty('password')) {
+    bcrypt.genSalt(10, (errr, salt) => {
+      if (errr) { return (errr); }
+      bcrypt.hash( req.body.password, salt, null, (error, hash) => {
+        if (error) { return (error); }
+        req.body.password = hash;
+        User.update({_id: req.params.id}, req.body, (err, existingUser) => {
+          if (err) { return err; }
+          if (existingUser) {
+            console.log('user found', existingUser);
+            res.json(existingUser);
+          }
+        });
+      });
+    });
+  } else {
+    User.update({_id: req.params.id}, req.body, (err, existingUser) => {
+      if (err) { return err; }
+      if (existingUser) {
+        console.log('user found', existingUser);
+        res.json(existingUser);
+      }
+    });
+  }
 };
 
 // * POST /login  * Sign in using email and password.

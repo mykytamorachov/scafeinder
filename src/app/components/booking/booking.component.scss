@@ -1,4 +1,44 @@
-.no-gutter {
-    padding: 0;
-    margin: 0;
-}
+.addons {
+    background-color: #292b2c;
+    border-radius: initial;
+    color: #fff;
+    width: 40px;
+  }
+  
+  .form-control {
+    border-radius: initial;
+  }
+  
+  .search-form {
+    .no-gutter {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .table-size {
+      @media screen and (min-width: "992px") and (max-width: "1200px") {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    margin: 0 auto 0;
+    & button {
+        background-color: #292b2c;
+        border-radius: 0;
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        font-weight: 900;
+        &:hover {
+            outline: none;
+            border: none;
+            background-color: #fff;
+            color: #000;            
+        }
+    }
+  }
+  
+  input::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+  

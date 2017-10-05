@@ -15,6 +15,10 @@ export class RestaurantsFiltersComponent implements OnInit {
   categoryFilter: String[] = [];
   cuisineFilter: String[] = [];
   featureFilter: String[] = [];
+  isCategoryCollapsed: boolean;
+  isCuisineCollapsed: boolean;
+  isFeatureCollapsed: boolean;
+  windowWidth: number;
 
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) { }
 
@@ -29,6 +33,14 @@ export class RestaurantsFiltersComponent implements OnInit {
         },
         (error) => console.log(error)
       );
+    this.windowWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    if (this.windowWidth < 768) {
+      this.isCategoryCollapsed = true;
+      this.isCuisineCollapsed = true;
+      this.isFeatureCollapsed = true;
+    }
   }
 
   updateCategoryFilter(option, event) {
@@ -92,6 +104,18 @@ export class RestaurantsFiltersComponent implements OnInit {
         categories.push(category);
       }}));
     return categories.sort();
+  }
+
+  onResize(event) {
+    if (event.target.innerWidth > 767) {
+      this.isCategoryCollapsed = false;
+      this.isCuisineCollapsed = false;
+      this.isFeatureCollapsed = false;
+    } else {
+      this.isCategoryCollapsed = true;
+      this.isCuisineCollapsed = true;
+      this.isFeatureCollapsed = true;
+    }
   }
 
 }

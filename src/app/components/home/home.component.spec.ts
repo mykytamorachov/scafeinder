@@ -12,6 +12,7 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerComponent } from '../banner/banner.component';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
+import { FormDataService } from '../../services/form-data/form-data.service';
 import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -39,7 +40,7 @@ describe('HomeComponent', () => {
         UniquePipe,
         RatingComponent
       ],
-      providers: [GetCafesService, FilterService]
+      providers: [GetCafesService, FilterService, FormDataService]
     })
     .compileComponents();
   }));
