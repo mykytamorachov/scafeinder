@@ -5,6 +5,7 @@ import { RatingComponent } from '../rating/rating.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
+import { SortByPipe } from '../../pipes/sort-by.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 import { HttpModule } from '@angular/http';
@@ -27,6 +28,7 @@ describe('RestaurantsListComponent', () => {
       RestaurantsListComponent,
       RestaurantItemComponent,
       ShortcutPipe,
+      SortByPipe,
       RatingComponent
       ],
       providers: [GetCafesService, FilterService]

@@ -33,6 +33,7 @@ import { BookingService } from './services/booking/booking.service';
 import { UniquePipe } from './pipes/unique.pipe';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { UserOptionsComponent } from './components/user-options/user-options.component';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { UserOptionsComponent } from './components/user-options/user-options.com
     RatingComponent,
     BookingComponent,
     UniquePipe,
-    UserOptionsComponent
+    UserOptionsComponent,
+    SortByPipe
   ],
   imports: [
     BrowserModule,

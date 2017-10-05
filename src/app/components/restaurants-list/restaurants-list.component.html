@@ -1,11 +1,19 @@
 <div class="row bg-inverse text-white heading">
-  <div class="col-6 col-sm-8">{{ (restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter)?.length }} <span class="hidden-xs-down">Available Restaurants</span><span class="hidden-sm-up">Results</span></div>
-  <div class="col-3 col-sm-2 text-right"><ng4-fa name="sort-amount-desc"></ng4-fa>Sort</div>
-  <div class="col-3 col-sm-2 text-right"><ng4-fa name="map-marker"></ng4-fa>Map</div>
+  <div class="col-9 col-sm-10">{{ (restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter)?.length }} <span class="hidden-xs-down">Available Restaurants</span><span class="hidden-sm-up">Results</span></div>
+  <div class="col-3 col-sm-2">
+    <div class="d-inline-block float-right" ngbDropdown placement="bottom-right">
+      <span id="dropdownButton" class="dropBtn bg-inverse text-white" ngbDropdownToggle><ng4-fa name="sort"></ng4-fa>Sort</span>
+      <div class="dropdown-menu" ngbDropdownMenu>
+        <button class="dropdown-item" (click)="setSortingKey('distance')">Distance</button>
+        <button class="dropdown-item" (click)="setSortingKey('ratingAsc')">Lowest Rated</button>
+        <button class="dropdown-item" (click)="setSortingKey('ratingDesc')">Highest Rated</button>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-sm-12" *ngIf="(restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter)?.length as output; else noResults">
-    <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter | paginate: { itemsPerPage: 10, currentPage: p }" [restaurant]="restaurantItem"></app-restaurant-item>
+    <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter | sortBy: key | paginate: { itemsPerPage: 10, currentPage: p }" [restaurant]="restaurantItem"></app-restaurant-item>
   </div>
   <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
   <ng-template #noResults>

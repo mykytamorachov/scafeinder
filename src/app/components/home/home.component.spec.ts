@@ -8,6 +8,7 @@ import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.componen
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 import { UniquePipe } from '../../pipes/unique.pipe';
+import { SortByPipe } from '../../pipes/sort-by.pipe';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerComponent } from '../banner/banner.component';
@@ -38,6 +39,7 @@ describe('HomeComponent', () => {
         BannerComponent,
         ShortcutPipe,
         UniquePipe,
+        SortByPipe,
         RatingComponent
       ],
       providers: [GetCafesService, FilterService, FormDataService]
