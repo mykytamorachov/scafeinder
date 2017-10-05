@@ -11,30 +11,30 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center">
       <img src="{{ restaurant?.profileImg }}" alt="restaurant photo" class="img-fluid">
       <ngb-tabset>
         <ngb-tab title="Features">
           <ng-template ngbTabContent>
-            <span class="badge badge-pill badge-primary" *ngFor="let item of restaurant?.features">{{ item }}</span>
+            <span class="badge badge-default" *ngFor="let item of restaurant?.features">{{ item }}</span>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Cuisines">
           <ng-template ngbTabContent>
-            <span class="badge badge-pill badge-primary" *ngFor="let item of restaurant?.cuisines">{{ item }}</span>
+            <span class="badge badge-default" *ngFor="let item of restaurant?.cuisines">{{ item }}</span>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Categories">
           <ng-template ngbTabContent>
-            <span class="badge badge-pill badge-primary" *ngFor="let item of restaurant?.categories">{{ item }}</span>            
+            <span class="badge badge-default" *ngFor="let item of restaurant?.categories">{{ item }}</span>            
           </ng-template>
         </ngb-tab>
       </ngb-tabset>
     </div>
-    <div class="col-6 col-sm-12 col-md-6 col-lg-6">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
       <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-          <h5>Booking form</h5>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          
           <app-booking
             [isAuth]="auth.isAuthenticated()"
           ></app-booking>
@@ -42,8 +42,7 @@
       </div>
       <hr>
       <div class="row">
-          <div class="col-xs-12 col-md-12">
-              <h5> Restaurant address:  {{restaurant?.address}}</h5>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <aol-map [width]="undefined" [height]="undefined">
                 <aol-view [zoom]="18">
                     <aol-coordinate [x]="restaurant?.location.lng" [y]="restaurant?.location.lat" [srid]="'EPSG:4326'"></aol-coordinate>
@@ -71,6 +70,7 @@
                   </aol-source-vector>
                 </aol-layer-vector>
             </aol-map>
+            <h6 class="text-center"> Restaurant address:  {{restaurant?.address}}</h6>
           </div>
       </div>
     </div>
