@@ -1,4 +1,5 @@
 export const cafesJson = [{
+  _id: '1',
   cuisines: ['European', 'Galician', 'Jewish', 'Polish', 'Ukrainian', 'Vegetarian'],
   features: ['live music', 'movie screenings', 'pet-friendly', 'summer terrace', 'Wi-Fi'],
   categories: ['luxury restaurant'],
@@ -29,6 +30,7 @@ export const cafesJson = [{
   profileImg: 'assets/img/profile/1.jpg'
 },
 {
+  _id: '2',
   cuisines: ['European', 'Italian', 'Ukrainian', 'Vegetarian'],
   features: ['bicycle parking', 'live music', 'movie screenings', 'summer terrace', 'Wi-Fi'],
   categories: ['pub'],
@@ -59,6 +61,7 @@ export const cafesJson = [{
   profileImg: 'assets/img/profile/2.jpg'
 },
 {
+  _id: '3',
   cuisines: ['Galician', 'Hungarian', 'Italian', 'Polish', 'Ukrainian'],
   features: ['live music', 'summer terrace', 'Wi-Fi'],
   categories: ['brewery', 'pub'],

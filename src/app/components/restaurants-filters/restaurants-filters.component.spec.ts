@@ -5,18 +5,9 @@ import { DebugElement } from '@angular/core';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { HttpModule } from '@angular/http';
 import { FilterService } from '../../services/filter.service';
-import { cafesJson } from '../../services/getcafes/cafe.data';
+import { cafesJson } from '../../services/stub/cafe.data';
 
 import { RestaurantsFiltersComponent } from './restaurants-filters.component';
-
-// const getCafesServiceStub = {
-//   getAllCafes() {
-//     return cafesJson;
-//   },
-//   getCafeById(id) {
-//     return cafesJson.filter(cafe => cafe._id === id);
-//   }
-// };
 
 describe('RestaurantsFiltersComponent', () => {
   let component: RestaurantsFiltersComponent,

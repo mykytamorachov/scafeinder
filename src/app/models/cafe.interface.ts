@@ -14,5 +14,6 @@ export interface ICafe {
   phones?: String[];
   web?: String;
   img?: String;
+  profileImg?: String;
   _id?: String;
 }

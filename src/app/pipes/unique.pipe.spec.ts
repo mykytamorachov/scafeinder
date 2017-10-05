@@ -29,7 +29,7 @@ describe('UniquePipe', () => {
     expect(pipe.transform(cafes)[0]).toBe('Baczewski');
   });
 
-  it('transforms "cafes" to array with length 1', () => {
+  it('transforms "cafes" to array with one unique name', () => {
     expect(pipe.transform(cafes).length).toBe(1);
   });
 
