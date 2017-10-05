@@ -16,8 +16,8 @@ import { UniquePipe } from '../../pipes/unique.pipe';
 import { UserService } from '../../services/user/user.service';
 import { IUser } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+// import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/observable/of';
 
 // import { getCafesServiceStub } from '../../services/stub/stub.getcafes.service';
 
@@ -28,11 +28,11 @@ describe('RestaurantProfileComponent', () => {
   // let spy: jasmine.Spy;
   // let userService: UserService;
 
-  const testUser: IUser = {
-    name: 'Test',
-    email: 'test@test.com',
-    favorites: ['Kumpel', 'Gasova Lampa', 'PRAVDA Beer Theater', 'Mazoh-Cafe']
-  };
+  // const testUser: IUser = {
+  //   name: 'Test',
+  //   email: 'test@test.com',
+  //   favorites: ['Kumpel', 'Gasova Lampa', 'PRAVDA Beer Theater', 'Mazoh-Cafe']
+  // };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
