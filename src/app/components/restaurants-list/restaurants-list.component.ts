@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ICafe } from '../../models/cafe.interface';
-import { ShortcutPipe } from '../../pipes/shortcut.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 
@@ -16,6 +15,7 @@ export class RestaurantsListComponent implements OnInit {
   featureFilter: String[] = [];
   p = 1;
   geolocationTurned: boolean;
+  key = 'ratingAsc';
 
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) {
 
