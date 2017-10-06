@@ -15,8 +15,28 @@
         <app-restaurant-item *ngFor="let restaurantItem of restaurants" [restaurant]="restaurantItem"></app-restaurant-item>
       </ng-template>
     </ngb-tab>
-    <ngb-tab title="History">
+    <ngb-tab title="My Bookings">
       <ng-template ngbTabContent>
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Number of people</th>
+                  <th>Restaurant name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let userBooking of user.bookings; let index = index">
+                  <th scope="row">{{index+1}}</th>
+                  <td>{{userBooking.date}}</td>
+                  <td>{{userBooking.time}}</td>
+                  <td>{{userBooking.people}}</td>
+                  <td>{{userBooking.resName}}</td>
+                </tr>
+              </tbody>
+            </table>
       </ng-template>
     </ngb-tab>
     <ngb-tab title="Options">
