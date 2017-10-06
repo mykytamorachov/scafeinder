@@ -13,7 +13,7 @@ export class RestaurantsListComponent implements OnInit {
   categoryFilter: String[] = [];
   cuisineFilter: String[] = [];
   featureFilter: String[] = [];
-  geolocationTurned = navigator.geolocation ? true : false;
+  geolocationTurned = navigator.geolocation && localStorage ? true : false;
   key: string;
   p = 1;
 

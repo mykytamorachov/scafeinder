@@ -26,22 +26,22 @@ export class SortByPipe implements PipeTransform {
         return items.sort(function(obj1, obj2) {
             return GeoLib.getDistance(
               {
-                latitude: parseFloat(localStorage.getItem('latitude')),
-                longitude: parseFloat(localStorage.getItem('longitude'))
+                latitude: +localStorage.getItem('latitude'),
+                longitude: +localStorage.getItem('longitude')
               }, {
                 latitude: +obj1.location.lat,
                 longitude: +obj1.location.lng
               }) - GeoLib.getDistance(
               {
-                latitude: parseFloat(localStorage.getItem('latitude')),
-                longitude: parseFloat(localStorage.getItem('longitude'))
+                latitude: +localStorage.getItem('latitude'),
+                longitude: +localStorage.getItem('longitude')
               }, {
                 latitude: +obj2.location.lat,
                 longitude: +obj2.location.lng
               });
           });
     } else {
-            return items;
+      return items;
     }
 
   }
