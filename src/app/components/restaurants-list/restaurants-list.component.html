@@ -4,7 +4,7 @@
     <div class="d-inline-block float-right" ngbDropdown placement="bottom-right">
       <span id="dropdownButton" class="dropBtn bg-inverse text-white" ngbDropdownToggle><ng4-fa name="sort"></ng4-fa>Sort</span>
       <div class="dropdown-menu" ngbDropdownMenu>
-        <button class="dropdown-item" (click)="setSortingKey('distance')">Distance</button>
+        <button class="dropdown-item" (click)="setSortingKey('distance')" *ngIf="geolocationTurned">Distance</button>
         <button class="dropdown-item" (click)="setSortingKey('ratingAsc')">Lowest Rated</button>
         <button class="dropdown-item" (click)="setSortingKey('ratingDesc')">Highest Rated</button>
       </div>

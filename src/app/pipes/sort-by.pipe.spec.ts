@@ -58,10 +58,6 @@ describe('SortByPipe', () => {
     ]);
   });
 
-  it('returns the array sorted ascending by distance if key is distance', () => {
-    expect(pipe.transform(cafes, 'distance')).toEqual(cafes);
-  });
-
   it('returns the same non-sorted array if key is unknown', () => {
     expect(pipe.transform(cafes, 'address')).toEqual(cafes);
   });
