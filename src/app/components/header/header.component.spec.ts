@@ -4,7 +4,7 @@ import { HeaderComponent } from './header.component';
 import { FormBuilder, FormsModule, NgModel } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { HttpModule } from '@angular/http';
-import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -12,11 +12,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ NgbModule, HttpModule ],
+      imports: [ NgbModule, HttpModule, RouterTestingModule ],
       declarations: [ HeaderComponent ],
-      providers: [ AuthService, {
-        provide: Router, useValue: { navigate: () => {} }
-      } ]
+      providers: [ AuthService ]
     })
     .compileComponents();
   }));
