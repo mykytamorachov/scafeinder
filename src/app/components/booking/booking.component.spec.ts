@@ -75,13 +75,31 @@ describe('BookingComponent', () => {
     // expect(component.dayHours.sort()[0]).toEqual(new Date().getHours() + 1);
   });
 
-  it('checkSelectedDate method should return correct left hours', async() => {
-    const date = new Date();
-    const ngbDateStruct = { day: date.getUTCDay(), month: date.getUTCMonth(), year: date.getUTCFullYear()};
-    component.checkSelectedDate(ngbDateStruct);
+  // it('checkSelectedDate method should return correct left hours', async() => {
+  //   const date = new Date();
+  //   const ngbDateStruct = { day: date.getUTCDay(), month: date.getUTCMonth(), year: date.getUTCFullYear()};
+  //   component.checkSelectedDate(ngbDateStruct);
+  //   fixture.detectChanges();
+  //   expect(component.dayHours.sort()[0]).toEqual(date.getHours() + 1);
+  //   // expect(component.dayHours.sort()[0]).toBeTruthy();
+  // });
+
+  it('checkSelectedDate method should be checked with the future date', async() => {
+    component.checkSelectedDate({year: 2037, month: 11, day: 14});
     fixture.detectChanges();
-    expect(component.dayHours.sort()[0]).toEqual(date.getHours() + 1);
-    // expect(component.dayHours.sort()[0]).toBeTruthy();
+
+    expect(component.model).toEqual({year: 2037, month: 11, day: 14});
+    expect(component.userQuery.date).toEqual('2037-11-14');
+    expect(component.dayHours).toEqual(component.showLeftHours('future'));
+  });
+
+  it('checkSelectedDate method should be checked with the current date', async() => {
+    const now = {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()};
+    component.checkSelectedDate(now);
+    const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 10);
+    fixture.detectChanges();
+    expect(component.userQuery.date).toEqual(localISOTime);
   });
 
   it('getBookedTables method should return booked tables for mocked cafe', async() => {

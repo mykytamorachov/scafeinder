@@ -59,4 +59,11 @@ describe('SearchFormComponent', () => {
     expect(component.userQuery.date).toEqual(localISOTime);
   });
 
+  it('showLeftHours method should show correct left hours', async() => {
+    component.showLeftHours();
+    fixture.detectChanges();
+    expect(component.dayHours.sort()[0]).toBeTruthy();
+    // expect(component.dayHours.sort()[0]).toEqual(new Date().getHours() + 1);
+  });
+
 });
