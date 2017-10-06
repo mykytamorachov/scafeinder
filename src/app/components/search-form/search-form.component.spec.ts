@@ -43,7 +43,6 @@ describe('SearchFormComponent', () => {
   it('checkSelectedDate method should be checked with the future date', async() => {
     component.checkSelectedDate({year: 2037, month: 11, day: 14});
     fixture.detectChanges();
-
     expect(component.model).toEqual({year: 2037, month: 11, day: 14});
     expect(component.userQuery.date).toEqual('2037-11-14');
     expect(component.dayHours).toEqual(component.showLeftHours('future'));
@@ -55,15 +54,15 @@ describe('SearchFormComponent', () => {
     const tzoffset = (new Date()).getTimezoneOffset() * 60000;
     const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 10);
     fixture.detectChanges();
-
     expect(component.userQuery.date).toEqual(localISOTime);
   });
 
   it('showLeftHours method should show correct left hours', async() => {
+    const hoursNow = new Date().getHours();
+    const res = (hoursNow > 23 || hoursNow < 10) ? 10 : (hoursNow + 1);
     component.showLeftHours();
     fixture.detectChanges();
-    expect(component.dayHours.sort()[0]).toBeTruthy();
-    // expect(component.dayHours.sort()[0]).toEqual(new Date().getHours() + 1);
+    expect(component.dayHours.sort()[0]).toEqual(res);
   });
 
 });
