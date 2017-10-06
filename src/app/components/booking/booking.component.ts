@@ -9,7 +9,9 @@ import { FormDataService } from '../../services/form-data/form-data.service';
 import { ICafe } from '../../models/cafe.interface';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BookingService } from '../../services/booking/booking.service';
-
+import { UserService } from '../../services/user/user.service';
+import { IUser } from '../../models/user.model';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-booking',
@@ -18,6 +20,7 @@ import { BookingService } from '../../services/booking/booking.service';
 })
 
 export class BookingComponent implements OnInit {
+  @Input() user: IUser;
   restaurants: ICafe[];
   company: Array<number>;
   dayHours: any;
@@ -29,7 +32,8 @@ export class BookingComponent implements OnInit {
   private sub: any;
   @Input() isAuth;
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService,
-    private route: ActivatedRoute, private book: BookingService, private formDataService: FormDataService, public router: Router) {
+    private route: ActivatedRoute, private book: BookingService, private formDataService: FormDataService, public router: Router,
+    private userService: UserService) {
     this._buildForm();
   }
 
@@ -147,10 +151,21 @@ export class BookingComponent implements OnInit {
       tableType: 0,
       tableAmount: 0
     };
+    const userBooking = {
+      date: '',
+      time: '',
+      people: 0,
+      resName: '',
+    };
     bookingData.resId = String(this.restaurant._id);
+    bookingData.userId = localStorage.getItem('id_token');
     bookingData.date = this.userQuery.date;
+    userBooking.date = this.userQuery.date;
     bookingData.time = this.userQuery.time;
+    userBooking.time = this.userQuery.time;
     bookingData.people = this.userQuery.persons;
+    userBooking.people = this.userQuery.persons;
+    userBooking.resName = this.restaurant.name;
     bookingData.tableType = this.userQuery.tableType;
     bookingData.tableAmount = (Math.round(this.userQuery.persons / this.userQuery.tableType) === 0) ? 1 :
       Math.round(this.userQuery.persons / this.userQuery.tableType);
@@ -165,8 +180,15 @@ export class BookingComponent implements OnInit {
           } else {
             console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
             this.book.booking(bookingData);
-            alert('Booked! Have a nice day.');
-            this.router.navigate(['/profile']);
+            this.user.bookings.push(userBooking);
+            this.userService.updateUserData({bookings: this.user.bookings}).subscribe(
+              (response: Response) => {
+               console.log('response', response.json());
+               alert('Booked! Have a nice day.');
+               this.router.navigate(['/profile']);
+              },
+              (err) => console.log('err ', err)
+           );
           }
           break;
         case 4:
@@ -175,8 +197,15 @@ export class BookingComponent implements OnInit {
           } else {
             console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
             this.book.booking(bookingData);
-            alert('Booked! Have a nice day.');
-            this.router.navigate(['/profile']);
+            this.user.bookings.push(userBooking);
+            this.userService.updateUserData({bookings: this.user.bookings}).subscribe(
+              (response: Response) => {
+               console.log('response', response.json());
+               alert('Booked! Have a nice day.');
+               this.router.navigate(['/profile']);
+              },
+              (err) => console.log('err ', err)
+           );
           }
           break;
         default:

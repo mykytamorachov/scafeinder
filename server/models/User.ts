@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema({
   facebook: String,
   tokens: Array,
   favorites: [String],
+  bookings: Array,
   image: String,
 }, { versionKey: false });
 

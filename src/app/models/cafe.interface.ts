@@ -3,7 +3,7 @@ export interface ICafe {
       lat: Number,
       lng: Number
   };
-  name: String;
+  name: string;
   rating?: Number;
   address: String;
   categories?: String[];
