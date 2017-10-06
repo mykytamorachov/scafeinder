@@ -17,8 +17,8 @@ import { FormDataService } from '../../services/form-data/form-data.service';
 import { UserService } from '../../services/user/user.service';
 import { IUser } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 // import { getCafesServiceStub } from '../../services/stub/stub.getcafes.service';
 
@@ -27,13 +27,13 @@ describe('RestaurantProfileComponent', () => {
   let component: RestaurantProfileComponent;
   let fixture: ComponentFixture<RestaurantProfileComponent>;
   // let spy: jasmine.Spy;
-  // let userService: UserService;
+  let userService: UserService;
 
-  // const testUser: IUser = {
-  //   name: 'Test',
-  //   email: 'test@test.com',
-  //   favorites: ['Kumpel', 'Gasova Lampa', 'PRAVDA Beer Theater', 'Mazoh-Cafe']
-  // };
+  const testUser: IUser = {
+    name: 'Test',
+    email: 'test@test.com',
+    favorites: ['Kumpel', 'Gasova Lampa', 'PRAVDA Beer Theater', 'Mazoh-Cafe']
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -49,7 +49,7 @@ describe('RestaurantProfileComponent', () => {
     fixture = TestBed.createComponent(RestaurantProfileComponent);
     component = fixture.componentInstance;
 
-    // userService = fixture.debugElement.injector.get(UserService);
+    userService = fixture.debugElement.injector.get(UserService);
 
     // spy = spyOn(userService, 'getUserData').and.returnValue(Observable.of(testUser));
 
@@ -59,6 +59,14 @@ describe('RestaurantProfileComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('getUser method should get user data', async() => {
+    fixture.detectChanges();
+    component.getUser();
+    spyOn(userService, 'getUserData').and.returnValue(Observable.of(testUser));
+    fixture.detectChanges();
+    expect(component.user.name).toBe('Test');
+    });
 
   // it('getUser method should get user data', (done: any) => {
   //   fixture.detectChanges();
