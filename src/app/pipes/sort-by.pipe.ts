@@ -23,37 +23,25 @@ export class SortByPipe implements PipeTransform {
         return +obj2['rating'] - +obj1['rating'];
       });
     } else if (key === 'distance') {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          items.sort(function(obj1, obj2) {
+        return items.sort(function(obj1, obj2) {
             return GeoLib.getDistance(
               {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
+                latitude: parseFloat(localStorage.getItem('latitude')),
+                longitude: parseFloat(localStorage.getItem('longitude'))
               }, {
                 latitude: +obj1.location.lat,
                 longitude: +obj1.location.lng
               }) - GeoLib.getDistance(
               {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
+                latitude: parseFloat(localStorage.getItem('latitude')),
+                longitude: parseFloat(localStorage.getItem('longitude'))
               }, {
                 latitude: +obj2.location.lat,
                 longitude: +obj2.location.lng
               });
           });
-          console.log(items);
-        },
-        function() {
-          console.log('Position could not be determined.');
-        },
-        {
-          enableHighAccuracy: true
-        }
-      );
-      return items;
     } else {
-      return items;
+            return items;
     }
 
   }

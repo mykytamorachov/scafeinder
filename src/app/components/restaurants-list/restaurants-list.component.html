@@ -2,7 +2,7 @@
   <div class="col-9 col-sm-10">{{ (restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter)?.length }} <span class="hidden-xs-down">Available Restaurants</span><span class="hidden-sm-up">Results</span></div>
   <div class="col-3 col-sm-2">
     <div class="d-inline-block float-right" ngbDropdown placement="bottom-right">
-      <span id="dropdownButton" class="dropBtn bg-inverse text-white" ngbDropdownToggle><ng4-fa name="sort"></ng4-fa>Sort</span>
+      <span id="dropdownButton" class="dropBtn bg-inverse text-white" ngbDropdownToggle (click)=" getCoords()"><ng4-fa name="sort"></ng4-fa>Sort</span>
       <div class="dropdown-menu" ngbDropdownMenu>
         <button class="dropdown-item" (click)="setSortingKey('distance')" *ngIf="geolocationTurned">Distance</button>
         <button class="dropdown-item" (click)="setSortingKey('ratingAsc')">Lowest Rated</button>

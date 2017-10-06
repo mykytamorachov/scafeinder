@@ -51,4 +51,18 @@ export class RestaurantsListComponent implements OnInit {
     this.filterService.currentCafes.subscribe(data => this.restaurants = data);
   }
 
+  getCoords() {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        localStorage.setItem('latitude', position.coords.latitude.toString());
+        localStorage.setItem('longitude', position.coords.longitude.toString());
+  },
+  function() {
+    console.log('Position could not be determined.');
+  },
+  {
+    enableHighAccuracy: true
+  }
+    );
+  }
 }
