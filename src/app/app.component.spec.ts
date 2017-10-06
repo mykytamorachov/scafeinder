@@ -31,8 +31,16 @@ import { FormDataService } from './services/form-data/form-data.service';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, NgbModule.forRoot(), ReactiveFormsModule, RouterTestingModule, HttpModule, AngularOpenlayersModule,
-        NgxPaginationModule, AngularFontAwesomeModule ],
+      imports: [
+      FormsModule,
+      NgbModule.forRoot(),
+      ReactiveFormsModule,
+      RouterTestingModule,
+      HttpModule,
+      AngularOpenlayersModule,
+      NgxPaginationModule,
+      AngularFontAwesomeModule
+    ],
       declarations: [
         AppComponent,
         HeaderComponent,

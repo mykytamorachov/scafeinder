@@ -1,28 +1,27 @@
 <header>
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right collapsed" aria-controls="collapsedContent" aria-expanded="false" aria-label="Toggle navigation"
-      data-toggle="collapse" data-target="#navbarText" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-      type="button">
-        <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-toggleable navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right mt-2" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="collapsedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" routerLink="/">
-      <img src="assets/img/scafeinder.jpg" width="55" height="55" class="d-inline-block align-top rounded-circle" alt="scafeinder icon">
+      <img src="assets/img/scafeinder.jpg" width="55" height="55" class="d-inline-block align-middle rounded-circle" alt="Logo Image">
+      <span class="d-inline-block h4 pl-1">Scafeinder</span>
     </a>
-    <a class="navbar-brand" routerLink="/">
-      Scafeinder
-    </a>
-    <div class="navbar-collapse collapse" [ngbCollapse]="!isCollapsed" id="collapsedContent">
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="collapsedContent" [ngbCollapse]="!isCollapsed">
+      <ul class="navbar-nav ml-auto text-center">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
         <ng-template [ngIf]="!auth.isAuthenticated()">
-          <li class="nav-item">
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/register">Sign Up</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/login">Log In</a>
           </li>
         </ng-template>
         <ng-template [ngIf]="auth.isAuthenticated()">
-          <li class="nav-item">
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/profile">Profile</a>
           </li>
           <li class="nav-item">
