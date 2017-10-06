@@ -29,4 +29,35 @@ describe('UserOptionsComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('isPasswordEqual method should return true if password equal', async() => {
+    component.password = 'password';
+    component.repeatPassword = 'password';
+    const res = component.isPasswordEqual();
+    fixture.detectChanges();
+    expect(res).toBeTruthy();
+  });
+
+  it('isPasswordEqual method should return false if password not equal', async() => {
+    component.password = 'password';
+    component.repeatPassword = 'passwrd';
+    const res = component.isPasswordEqual();
+    fixture.detectChanges();
+    expect(!res).toBeTruthy();
+  });
+
+  it('isPasswordShort method should return true if password length < 6', async() => {
+    component.password = '1234';
+    const res = component.isPasswordShort();
+    fixture.detectChanges();
+    expect(res).toBeTruthy();
+  });
+
+  it('isPasswordShort method should return false if password length >= 6', async() => {
+    component.password = '123456';
+    const res = component.isPasswordShort();
+    fixture.detectChanges();
+    expect(!res).toBeTruthy();
+  });
+
 });
