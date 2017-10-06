@@ -184,11 +184,11 @@ export class BookingComponent implements OnInit {
             this.userService.updateUserData({bookings: this.user.bookings}).subscribe(
               (response: Response) => {
                console.log('response', response.json());
+               alert('Booked! Have a nice day.');
+               this.router.navigate(['/profile']);
               },
               (err) => console.log('err ', err)
            );
-            alert('Booked! Have a nice day.');
-            this.router.navigate(['/profile']);
           }
           break;
         case 4:
@@ -201,11 +201,11 @@ export class BookingComponent implements OnInit {
             this.userService.updateUserData({bookings: this.user.bookings}).subscribe(
               (response: Response) => {
                console.log('response', response.json());
+               alert('Booked! Have a nice day.');
+               this.router.navigate(['/profile']);
               },
               (err) => console.log('err ', err)
            );
-            alert('Booked! Have a nice day.');
-            this.router.navigate(['/profile']);
           }
           break;
         default:
