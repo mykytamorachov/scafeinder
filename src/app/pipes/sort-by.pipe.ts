@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ICafe } from '../models/cafe.interface';
+import * as GeoLib from 'geolib';
 
 @Pipe({
   name: 'sortBy'
@@ -22,8 +23,23 @@ export class SortByPipe implements PipeTransform {
         return +obj2['rating'] - +obj1['rating'];
       });
     } else if (key === 'distance') {
-      console.log('Sorting By Distance');
-      return items;
+        return items.sort(function(obj1, obj2) {
+            return GeoLib.getDistance(
+              {
+                latitude: +localStorage.getItem('latitude'),
+                longitude: +localStorage.getItem('longitude')
+              }, {
+                latitude: +obj1.location.lat,
+                longitude: +obj1.location.lng
+              }) - GeoLib.getDistance(
+              {
+                latitude: +localStorage.getItem('latitude'),
+                longitude: +localStorage.getItem('longitude')
+              }, {
+                latitude: +obj2.location.lat,
+                longitude: +obj2.location.lng
+              });
+          });
     } else {
       return items;
     }
