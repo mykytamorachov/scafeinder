@@ -60,10 +60,11 @@ describe('SearchFormComponent', () => {
   });
 
   it('showLeftHours method should show correct left hours', async() => {
+    const hoursNow = new Date().getHours();
+    const res = ( hoursNow > 23 || hoursNow < 10) ? 10 : (hoursNow + 1);
     component.showLeftHours();
     fixture.detectChanges();
-    expect(component.dayHours.sort()[0]).toBeTruthy();
-    // expect(component.dayHours.sort()[0]).toEqual(new Date().getHours() + 1);
+    expect(component.dayHours.sort()[0]).toEqual(res);
   });
 
 });
