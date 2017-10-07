@@ -1,7 +1,8 @@
 {
   "name": "Scafeinder",
-  "short_name": "Scafeinder",
+  "short_name": "SF",
   "lang": "en",
+  "description": "Scafeinder is an online restaurant-reservation service.",
   "scope": "/",
   "icons": [{
       "src": "assets/img/icons/scafeinder-icon-192x192.png",
@@ -15,6 +16,6 @@
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#292b2c",
-  "theme_color": "#2F3BA2"
+  "background_color": "#ab9f9f",
+  "theme_color": "#524b4b"
 }
