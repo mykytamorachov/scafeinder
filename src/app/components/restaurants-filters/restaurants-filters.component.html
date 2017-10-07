@@ -2,10 +2,10 @@
   <div class="col-sm-4 col-md-12 first">
     <input id="ch1" type="checkbox" class="hidden-sm-down">
     <label for="ch1" class="d-inline-block showToggler hidden-sm-down"></label>
-    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCategoryCollapsed = !isCategoryCollapsed" [attr.aria-expanded]="!isCategoryCollapsed" aria-controls="collapseExample1">Category</button>
-    <div class="form-group" id="collapseExample1" [ngbCollapse]="isCategoryCollapsed">
+    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample1">Category</button>
+    <div class="form-group" id="collapseExample1" [ngbCollapse]="isCollapsed">
       <label class="hidden-sm-down">Category</label>
-      <div *ngFor="let category of categories">
+      <div *ngFor="let category of categories" class="col-6 col-sm-12 d-inline-block option">
         <label class="custom-control custom-checkbox">
           <input type="checkbox"
           class="custom-control-input"
@@ -21,10 +21,10 @@
   <div class="col-sm-4 col-md-12 second">
     <input id="ch2" type="checkbox" class="hidden-sm-down">
     <label for="ch2" class="d-inline-block showToggler hidden-sm-down"></label>
-    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCuisineCollapsed = !isCuisineCollapsed" [attr.aria-expanded]="!isCuisineCollapsed" aria-controls="collapseExample2">Cuisine</button>
-    <div class="form-group" id="collapseExample2" [ngbCollapse]="isCuisineCollapsed">
+    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample2">Cuisine</button>
+    <div class="form-group" id="collapseExample2" [ngbCollapse]="isCollapsed">
       <label class="hidden-sm-down">Cuisine</label>
-      <div *ngFor="let cuisine of cuisines">
+      <div *ngFor="let cuisine of cuisines" class="col-6 col-sm-12 d-inline-block option">
         <label class="custom-control custom-checkbox">
           <input type="checkbox"
           class="custom-control-input"
@@ -40,10 +40,10 @@
   <div class="col-sm-4 col-md-12 third">
     <input id="ch3" type="checkbox" class="hidden-sm-down">
     <label for="ch3" class="d-inline-block showToggler hidden-sm-down"></label>
-    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isFeatureCollapsed = !isFeatureCollapsed" [attr.aria-expanded]="!isFeatureCollapsed" aria-controls="collapseExample3">Popular</button>
-    <div class="form-group" id="collapseExample3" [ngbCollapse]="isFeatureCollapsed">
+    <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample3">Popular</button>
+    <div class="form-group" id="collapseExample3" [ngbCollapse]="isCollapsed">
       <label class="hidden-sm-down">Popular</label>
-      <div *ngFor="let feature of features">
+      <div *ngFor="let feature of features" class="col-6 col-sm-12 d-inline-block option popular">
         <label class="custom-control custom-checkbox">
           <input type="checkbox"
           class="custom-control-input"

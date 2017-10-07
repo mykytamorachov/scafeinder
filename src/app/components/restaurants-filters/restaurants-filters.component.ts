@@ -15,9 +15,7 @@ export class RestaurantsFiltersComponent implements OnInit {
   categoryFilter: String[] = [];
   cuisineFilter: String[] = [];
   featureFilter: String[] = [];
-  isCategoryCollapsed: boolean;
-  isCuisineCollapsed: boolean;
-  isFeatureCollapsed: boolean;
+  isCollapsed: boolean;
   windowWidth: number;
 
   constructor(private getCafesService: GetCafesService, private filterService: FilterService) { }
@@ -37,9 +35,7 @@ export class RestaurantsFiltersComponent implements OnInit {
     || document.documentElement.clientWidth
     || document.body.clientWidth;
     if (this.windowWidth < 768) {
-      this.isCategoryCollapsed = true;
-      this.isCuisineCollapsed = true;
-      this.isFeatureCollapsed = true;
+      this.isCollapsed = true;
     }
   }
 
@@ -108,13 +104,9 @@ export class RestaurantsFiltersComponent implements OnInit {
 
   onResize(event) {
     if (event.target.innerWidth > 767) {
-      this.isCategoryCollapsed = false;
-      this.isCuisineCollapsed = false;
-      this.isFeatureCollapsed = false;
+      this.isCollapsed = false;
     } else {
-      this.isCategoryCollapsed = true;
-      this.isCuisineCollapsed = true;
-      this.isFeatureCollapsed = true;
+      this.isCollapsed = true;
     }
   }
 
