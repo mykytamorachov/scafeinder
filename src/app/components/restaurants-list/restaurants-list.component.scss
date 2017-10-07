@@ -1,7 +1,9 @@
 .pagination /deep/{
-    margin-top: 10px; 
+    margin: 10px;
     color: #0275D8;
-    bottom: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     .ngx-pagination .current {
         color: #ffffff;
         background: #0275D8;
@@ -33,4 +35,36 @@
 
 .noresults {
   font-size: 1.5em;
+}
+
+.row:not(.heading) {
+  padding-bottom: 80px;
+}
+
+@media screen and (min-width: 476px) {
+  .pagination /deep/{
+    left: 38%;
+    transform: translateX(-38%);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pagination /deep/{
+    left: 5%;
+    transform: translateX(-5%);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .pagination /deep/{
+    left: 15%;
+    transform: translateX(-15%);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .pagination /deep/{
+    left: 31%;
+    transform: translateX(-31%);
+  }
 }

@@ -1,7 +1,8 @@
 <div class="container">
   <section class="row justify-content-center">
     <form *ngIf="!name; else registrationSuccess" [formGroup]="registrationForm" class="col-10 col-md-8 col-lg-6 col-xl-4" role="form" (ngSubmit)="onRegister(registrationForm.value)">
-      <h2 class="text-center">Registration Form</h2>
+      <h1>Registration Form</h1>
+      <hr>
       <div class="form-group">
         <label for="firstName" class="control-label">Full Name</label>
         <input formControlName="name" type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
