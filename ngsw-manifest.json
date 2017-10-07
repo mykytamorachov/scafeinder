@@ -17,7 +17,7 @@
   },
   "external": {
      "urls": [{
-       "url": "http://localhost:3000/cafe"
+       "url": "http://localhost:3000/cafes"
        }]
   }
 }
