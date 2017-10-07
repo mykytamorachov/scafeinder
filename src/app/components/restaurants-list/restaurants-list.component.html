@@ -15,7 +15,7 @@
   <div class="col-sm-12" *ngIf="(restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter)?.length as output; else noResults">
     <app-restaurant-item *ngFor="let restaurantItem of restaurants | shortcut: categoryFilter : cuisineFilter : featureFilter | sortBy: key | paginate: { itemsPerPage: 10, currentPage: p }" [restaurant]="restaurantItem"></app-restaurant-item>
   </div>
-  <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
   <ng-template #noResults>
   	<div class="col-12 text-center">
   	<p class="noresults">Sorry, but nothing matched your search criteria.</p>
