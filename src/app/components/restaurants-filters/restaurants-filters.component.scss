@@ -53,3 +53,18 @@ button {
     padding-left: 0.1em;
   }
 }
+
+@media screen and (min-width: 420px) and (max-width: 575px) {
+  .option:not(.popular) {
+    width: 33% !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  label.custom-control {
+    padding-left: 30px;
+  }
+  .custom-control-indicator {
+    margin-left: 0.5em;
+  }
+}
