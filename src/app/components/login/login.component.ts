@@ -11,7 +11,8 @@ import { IUser } from '../../models/user.model';
 })
 export class LoginComponent implements OnInit {
   user: IUser;
-  test: any;
+  responseData: any;
+
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   onLogin(user: IUser) {
     this.auth.login(this.user).subscribe(
       data => {
+        this.responseData = data;
       },
       err => console.log('onLogin err is ', err),
       () => console.log('Request Completed')

@@ -89,14 +89,14 @@ export const postLogin = (req: Request, res: Response, next: NextFunction) => {
 
   if (errors) {
     console.log('postLogin errors are', errors);
-    return res.redirect('/login');
+    return res.json({ status: 'error', msg: 'Invalid email' });
   }
 
   passport.authenticate('local', (err: Error, user: UserModel, info: LocalStrategyInfo) => {
     if (err) { return next(err); }
     if (!user) {
       console.log('errors', info);
-      return res.redirect('/login');
+      return res.json({ status: 'error', msg: 'Invalid password' });
     }
     req.logIn(user, (error) => {
       if (error) { return next(error); }
@@ -137,7 +137,7 @@ export const postSignup = (req: Request, res: Response, next: NextFunction) => {
 
   if (errors) {
     console.log('errors', errors);
-    return res.redirect('/register');
+    return res.json({ status: 'error', msg: errors });
   }
 
   const user = new User({
@@ -147,19 +147,24 @@ export const postSignup = (req: Request, res: Response, next: NextFunction) => {
     password: req.body.password,
   });
 
-  User.findOne({ email: req.body.email }, (err, existingUser) => {
+  User.findOne({$or: [{email: req.body.email}, {mobile: req.body.mobile}]}, (err, existingUser: UserModel) => {
     if (err) { return next(err); }
     if (existingUser) {
+    if (existingUser.email === req.body.email) {
       console.log('Account with that email address already exists.');
-      return res.redirect('/register');
+      return res.json({ status: 'error', msg: 'Account with that email address already exists.' });
+    } else if (existingUser.mobile === parseInt(req.body.mobile, 10)) {
+      console.log('Account with that mobile number already exists.');
+      return res.json({ status: 'error', msg: 'Account with that mobile number already exists.' });
     }
+  }
     user.save((error) => {
       if (error) { return next(error); }
       req.logIn(user, (Err) => {
         if (Err) {
           return next(Err);
         }
-        res.redirect('/');
+        res.json({ status: 'success', msg: 'Registration Successful.' });
       });
     });
   });
