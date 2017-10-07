@@ -26,15 +26,15 @@
       border-radius: 0;
       color: #fff;
       cursor: pointer;
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
       font-weight: 900;
       letter-spacing: 2px;
       outline: none;
-      border: none;
+      border: 1px solid #000;
       &:hover {
           background-color: #fff;
           color: #000;  
-          outline: none;
-          border: none;          
+          outline: none;         
       }
   }
 }
