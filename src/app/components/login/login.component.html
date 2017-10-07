@@ -3,11 +3,9 @@
     <div class="col-md-4">
       <h1>Login</h1>
       <hr><br>
-      
         <div class="alert alert-danger" role="alert" *ngIf="responseData?.status==='error'">
           <strong>Oh snap!</strong> {{responseData.msg}} 
         </div>
-      
       <form (ngSubmit)="onLogin(user)" novalidate>
         <div class="form-group">
           <label for="email">Email</label>
