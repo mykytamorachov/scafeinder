@@ -18,7 +18,7 @@ button {
 
 @media screen and (min-width: 768px) {
   .form-group {
-    height: 192px;
+    max-height: 192px;
     overflow: hidden;
   }
   .first, .second, .third {
@@ -34,17 +34,17 @@ button {
     color: #009FE3;
     padding-left: 24px;
   }
-  input[type=checkbox] {
+  input[type=checkbox]:not(custom-control-input) {
     display: none;
   }
   label.showToggler:after {
     content: "Show More";
   }
-  input[type=checkbox]:checked + label.showToggler:after {
+  input[type=checkbox]:not(custom-control-input):checked + label.showToggler:after {
     content: "Show Less";
   }
-  input[type=checkbox]:checked ~ div {
-    height: 100%;
+  input[type=checkbox]:not(custom-control-input):checked ~ div {
+    max-height: 100%;
   }
 }
 
