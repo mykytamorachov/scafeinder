@@ -2,7 +2,7 @@
   "routing": {
     "routes": {
       "/": {
-        "match": "true"
+        "match": true
       },
       "/login": {
         "match": "exact"
