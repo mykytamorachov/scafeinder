@@ -7,6 +7,10 @@ import { FilterService } from '../../services/filter.service';
 import { FormDataService } from '../../services/form-data/form-data.service';
 import { ICafe } from '../../models/cafe.interface';
 import { UserQuery } from '../../models/query.model';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'app-search-form',
@@ -21,6 +25,12 @@ export class SearchFormComponent implements OnInit {
   model: NgbDateStruct;
   searchform: FormGroup;
   userQuery = new UserQuery(2, 4, new Date().toISOString().slice(0, 10), ((new Date().getHours() + 1) + ':00'), '');
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 2 ? []
+        : this.restaurants.map(restaurant => restaurant.name).filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
 
   constructor(private _formBuilder: FormBuilder,
     private getCafesService: GetCafesService,
