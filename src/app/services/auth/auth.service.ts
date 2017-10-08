@@ -27,7 +27,9 @@ export class AuthService {
         localStorage.setItem('id_token', data.id);
         localStorage.setItem('expires_at', expiresAt);
         this.router.navigate(['/profile']);
+        return response.json();
       }
+      return response.json();
     });
   }
 
@@ -41,7 +43,9 @@ export class AuthService {
   register(user: any) {
     const url = `${this.BASE_URL}/register`;
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post(url, user, { headers });
+    return this.http.post(url, user, { headers }).map((response: Response) => {
+      return response.json();
+    });
   }
 
   public isAuthenticated(): boolean {

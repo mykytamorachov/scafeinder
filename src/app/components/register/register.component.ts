@@ -57,9 +57,10 @@ export class RegisterComponent implements OnInit {
       confirmPassword: user.confirmPassword})
       .subscribe(
         data => {
-          // localStorage.setItem('token', data.json().auth_token);
-          this.router.navigate(['/login']);
-          console.log('onRegister data is ', this.responseStatus = data);
+          this.responseStatus = data;
+          if (data.status === 'success') {
+            this.router.navigate(['/login']);
+          }
         },
         err => console.log(err),
         () => console.log('Request Completed')

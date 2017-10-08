@@ -13,6 +13,7 @@ import * as path from 'path';
 import * as mongo from 'connect-mongo';
 import * as mongoose from 'mongoose';
 import * as errorHandler from 'errorhandler';
+import * as compression from 'compression';
 (<any>mongoose).Promise = global.Promise;
 
 import DATABASE_CONFIG from './constants/database_config';
@@ -68,6 +69,9 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(compression({
+  level: 9,
+}));
 // Point static path to dist
 app.use(express.static(path.join(__dirname), { maxAge: 31557600000 }));
 

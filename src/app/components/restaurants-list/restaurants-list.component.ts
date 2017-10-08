@@ -52,12 +52,14 @@ export class RestaurantsListComponent implements OnInit {
   }
 
   getCoords() {
+    const that = this;
     navigator.geolocation.getCurrentPosition(
       function(position) {
         localStorage.setItem('latitude', position.coords.latitude.toString());
         localStorage.setItem('longitude', position.coords.longitude.toString());
   },
   function() {
+    that.geolocationTurned = false;
     console.log('Position could not be determined.');
   },
   {
