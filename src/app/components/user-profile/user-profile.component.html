@@ -1,10 +1,10 @@
 <div class="container">
   <div class="card hovercard">
       <div class="card-background">
-          <img class="card-bkimg" alt="" src="{{user?.image}} || {{image}}">
+          <img class="card-bkimg" alt="profile image" [src]="user?.image!= null ? user?.image : image">
       </div>
       <div class="useravatar">
-          <img alt="" src="{{user?.image}} || {{image}}">
+          <img alt="profile image" [src]="user?.image!= null ? user?.image : image">
       </div>
       <div class="card-info"> <span class="card-title">{{user?.name}}</span>
       </div>
@@ -12,7 +12,8 @@
   <ngb-tabset justify="justified">
     <ngb-tab title="Favorites">
       <ng-template ngbTabContent>
-        <app-restaurant-item *ngFor="let restaurantItem of restaurants" [restaurant]="restaurantItem"></app-restaurant-item>
+        <app-restaurant-item  *ngFor="let restaurantItem of restaurants" [restaurant]="restaurantItem"></app-restaurant-item>
+        <h1 class="text-center" *ngIf="!cafesFound">No Favorites cafes</h1>
       </ng-template>
     </ngb-tab>
     <ngb-tab title="My Bookings">
@@ -28,7 +29,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let userBooking of user.bookings; let index = index">
+                <tr *ngFor="let userBooking of user?.bookings; let index = index">
                   <th scope="row">{{index+1}}</th>
                   <td>{{userBooking.date}}</td>
                   <td>{{userBooking.time}}</td>
