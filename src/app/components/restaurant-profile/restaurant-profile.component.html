@@ -3,6 +3,7 @@
   <div class="row">
     <div [ngClass]="(auth.isAuthenticated())?'col-xs-12 col-md-11':'col-xs-12 col-md-12'">
       <h1 class="text-center">{{ restaurant?.name }}</h1>
+      <app-rating [rating]="restaurant?.rating"></app-rating>
     </div>
       <div class="col-xs-12 col-md-1 text-center">
       <img class="img-fluid" src="../../../assets/img/star-favorite-yellow.svg" *ngIf="auth.isAuthenticated() && !showAddToFavorites" (click)="addToFavorites()">
@@ -16,17 +17,17 @@
       <ngb-tabset>
         <ngb-tab title="Features">
           <ng-template ngbTabContent>
-            <span class="badge badge-default" *ngFor="let item of restaurant?.features">{{ item }}</span>
+            <span class="badge badge-default d-inline-block p-2 mx-3 my-2" *ngFor="let item of restaurant?.features">{{ item }}</span>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Cuisines">
           <ng-template ngbTabContent>
-            <span class="badge badge-default" *ngFor="let item of restaurant?.cuisines">{{ item }}</span>
+            <span class="badge badge-default d-inline-block p-2 mx-3 my-2" *ngFor="let item of restaurant?.cuisines">{{ item }}</span>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Categories">
           <ng-template ngbTabContent>
-            <span class="badge badge-default" *ngFor="let item of restaurant?.categories">{{ item }}</span>            
+            <span class="badge badge-default d-inline-block p-2 mx-3 my-2" *ngFor="let item of restaurant?.categories">{{ item }}</span>            
           </ng-template>
         </ngb-tab>
       </ngb-tabset>

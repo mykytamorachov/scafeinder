@@ -4,7 +4,7 @@
     <label for="ch1" class="d-inline-block showToggler hidden-sm-down"></label>
     <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample1">Category</button>
     <div class="form-group" id="collapseExample1" [ngbCollapse]="isCollapsed">
-      <label class="hidden-sm-down">Category</label>
+      <label class="hidden-sm-down"><ng4-fa name="tag"></ng4-fa>Category</label>
       <div *ngFor="let category of categories" class="col-6 col-sm-12 d-inline-block option">
         <label class="custom-control custom-checkbox">
           <input type="checkbox"
@@ -23,7 +23,7 @@
     <label for="ch2" class="d-inline-block showToggler hidden-sm-down"></label>
     <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample2">Cuisine</button>
     <div class="form-group" id="collapseExample2" [ngbCollapse]="isCollapsed">
-      <label class="hidden-sm-down">Cuisine</label>
+      <label class="hidden-sm-down"><ng4-fa name="cutlery"></ng4-fa>Cuisine</label>
       <div *ngFor="let cuisine of cuisines" class="col-6 col-sm-12 d-inline-block option">
         <label class="custom-control custom-checkbox">
           <input type="checkbox"
@@ -42,7 +42,7 @@
     <label for="ch3" class="d-inline-block showToggler hidden-sm-down"></label>
     <button class="btn btn-block hidden-md-up bg-inverse text-white" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample3">Popular</button>
     <div class="form-group" id="collapseExample3" [ngbCollapse]="isCollapsed">
-      <label class="hidden-sm-down">Popular</label>
+      <label class="hidden-sm-down"><ng4-fa name="star"></ng4-fa>Popular</label>
       <div *ngFor="let feature of features" class="col-6 col-sm-12 d-inline-block option popular">
         <label class="custom-control custom-checkbox">
           <input type="checkbox"
