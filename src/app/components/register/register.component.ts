@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   password: any;
   confirmPassword: any;
   registrationShow = true;
-  responseStatus: Object = [];
+  responseStatus: any;
 
   constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.registrationForm = formBuilder.group({

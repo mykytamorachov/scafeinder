@@ -3,11 +3,11 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8 col-12">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Full Name" [disabled]="!fullName ? true : null" #name>
+        <input type="text" class="form-control" placeholder="Full Name" [disabled]="!fullName ? true : null" #name [(ngModel)]="userName">
         <span class="input-group-btn">
         <button class="btn btn-secondary" type="button" *ngIf="!fullName" (click)="fullName=true">Edit</button>
         <button class="btn btn-secondary" type="button" *ngIf="fullName" (click)="updateName(name.value)">Save</button>
-        <button class="btn btn-secondary" type="button" *ngIf="fullName" (click)="fullName=false">Cancel</button>
+        <button class="btn btn-secondary" type="button" *ngIf="fullName" (click)="cancel('1')">Cancel</button>
         </span>
       </div>
     </div>
@@ -16,13 +16,14 @@
   <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 col-12">
         <div class="input-group">
-          <input type="url" class="form-control" placeholder="Image URL" [disabled]="!profileImage ? true : null" #image>
+          <input type="url" class="form-control" placeholder="Image URL" [disabled]="!profileImage ? true : null" #image [(ngModel)]="imageUrl">
           <span class="input-group-btn">
           <button class="btn btn-secondary" type="button" *ngIf="!profileImage" (click)="profileImage=true">Edit</button>
-          <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="updateImage(image.value)">Save</button>
-          <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="profileImage=false">Cancel</button>
+          <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="updateImage(image.value)" [disabled]="!isImageUrl()">Save</button>
+          <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="cancel('2')">Cancel</button>
           </span>
         </div>
+        <p class="alert alert-danger" *ngIf="!isImageUrl() && image.value != ''">Must be image URL</p>
       </div>
     </div>
     <br>
@@ -34,11 +35,11 @@
             <span class="input-group-btn">
             <button class="btn btn-secondary" type="button" *ngIf="!userPassword" (click)="userPassword=true">Edit</button>
             <button class="btn btn-secondary" type="button" *ngIf="userPassword" (click)="updatePassword(pass.value)" [disabled]="!isPasswordEqual() || isPasswordShort() || pass.value===''">Save</button>
-            <button class="btn btn-secondary" type="button" *ngIf="userPassword" (click)="userPassword=false">Cancel</button>
+            <button class="btn btn-secondary" type="button" *ngIf="userPassword" (click)="cancel('3')">Cancel</button>
           </span>
           </div>
-          <p class="alert-box" *ngIf="!isPasswordEqual()">Passwords dont match</p>
-          <p class="alert-box" *ngIf="isPasswordShort()">6 digits minimum</p>
+          <p class="alert alert-danger" *ngIf="!isPasswordEqual()">Passwords dont match</p>
+          <p class="alert alert-danger" *ngIf="isPasswordShort()">6 digits minimum</p>
         </div>
       </div>
       <br>

@@ -25,7 +25,7 @@
     <div class="alert alert-success" role="alert" *ngIf="alert">
       <strong>Booked!</strong> Have a nice day.
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="alertMessage">
+    <div class="alert alert-danger" role="alert" *ngIf="alertMessage && !alert">
       <strong>Opps!</strong> {{alertMessage}}
     </div>
   </form>
