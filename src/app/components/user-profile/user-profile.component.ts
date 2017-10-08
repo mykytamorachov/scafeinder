@@ -14,10 +14,10 @@ export class UserProfileComponent implements OnInit {
   user: IUser;
   restaurants: ICafe[];
   image = '../../assets/img/scafeinder.jpg';
+  cafesFound: boolean;
   constructor(private userService: UserService, private getCafesService: GetCafesService) {}
 
   ngOnInit() {
-    // this.user.image = '../../assets/img/scafeinder.jpg';
     this.getUser();
   }
 
@@ -26,8 +26,6 @@ export class UserProfileComponent implements OnInit {
       (response: Response) => {
         const data = response.json();
         this.user = data.user;
-        console.log('this.user', this.user);
-       console.log('Data in profile', response.json());
        this.getFavoritesCafes(this.user.favorites);
       },
       (err) => console.log('err ', err)
@@ -37,11 +35,12 @@ export class UserProfileComponent implements OnInit {
   getFavoritesCafes(id) {
     this.getCafesService.getCafeById(id).subscribe(
       (restaurant: ICafe[]) => {
-        console.log(restaurant);
         this.restaurants = restaurant;
-        console.log('this.cafes', this.restaurants);
+        this.cafesFound = true;
       },
-      (err) => console.log('err ', err)
+      (err) => {
+        this.cafesFound = false;
+      }
    );
   }
 
