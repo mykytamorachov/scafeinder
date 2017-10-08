@@ -3,7 +3,13 @@ module.exports = {
     'dist/**.html',
     'dist/**.js',
     'dist/**.css',
-    'dist/assets/img/*'
+    'dist/**.woff',
+    'dist/**.woff2',
+    'dist/**.ttf',
+    'dist/manifest.json',
+    'dist/assets/img/*',
+    'dist/assets/img/logo/*',
+    'dist/assets/img/icons/*'
   ],
   root: 'dist',
   stripPrefix: 'dist/',
@@ -12,6 +18,24 @@ module.exports = {
     {
       urlPattern: /^https:\/\/scafeinder.herokuapp.com\/.*/,
       handler: 'networkFirst'
+    }, {
+      urlPattern: /^http:\/\/localhost:3000\/cafes/,
+      handler: 'cacheFirst',
+      options: {
+        cache: {
+          maxEntries: 100,
+          name: 'data-cache'
+        }
+      }
+    }, {
+      urlPattern: /\/cafe\/*/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          maxEntries: 100,
+          name: 'data-cache'
+        }
+      }
     }
   ]
 };
