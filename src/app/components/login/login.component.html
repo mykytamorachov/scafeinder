@@ -2,7 +2,10 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <h1>Login</h1>
-      <hr>
+      <hr><br>
+        <div class="alert alert-danger" role="alert" *ngIf="responseData?.status==='error'">
+          <strong>Oh snap!</strong> {{responseData.msg}} 
+        </div>
       <form (ngSubmit)="onLogin(user)" novalidate>
         <div class="form-group">
           <label for="email">Email</label>
@@ -12,10 +15,10 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" placeholder="Enter your password" [(ngModel)]="user.password" name="password">
         </div>
-        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+        <button type="submit" class="btn btn-block btn-primary">Login</button>
       </form>
-      <br>
-      <a class="btn btn-info btn-block" href="/auth/facebook">Sign in with Facebook</a>
+      <!-- <br>
+      <a class="btn btn-info btn-block" href="/auth/facebook">Sign in with Facebook</a> -->
     </div>
   </div>
 </div>

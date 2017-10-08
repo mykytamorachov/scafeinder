@@ -31,6 +31,8 @@ export class BookingComponent implements OnInit {
   id: String;
   private sub: any;
   @Input() isAuth;
+  alert: boolean;
+  alertMessage: string;
   constructor(private _formBuilder: FormBuilder, private getCafesService: GetCafesService,
     private route: ActivatedRoute, private book: BookingService, private formDataService: FormDataService, public router: Router,
     private userService: UserService) {
@@ -176,7 +178,7 @@ export class BookingComponent implements OnInit {
         case 2:
           console.log('2');
           if (bookingData.tableAmount > freeTablesType2) {
-            alert(`Can't book, Left only ${freeTablesType2} TYPE2-tables, and you want ${bookingData.tableAmount}`);
+            this.alertMessage = `Can't book, Left only ${freeTablesType2} TYPE2-tables, and you want ${bookingData.tableAmount}`;
           } else {
             console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
             this.book.booking(bookingData);
@@ -184,8 +186,7 @@ export class BookingComponent implements OnInit {
             this.userService.updateUserData({bookings: this.user.bookings}).subscribe(
               (response: Response) => {
                console.log('response', response.json());
-               alert('Booked! Have a nice day.');
-               this.router.navigate(['/profile']);
+               this.alert = true;
               },
               (err) => console.log('err ', err)
            );
@@ -193,7 +194,7 @@ export class BookingComponent implements OnInit {
           break;
         case 4:
           if (bookingData.tableAmount > freeTablesType4) {
-            alert(`Can't book, Left only ${freeTablesType4} TYPE4-tables, and you want ${bookingData.tableAmount}`);
+            this.alertMessage = `Can't book, Left only ${freeTablesType4} TYPE4-tables, and you want ${bookingData.tableAmount}`;
           } else {
             console.log(`Booked ${JSON.stringify(bookingData, null, 2)} in ${this.restaurant.name}`);
             this.book.booking(bookingData);
@@ -201,8 +202,7 @@ export class BookingComponent implements OnInit {
             this.userService.updateUserData({bookings: this.user.bookings}).subscribe(
               (response: Response) => {
                console.log('response', response.json());
-               alert('Booked! Have a nice day.');
-               this.router.navigate(['/profile']);
+               this.alert = true;
               },
               (err) => console.log('err ', err)
            );
@@ -212,7 +212,7 @@ export class BookingComponent implements OnInit {
           console.log('Wtf?');
       }
     } else {
-      alert('Please. Login for booking');
+      this.alertMessage = 'Please. Login for booking';
     }
   }
 }

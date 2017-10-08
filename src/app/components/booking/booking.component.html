@@ -21,6 +21,12 @@
         <option class="dropdown-item" *ngFor="let time of dayHours; let i = index" [value]="i % 2 === 0 ? time+':00' : time+':30'">{{i % 2 === 0 ? time+':00' : time+':30'}}</option>
       </select>
     </div>      
-    <button class="form-control col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" type="submit">Book</button>
+    <button class="form-control col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" type="submit" *ngIf="!alert">Book</button>
+    <div class="alert alert-success" role="alert" *ngIf="alert">
+      <strong>Booked!</strong> Have a nice day.
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="alertMessage">
+      <strong>Opps!</strong> {{alertMessage}}
+    </div>
   </form>
 </main>
