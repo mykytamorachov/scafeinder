@@ -30,7 +30,9 @@ export class SearchFormComponent implements OnInit {
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term => term.length < 2 ? []
-        : this.restaurants.map(restaurant => restaurant.name).filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+        : this.restaurants.map(restaurant => restaurant.name)
+        .filter((item, index, arr) => arr.indexOf(item) === index)
+        .filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
 
   constructor(private _formBuilder: FormBuilder,
     private getCafesService: GetCafesService,

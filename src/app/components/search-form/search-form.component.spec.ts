@@ -3,7 +3,6 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchFormComponent } from './search-form.component';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
-import { UniquePipe } from '../../pipes/unique.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 import { FormDataService } from '../../services/form-data/form-data.service';
@@ -21,8 +20,7 @@ describe('SearchFormComponent', () => {
       providers: [ GetCafesService, FilterService, FormDataService ],
       declarations: [
         SearchFormComponent,
-        DatepickerComponent,
-        UniquePipe
+        DatepickerComponent
       ]
     })
     .compileComponents();

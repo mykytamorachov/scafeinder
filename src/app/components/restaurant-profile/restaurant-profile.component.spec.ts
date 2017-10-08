@@ -11,7 +11,6 @@ import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.componen
 import { BookingService } from '../../services/booking/booking.service';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
-import { UniquePipe } from '../../pipes/unique.pipe';
 import { FormDataService } from '../../services/form-data/form-data.service';
 import { RatingComponent } from '../rating/rating.component';
 
@@ -42,7 +41,6 @@ describe('RestaurantProfileComponent', () => {
         RestaurantProfileComponent,
         BookingComponent,
         DatepickerComponent,
-        UniquePipe,
         RatingComponent
       ],
       imports: [FormsModule, ReactiveFormsModule, HttpModule, RouterTestingModule, NgbModule.forRoot(), AngularOpenlayersModule,

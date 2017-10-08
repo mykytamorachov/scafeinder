@@ -30,7 +30,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingComponent } from './components/rating/rating.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { BookingService } from './services/booking/booking.service';
-import { UniquePipe } from './pipes/unique.pipe';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { UserOptionsComponent } from './components/user-options/user-options.component';
 import { SortByPipe } from './pipes/sort-by.pipe';
@@ -55,7 +54,6 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     UserProfileComponent,
     RatingComponent,
     BookingComponent,
-    UniquePipe,
     UserOptionsComponent,
     SortByPipe
   ],

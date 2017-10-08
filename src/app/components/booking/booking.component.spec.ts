@@ -9,7 +9,6 @@ import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.componen
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FormDataService } from '../../services/form-data/form-data.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
-import { UniquePipe } from '../../pipes/unique.pipe';
 import { UserService } from '../../services/user/user.service';
 import { ICafe } from '../../models/cafe.interface';
 
@@ -53,7 +52,7 @@ describe('BookingComponent', () => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, AngularFontAwesomeModule ],
       providers: [BookingService, GetCafesService, FormDataService, UserService],
-      declarations: [ BookingComponent, DatepickerComponent,  UniquePipe ]
+      declarations: [ BookingComponent, DatepickerComponent ]
     })
     .compileComponents();
   }));
