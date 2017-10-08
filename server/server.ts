@@ -69,7 +69,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(compression());
+app.use(compression({
+  level: 9,
+}));
 // Point static path to dist
 app.use(express.static(path.join(__dirname), { maxAge: 31557600000 }));
 

@@ -2,15 +2,18 @@
   "routing": {
     "routes": {
       "/": {
-        "match": true
+        "match": "true"
       },
       "/login": {
-        "match": "prefix"
+        "match": "exact"
       },
       "/profile": {
-        "match": "prefix"
+        "match": "exact"
       },
       "/register": {
+        "match": "prefix"
+      },
+      "/restaurants": {
         "match": "prefix"
       }
     }
@@ -19,5 +22,37 @@
      "urls": [{
        "url": "http://localhost:3000/cafes"
        }]
-  }
+  },
+  "dynamic": {
+    "group": [{
+        "name": "cafe",
+        "urls": {
+          "http://localhost:3000/cafe": {
+            "match": "prefix"
+          }
+        },
+        "cache": {
+          "optimizeFor": "performance",
+          "strategy": "lru",
+          "maxAgeMs": 3600000,
+          "maxEntries": 2
+        }
+      },
+      {
+        "name": "openstreetmap",
+        "urls": {
+          "https://openstreetmap.org": {
+            "match": "prefix"
+          }
+        },
+        "cache": {
+          "optimizeFor": "performance",
+          "strategy": "lru",
+          "maxAgeMs": 3600000,
+          "maxEntries": 2,
+          "networkTimeoutMs": 1000
+        }
+      }
+    ]
+  } 
 }
