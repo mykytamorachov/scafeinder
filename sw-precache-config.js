@@ -3,8 +3,13 @@ module.exports = {
     'dist/**.html',
     'dist/**.js',
     'dist/**.css',
+    'dist/**.woff',
+    'dist/**.woff2',
+    'dist/**.ttf',
     'dist/manifest.json',
-    'dist/assets/img/*'
+    'dist/assets/img/*',
+    'dist/assets/img/logo/*',
+    'dist/assets/img/icons/*'
   ],
   root: 'dist',
   stripPrefix: 'dist/',
@@ -22,12 +27,6 @@ module.exports = {
           name: 'data-cache'
         }
       }
-    }, {
-      urlPattern: /^http:\/\/localhost:3000\/login/,
-      handler: 'networkFirst'
-    }, {
-      urlPattern: /^http:\/\/localhost:3000\/register/,
-      handler: 'networkFirst'
     }, {
       urlPattern: /\/cafe\/*/,
       handler: 'fastest',
