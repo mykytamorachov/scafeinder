@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build && npm run build-server",
+    "build-prod": "ng build --prod --sm=false && npm run precache && npm run build-server",
     "server": "node dist/server.js",
     "build-server": "webpack --config webpack.server.config.js",
     "build-server-watch": "webpack --config webpack.server.config.js --hot --watch",

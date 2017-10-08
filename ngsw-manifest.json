@@ -5,10 +5,10 @@
         "match": true
       },
       "/login": {
-        "match": "exact"
+        "match": "prefix"
       },
       "/profile": {
-        "match": "exact"
+        "match": "prefix"
       },
       "/register": {
         "match": "prefix"
@@ -21,7 +21,11 @@
   "external": {
      "urls": [{
        "url": "http://localhost:3000/cafes"
-       }]
+       }, {
+        "url": "http://localhost:3000/login"
+        }, {
+          "url": "http://localhost:3000/profile"
+      }]
   },
   "dynamic": {
     "group": [{
