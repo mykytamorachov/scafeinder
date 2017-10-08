@@ -6,6 +6,7 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
 import { FilterService } from '../../services/filter.service';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { cafesJson } from '../../services/stub/cafe.data';
 
 import { RestaurantsFiltersComponent } from './restaurants-filters.component';
@@ -21,7 +22,11 @@ describe('RestaurantsFiltersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, NgbModule],
+      imports: [
+        HttpModule,
+        NgbModule,
+        AngularFontAwesomeModule
+      ],
       declarations: [RestaurantsFiltersComponent],
       providers: [ GetCafesService, FilterService ],
       // providers: [{ provide: GetCafesService, useValue: getCafesServiceStub }, FilterService]

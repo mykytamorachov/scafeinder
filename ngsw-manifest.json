@@ -1,0 +1,23 @@
+{
+  "routing": {
+    "routes": {
+      "/": {
+        "match": true
+      },
+      "/login": {
+        "match": "prefix"
+      },
+      "/profile": {
+        "match": "prefix"
+      },
+      "/register": {
+        "match": "prefix"
+      }
+    }
+  },
+  "external": {
+     "urls": [{
+       "url": "http://localhost:3000/cafes"
+       }]
+  }
+}
