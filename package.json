@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node dist/server.js",
     "build": "ng build && npm run build-server",
     "build-prod": "ng build --aot --prod --sm=false && npm run precache && npm run build-server",
     "server": "node dist/server.js",
