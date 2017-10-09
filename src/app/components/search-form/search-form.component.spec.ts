@@ -3,7 +3,6 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchFormComponent } from './search-form.component';
 import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.component';
-import { UniquePipe } from '../../pipes/unique.pipe';
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FilterService } from '../../services/filter.service';
 import { FormDataService } from '../../services/form-data/form-data.service';
@@ -21,8 +20,7 @@ describe('SearchFormComponent', () => {
       providers: [ GetCafesService, FilterService, FormDataService ],
       declarations: [
         SearchFormComponent,
-        DatepickerComponent,
-        UniquePipe
+        DatepickerComponent
       ]
     })
     .compileComponents();
@@ -57,12 +55,19 @@ describe('SearchFormComponent', () => {
     expect(component.userQuery.date).toEqual(localISOTime);
   });
 
-  // it('showLeftHours method should show correct left hours', async() => {
-  //  const hoursNow = new Date().getHours();
-  //  const res = (hoursNow > 23 || hoursNow < 10) ? 10 : (hoursNow + 1);
-  //  component.showLeftHours();
-  //  fixture.detectChanges();
-  //  expect(component.dayHours.sort()[0]).toEqual(res);
-  // });
+  it('showLeftHours method should show correct left hours', async() => {
+    const hoursNow = new Date().getHours();
+    let res;
+    if (hoursNow >= 23) {
+      res = undefined;
+    } else if ( hoursNow < 10) {
+      res = 10;
+    } else {
+      res = hoursNow + 1;
+    }
+    component.showLeftHours();
+    fixture.detectChanges();
+    expect(component.dayHours.sort()[0]).toEqual(res);
+   });
 
 });

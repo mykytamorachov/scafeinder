@@ -9,7 +9,6 @@ import { DatepickerComponent } from '../bootstrap/datepicker/datepicker.componen
 import { GetCafesService } from '../../services/getcafes/getcafes.service';
 import { FormDataService } from '../../services/form-data/form-data.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
-import { UniquePipe } from '../../pipes/unique.pipe';
 import { UserService } from '../../services/user/user.service';
 import { ICafe } from '../../models/cafe.interface';
 
@@ -53,7 +52,7 @@ describe('BookingComponent', () => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, ReactiveFormsModule, NgbModule.forRoot(), HttpModule, RouterTestingModule, AngularFontAwesomeModule ],
       providers: [BookingService, GetCafesService, FormDataService, UserService],
-      declarations: [ BookingComponent, DatepickerComponent,  UniquePipe ]
+      declarations: [ BookingComponent, DatepickerComponent ]
     })
     .compileComponents();
   }));
@@ -68,22 +67,20 @@ describe('BookingComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('showLeftHours method should show correct left hours', async() => {
-  //  const hoursNow = new Date().getHours();
-  //  const res = (hoursNow > 23 || hoursNow < 10) ? 10 : (hoursNow + 1);
-  //  component.showLeftHours();
-  //  fixture.detectChanges();
-  //  expect(component.dayHours.sort()[0]).toEqual(res);
-  // });
-
-  // it('checkSelectedDate method should return correct left hours', async() => {
-  //   const date = new Date();
-  //   const ngbDateStruct = { day: date.getUTCDay(), month: date.getUTCMonth(), year: date.getUTCFullYear()};
-  //   component.checkSelectedDate(ngbDateStruct);
-  //   fixture.detectChanges();
-  //   expect(component.dayHours.sort()[0]).toEqual(date.getHours() + 1);
-  //   // expect(component.dayHours.sort()[0]).toBeTruthy();
-  // });
+  it('showLeftHours method should show correct left hours', async() => {
+    const hoursNow = new Date().getHours();
+    let res;
+    if (hoursNow >= 23) {
+      res = undefined;
+    } else if ( hoursNow < 10) {
+      res = 10;
+    } else {
+      res = hoursNow + 1;
+    }
+    component.showLeftHours();
+    fixture.detectChanges();
+    expect(component.dayHours.sort()[0]).toEqual(res);
+   });
 
   it('checkSelectedDate method should be checked with the future date', async() => {
     component.checkSelectedDate({year: 2037, month: 11, day: 14});
