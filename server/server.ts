@@ -109,7 +109,7 @@ app.get('*', (req: Request, res: Response) => {
 app.use(errorHandler());
 
 // Get port from environment and store in Express.
-app.set('port', DATABASE_CONFIG.PORT || 8080);
+app.set('port', DATABASE_CONFIG.PORT || 5000);
 
 // Listen on provided port, on all network interfaces.
 app.listen(app.get(process.env.PORT || 'port'), () => {
