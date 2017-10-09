@@ -158,8 +158,10 @@ export class BookingComponent implements OnInit {
       time: '',
       people: 0,
       resName: '',
+      resId: '',
     };
     bookingData.resId = String(this.restaurant._id);
+    userBooking.resId = String(this.restaurant._id);
     bookingData.userId = localStorage.getItem('id_token');
     bookingData.date = this.userQuery.date;
     userBooking.date = this.userQuery.date;

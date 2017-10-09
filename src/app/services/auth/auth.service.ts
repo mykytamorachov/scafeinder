@@ -13,20 +13,16 @@ export class AuthService {
    }
 
   login(user: any) {
-    console.log('user in login is ', user);
     const url = `${this.BASE_URL}/login`;
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(url, user, { headers }).map((response: Response) => {
       const data = response.json();
-      console.log('data in login is ', data);
       if (data.status === 'success' && data.token) {
-        console.log('data.token in login is ', data.token);
-        // localStorage.setItem('currentUser', data.token);
         const expiresAt = JSON.stringify((2.88e+7) + new Date().getTime());
         localStorage.setItem('access_token', data.token);
         localStorage.setItem('id_token', data.id);
         localStorage.setItem('expires_at', expiresAt);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/']);
         return response.json();
       }
       return response.json();

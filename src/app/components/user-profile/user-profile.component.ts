@@ -13,7 +13,6 @@ import { GetCafesService } from '../../services/getcafes/getcafes.service';
 export class UserProfileComponent implements OnInit {
   user: IUser;
   restaurants: ICafe[];
-  image = '../../assets/img/scafeinder.jpg';
   cafesFound: boolean;
   constructor(private userService: UserService, private getCafesService: GetCafesService) {}
 
@@ -26,7 +25,12 @@ export class UserProfileComponent implements OnInit {
       (response: Response) => {
         const data = response.json();
         this.user = data.user;
+        if (this.user.image == null) {
+          this.user.image = '../../assets/img/scafeinder.jpg';
+        }
+        if (this.user.favorites.length !== 0) {
        this.getFavoritesCafes(this.user.favorites);
+      }
       },
       (err) => console.log('err ', err)
    );

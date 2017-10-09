@@ -7,7 +7,7 @@
         <span class="input-group-btn">
         <button class="btn btn-secondary" type="button" *ngIf="!fullName" (click)="fullName=true">Edit</button>
         <button class="btn btn-secondary" type="button" *ngIf="fullName" (click)="updateName(name.value)">Save</button>
-        <button class="btn btn-secondary" type="button" *ngIf="fullName" (click)="cancel('1')">Cancel</button>
+        <button class="btn btn-secondary" type="button" *ngIf="fullName" (click)="cancelInput('inputName')">Cancel</button>
         </span>
       </div>
     </div>
@@ -20,7 +20,7 @@
           <span class="input-group-btn">
           <button class="btn btn-secondary" type="button" *ngIf="!profileImage" (click)="profileImage=true">Edit</button>
           <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="updateImage(image.value)" [disabled]="!isImageUrl()">Save</button>
-          <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="cancel('2')">Cancel</button>
+          <button class="btn btn-secondary" type="button" *ngIf="profileImage" (click)="cancelInput('inputImageUrl')">Cancel</button>
           </span>
         </div>
         <p class="alert alert-danger" *ngIf="!isImageUrl() && image.value != ''">Must be image URL</p>
@@ -35,7 +35,7 @@
             <span class="input-group-btn">
             <button class="btn btn-secondary" type="button" *ngIf="!userPassword" (click)="userPassword=true">Edit</button>
             <button class="btn btn-secondary" type="button" *ngIf="userPassword" (click)="updatePassword(pass.value)" [disabled]="!isPasswordEqual() || isPasswordShort() || pass.value===''">Save</button>
-            <button class="btn btn-secondary" type="button" *ngIf="userPassword" (click)="cancel('3')">Cancel</button>
+            <button class="btn btn-secondary" type="button" *ngIf="userPassword" (click)="cancelInput('inputPasswords')">Cancel</button>
           </span>
           </div>
           <p class="alert alert-danger" *ngIf="!isPasswordEqual()">Passwords dont match</p>

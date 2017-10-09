@@ -1,10 +1,10 @@
 <div class="container">
   <div class="card hovercard">
       <div class="card-background">
-          <img class="card-bkimg" alt="profile image" [src]="user?.image!= null ? user?.image : image">
+          <img class="card-bkimg" alt="profile image" src="{{user?.image}}">
       </div>
       <div class="useravatar">
-          <img alt="profile image" [src]="user?.image!= null ? user?.image : image">
+          <img alt="profile image" src="{{user?.image}}">
       </div>
       <div class="card-info"> <span class="card-title">{{user?.name}}</span>
       </div>
@@ -29,7 +29,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let userBooking of user?.bookings; let index = index">
+                <tr class="myCursor" *ngFor="let userBooking of user?.bookings; let index = index" [routerLink]="['restaurants',userBooking.resId]">
                   <th scope="row">{{index+1}}</th>
                   <td>{{userBooking.date}}</td>
                   <td>{{userBooking.time}}</td>
