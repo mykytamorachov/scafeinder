@@ -7,7 +7,7 @@ import { UserService } from '../../services/user/user.service';
 import { IUser } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
 import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-restaurant-profile',
@@ -17,7 +17,7 @@ import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 export class RestaurantProfileComponent implements OnInit, OnDestroy {
   restaurant: ICafe;
   id: string;
-  private sub: any;
+  sub: Subscription;
   user: IUser;
   showAddToFavorites: boolean;
   indexOfFavorite: number;
