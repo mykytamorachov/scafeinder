@@ -112,7 +112,7 @@ app.use(errorHandler());
 app.set('port', DATABASE_CONFIG.PORT || 5000);
 
 // Listen on provided port, on all network interfaces.
-app.listen(app.get(process.env.PORT || 'port'), () => {
+app.listen(process.env.PORT || app.get('port'), () => {
   console.log(('  App is running at http://localhost:%d in %s mode'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });
