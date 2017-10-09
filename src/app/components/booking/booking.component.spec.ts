@@ -67,22 +67,20 @@ describe('BookingComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('showLeftHours method should show correct left hours', async() => {
-  //  const hoursNow = new Date().getHours();
-  //  const res = (hoursNow > 23 || hoursNow < 10) ? 10 : (hoursNow + 1);
-  //  component.showLeftHours();
-  //  fixture.detectChanges();
-  //  expect(component.dayHours.sort()[0]).toEqual(res);
-  // });
-
-  // it('checkSelectedDate method should return correct left hours', async() => {
-  //   const date = new Date();
-  //   const ngbDateStruct = { day: date.getUTCDay(), month: date.getUTCMonth(), year: date.getUTCFullYear()};
-  //   component.checkSelectedDate(ngbDateStruct);
-  //   fixture.detectChanges();
-  //   expect(component.dayHours.sort()[0]).toEqual(date.getHours() + 1);
-  //   // expect(component.dayHours.sort()[0]).toBeTruthy();
-  // });
+  it('showLeftHours method should show correct left hours', async() => {
+    const hoursNow = new Date().getHours();
+    let res;
+    if (hoursNow >= 23) {
+      res = undefined;
+    } else if ( hoursNow < 10) {
+      res = 10;
+    } else {
+      res = hoursNow + 1;
+    }
+    component.showLeftHours();
+    fixture.detectChanges();
+    expect(component.dayHours.sort()[0]).toEqual(res);
+   });
 
   it('checkSelectedDate method should be checked with the future date', async() => {
     component.checkSelectedDate({year: 2037, month: 11, day: 14});

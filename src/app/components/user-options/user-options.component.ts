@@ -15,11 +15,14 @@ export class UserOptionsComponent implements OnInit {
   profileImage: boolean;
   userPassword: boolean;
   password: string;
+  imageUrl: string;
   repeatPassword: string;
   deleteAccount: boolean;
+  userName: string;
   constructor(private userService: UserService, private auth: AuthService) {
     this.password = '';
     this.repeatPassword = '';
+    this.imageUrl = '';
   }
 
   ngOnInit() {
@@ -74,5 +77,23 @@ export class UserOptionsComponent implements OnInit {
       return false;
     }
     return this.password.length < 6;
+  }
+
+  cancel(input) {
+    if (input === '3') {
+      this.userPassword = false;
+      this.password = '';
+      this.repeatPassword = '';
+    } else if (input === '2') {
+      this.imageUrl = '';
+      this.profileImage = false;
+    } else if (input === '1') {
+      this.userName = '';
+      this.fullName = false;
+    }
+  }
+
+  isImageUrl(): boolean {
+    return /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(this.imageUrl);
   }
 }
