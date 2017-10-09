@@ -13,7 +13,7 @@ export class AuthService {
    }
 
   login(user: any) {
-    const url = `${this.BASE_URL}/login`;
+    const url = `/login`;
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(url, user, { headers }).map((response: Response) => {
       const data = response.json();
@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   register(user: any) {
-    const url = `${this.BASE_URL}/register`;
+    const url = `/register`;
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(url, user, { headers }).map((response: Response) => {
       return response.json();
