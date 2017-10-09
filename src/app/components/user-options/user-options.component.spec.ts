@@ -67,12 +67,40 @@ describe('UserOptionsComponent', () => {
     expect(res).toBeTruthy();
   });
 
+  it('isImageUrl method should return false if url not ends in png, jpg, jpeg, gif, png or svg', async() => {
+    component.imageUrl = 'https://static.pexels.com/photos/226589/pexels-photo';
+    const res = component.isImageUrl();
+    fixture.detectChanges();
+    expect(!res).toBeTruthy();
+  });
+
   it('cancelInput method update fields properly', async() => {
     const input = 'inputName';
     component.userName = 'Steven';
     component.cancelInput(input);
     fixture.detectChanges();
     expect(component.userName).toBe('');
+    expect(!component.fullName).toBeTruthy();
+  });
+
+  it('cancelInput method update fields properly', async() => {
+    const input = 'inputImageUrl';
+    component.imageUrl = 'https://static.pexels.com/photos/226589/pexels-photo-226589.jpeg';
+    component.cancelInput(input);
+    fixture.detectChanges();
+    expect(component.imageUrl).toBe('');
+    expect(!component.profileImage).toBeTruthy();
+  });
+
+  it('cancelInput method update fields properly', async() => {
+    const input = 'inputPasswords';
+    component.password = '123456';
+    component.repeatPassword = '123456';
+    component.cancelInput(input);
+    fixture.detectChanges();
+    expect(component.password).toBe('');
+    expect(component.repeatPassword).toBe('');
+    expect(!component.userPassword).toBeTruthy();
   });
 
 });
