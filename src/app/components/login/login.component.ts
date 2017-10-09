@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = {};
-    // this.auth.logout();
   }
 
   onLogin(user: IUser) {
@@ -25,8 +24,7 @@ export class LoginComponent implements OnInit {
       data => {
         this.responseData = data;
       },
-      err => console.log('onLogin err is ', err),
-      () => console.log('Request Completed')
+      err => console.log('onLogin err is ', err)
    );
   }
 }

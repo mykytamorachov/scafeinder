@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   password: any;
   confirmPassword: any;
   registrationShow = true;
-  responseStatus: any;
+  responseStatus = {status: String, msg: String};
 
   constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.registrationForm = formBuilder.group({
@@ -62,8 +62,7 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/login']);
           }
         },
-        err => console.log(err),
-        () => console.log('Request Completed')
+        err => console.log(err)
       );
   }
 }

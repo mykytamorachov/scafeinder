@@ -32,7 +32,7 @@ export class UserOptionsComponent implements OnInit {
     this.fullName = false;
     this.userService.updateUserData({name: event}).subscribe(
       (response: Response) => {
-       console.log('response', response.json());
+       this.user.name = event;
       },
       (err) => console.log('err ', err)
    );
@@ -42,7 +42,7 @@ export class UserOptionsComponent implements OnInit {
     this.profileImage = false;
     this.userService.updateUserData({image: event}).subscribe(
       (response: Response) => {
-       console.log('response', response.json());
+       this.user.image = event;
       },
       (err) => console.log('err ', err)
    );
@@ -52,7 +52,6 @@ export class UserOptionsComponent implements OnInit {
     this.userPassword = false;
     this.userService.updateUserData({password: event}).subscribe(
       (response: Response) => {
-       console.log('response', response.json());
       },
       (err) => console.log('err ', err)
    );
@@ -61,7 +60,6 @@ export class UserOptionsComponent implements OnInit {
   deleteUser() {
     this.userService.deleteUserData().subscribe(
       (response: Response) => {
-       console.log('response', response.json());
        this.auth.logout();
       },
       (err) => console.log('err ', err)
@@ -79,17 +77,23 @@ export class UserOptionsComponent implements OnInit {
     return this.password.length < 6;
   }
 
-  cancel(input) {
-    if (input === '3') {
+  cancelInput(inputName) {
+    switch (inputName) {
+      case 'inputPasswords':
       this.userPassword = false;
       this.password = '';
       this.repeatPassword = '';
-    } else if (input === '2') {
+        break;
+      case 'inputImageUrl':
       this.imageUrl = '';
       this.profileImage = false;
-    } else if (input === '1') {
+        break;
+      case 'inputName':
       this.userName = '';
       this.fullName = false;
+        break;
+      default:
+        break;
     }
   }
 

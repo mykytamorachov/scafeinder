@@ -73,7 +73,6 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
     this.user.favorites.push(this.id);
     this.userService.updateUserData({favorites: this.user.favorites}).subscribe(
       (response: Response) => {
-       console.log('response', response.json());
       },
       (err) => console.log('err ', err)
    );
@@ -84,7 +83,6 @@ export class RestaurantProfileComponent implements OnInit, OnDestroy {
     this.user.favorites.splice(this.indexOfFavorite, 1);
     this.userService.updateUserData({favorites: this.user.favorites}).subscribe(
       (response: Response) => {
-       console.log('response', response.json());
       },
       (err) => console.log('err ', err)
    );
