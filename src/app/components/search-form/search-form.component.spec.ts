@@ -57,12 +57,19 @@ describe('SearchFormComponent', () => {
     expect(component.userQuery.date).toEqual(localISOTime);
   });
 
-  // it('showLeftHours method should show correct left hours', async() => {
-  //  const hoursNow = new Date().getHours();
-  //  const res = (hoursNow > 23 || hoursNow < 10) ? 10 : (hoursNow + 1);
-  //  component.showLeftHours();
-  //  fixture.detectChanges();
-  //  expect(component.dayHours.sort()[0]).toEqual(res);
-  // });
+  it('showLeftHours method should show correct left hours', async() => {
+    const hoursNow = new Date().getHours();
+    let res;
+    if (hoursNow >= 23) {
+      res = undefined;
+    } else if ( hoursNow < 10) {
+      res = 10;
+    } else {
+      res = hoursNow + 1;
+    }
+    component.showLeftHours();
+    fixture.detectChanges();
+    expect(component.dayHours.sort()[0]).toEqual(res);
+   });
 
 });
