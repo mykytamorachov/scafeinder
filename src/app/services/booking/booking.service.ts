@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BookingService {
-  private BASE_URL = 'http://localhost:3000';
+  private BASE_URL = '';
   constructor(private http: Http) {
   }
   booking(data: any) {

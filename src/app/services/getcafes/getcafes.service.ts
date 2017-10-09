@@ -10,7 +10,7 @@ export class GetCafesService {
   constructor(private http: Http) { }
 
   getAllCafes(): Observable<ICafe[]> {
-    return this.http.get('http://localhost:3000/cafes')
+    return this.http.get('/cafes')
       .map(
         (response: Response) => {
           return response.json();
@@ -18,7 +18,7 @@ export class GetCafesService {
   }
 
   getCafeById(id): Observable<ICafe[]> {
-    return this.http.get('http://localhost:3000/cafe/' + id)
+    return this.http.get('/cafe/' + id)
       .map(
         (response: Response) => {
           return response.json();
