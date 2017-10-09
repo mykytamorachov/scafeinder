@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
-  private BASE_URL = 'http://localhost:3000';
+  private BASE_URL = '';
   public token: string;
 
   constructor(public router: Router, private http: Http) {
