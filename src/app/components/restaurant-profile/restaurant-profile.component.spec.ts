@@ -73,14 +73,37 @@ describe('RestaurantProfileComponent', () => {
     expect(component.user.name).toBe('Test');
     });
 
-  // it('getUser method should get user data', (done: any) => {
-  //   fixture.detectChanges();
-  //   // component.getUser();
-  //   spy.calls.mostRecent().returnValue.then(() => {
-  //     fixture.detectChanges();
-  //     expect(component.user.name).toBe('Test');
-  //     done();
-  //   });
-  // });
+  it('isRestaurantInFavorites method should return true if it is', async() => {
+    component.user = {
+      name: 'Steve',
+      favorites: ['1234', '12345', '1347']
+    };
+    component.id = '1234';
+    const res = component.isRestaurantInFavorites();
+    fixture.detectChanges();
+    expect(res).toBeTruthy();
+  });
+
+  it('addToFavorites method should add the restaurant id to the user\'s favourites', async() => {
+    component.user = {
+      name: 'Steve',
+      favorites: ['1234', '12345', '1347']
+    };
+    component.id = '1238';
+    component.addToFavorites();
+    fixture.detectChanges();
+    expect(component.user.favorites).toEqual(['1234', '12345', '1347', '1238']);
+  });
+
+  it('removeFromFavorites method should remove the restaurant id from the user\'s favourites', async() => {
+    component.user = {
+      name: 'Steve',
+      favorites: ['1234', '12345', '1347']
+    };
+    component.indexOfFavorite = 1;
+    component.removeFromFavorites();
+    fixture.detectChanges();
+    expect(component.user.favorites).toEqual(['1234', '1347']);
+  });
 
 });

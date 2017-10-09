@@ -14,9 +14,6 @@ import { RestaurantsFiltersComponent } from './restaurants-filters.component';
 describe('RestaurantsFiltersComponent', () => {
   let component: RestaurantsFiltersComponent,
       fixture: ComponentFixture<RestaurantsFiltersComponent>,
-      // de: DebugElement,
-      // el: HTMLInputElement,
-
       getCafesService: GetCafesService,
       filterService: FilterService;
 
@@ -28,8 +25,7 @@ describe('RestaurantsFiltersComponent', () => {
         AngularFontAwesomeModule
       ],
       declarations: [RestaurantsFiltersComponent],
-      providers: [ GetCafesService, FilterService ],
-      // providers: [{ provide: GetCafesService, useValue: getCafesServiceStub }, FilterService]
+      providers: [ GetCafesService, FilterService ]
     })
     .compileComponents();
   }));
@@ -84,20 +80,10 @@ describe('RestaurantsFiltersComponent', () => {
     expect(categories.length).toEqual(16);
   });
 
-  // describe('when checked filters on template', () => {
-  //   beforeEach(() => {
-  //     fixture = TestBed.createComponent(RestaurantsFiltersComponent);
-  //     component = fixture.componentInstance;
-  //     de = fixture.debugElement.queryAll(By.css('.custom-control-input'))[0];
-  //     el = de.nativeElement;
-  //     // el = fixture.debugElement.queryAll(By.css('.custom-control-input'))[0].nativeElement;
-  //   });
-
-  //   it('should add first category = alcohol-free', () => {
-  //     el.checked = true;
-  //     fixture.detectChanges();
-  //     expect(component.categoryFilter.sort()[0]).toEqual('alcohol-free');
-  //   });
-  // });
+  it('onResize method should toggle collapse button', async() => {
+    component.onResize({event: {currentTarget: {innerWidth: 760}}});
+    fixture.detectChanges();
+    expect(component.isCollapsed).toBeTruthy();
+  });
 
 });

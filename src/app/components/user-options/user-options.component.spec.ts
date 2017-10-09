@@ -60,4 +60,19 @@ describe('UserOptionsComponent', () => {
     expect(!res).toBeTruthy();
   });
 
+  it('isImageUrl method should return true if url ends in png, jpg, jpeg, gif, png or svg', async() => {
+    component.imageUrl = 'https://static.pexels.com/photos/226589/pexels-photo-226589.jpeg';
+    const res = component.isImageUrl();
+    fixture.detectChanges();
+    expect(res).toBeTruthy();
+  });
+
+  it('cancelInput method update fields properly', async() => {
+    const input = 'inputName';
+    component.userName = 'Steven';
+    component.cancelInput(input);
+    fixture.detectChanges();
+    expect(component.userName).toBe('');
+  });
+
 });

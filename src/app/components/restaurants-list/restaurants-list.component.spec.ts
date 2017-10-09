@@ -45,4 +45,12 @@ describe('RestaurantsListComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('setSortingKey method should change component key property value', async() => {
+    component.key = 'distance';
+    component.setSortingKey('ratingAsc');
+    fixture.detectChanges();
+    expect(component.key).toBe('ratingAsc');
+  });
+
 });
