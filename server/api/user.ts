@@ -2,7 +2,7 @@ import * as passport from 'passport';
 import { Request, Response, NextFunction } from 'express';
 import { LocalStrategyInfo } from 'passport-local';
 import * as jwt from 'jsonwebtoken';
-import { default as User, UserModel } from '../models/User';
+import { default as NewUser, UserModel } from '../models/User';
 import AUTH_CONFIG from '../constants/auth_config';
 import * as bcrypt from 'bcrypt-nodejs';
 
@@ -26,7 +26,7 @@ export const getProfile = (req: Request, res: Response) => {
 
 // * GET User byId.
 export const getUserDataById = (req: Request, res: Response) => {
-  User.findById(req.params.id, (err, existingUser) => {
+  NewUser.findById(req.params.id, (err, existingUser) => {
     if (err) { return err; }
     if (existingUser) {
       console.log('user found');
@@ -37,7 +37,7 @@ export const getUserDataById = (req: Request, res: Response) => {
 
 // * DELETE User byId.
 export const deleteUserById = (req: Request, res: Response) => {
-  User.findById(req.params.id, (err, existingUser) => {
+  NewUser.findById(req.params.id, (err, existingUser) => {
     if (err) { return err; }
     if (existingUser) {
       existingUser.remove();
@@ -57,7 +57,7 @@ export const updateUserData = (req: Request, res: Response) => {
       bcrypt.hash( req.body.password, salt, null, (error, hash) => {
         if (error) { return (error); }
         req.body.password = hash;
-        User.update({_id: req.params.id}, req.body, (err, existingUser) => {
+        NewUser.update({_id: req.params.id}, req.body, (err, existingUser) => {
           if (err) { return err; }
           if (existingUser) {
             console.log('user found', existingUser);
@@ -67,7 +67,7 @@ export const updateUserData = (req: Request, res: Response) => {
       });
     });
   } else {
-    User.update({_id: req.params.id}, req.body, (err, existingUser) => {
+    NewUser.update({_id: req.params.id}, req.body, (err, existingUser) => {
       if (err) { return err; }
       if (existingUser) {
         console.log('user found', existingUser);
@@ -140,14 +140,14 @@ export const postSignup = (req: Request, res: Response, next: NextFunction) => {
     return res.json({ status: 'error', msg: errors });
   }
 
-  const user = new User({
+  const user = new NewUser({
     name: req.body.name,
     email: req.body.email,
     mobile: req.body.mobile,
     password: req.body.password,
   });
 
-  User.findOne({$or: [{email: req.body.email}, {mobile: req.body.mobile}]}, (err, existingUser: UserModel) => {
+  NewUser.findOne({$or: [{email: req.body.email}, {mobile: req.body.mobile}]}, (err, existingUser: UserModel) => {
     if (err) { return next(err); }
     if (existingUser) {
     if (existingUser.email === req.body.email) {
