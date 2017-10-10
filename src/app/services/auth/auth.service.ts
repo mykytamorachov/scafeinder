@@ -14,7 +14,7 @@ export class AuthService {
 
   login(user: any) {
     const url = `/login`;
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
     return this.http.post(url, user, { headers }).map((response: Response) => {
       const data = response.json();
       if (data.status === 'success' && data.token) {
@@ -38,7 +38,7 @@ export class AuthService {
 
   register(user: any) {
     const url = `/register`;
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
     return this.http.post(url, user, { headers }).map((response: Response) => {
       return response.json();
     });
