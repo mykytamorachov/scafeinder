@@ -5,11 +5,10 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BookingService {
-  private BASE_URL = 'http://localhost:3000';
   constructor(private http: Http) {
   }
   booking(data: any) {
-    const url = `${this.BASE_URL}/cafes/${data.resId}`;
+    const url = `/cafes/${data.resId}`;
     const headers = new Headers({'Content-Type': 'application/json'});
     console.log(url);
     console.log(data);
